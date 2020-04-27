@@ -21,12 +21,11 @@ class StepsComponent extends Component {
     }
 
     handleStepChange(event) {
-        const totalSteps = this.state.totalSteps + event.target.value;
-        this.props.onSubmittedSteps(totalSteps)
         this.setState({
             totalSteps: this.state.totalSteps + event.target.value,
             dailySteps: event.target.value
         })
+        this.props.onSubmittedSteps(this.state.totalSteps)
     }
     
 
@@ -42,7 +41,8 @@ class StepsComponent extends Component {
                 </TextInput>
                 <TouchableOpacity 
                     style={styles.button} 
-                    onPress={this.handleStepChange}>
+                    onPress={this.handleStepChange}
+                    value={this.state.dailySteps}>
                     <Text style={styles.buttonText}>Submit</Text>
                 </TouchableOpacity>
             </View>
