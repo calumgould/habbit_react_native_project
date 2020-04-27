@@ -21,6 +21,7 @@
 		98B9317771208CAD9AC6B450 /* libPods-Habbit-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F0C24326918226F78D3ABD2 /* libPods-Habbit-tvOSTests.a */; };
 		D5FCE25C153C5582A1E689B6 /* libPods-Habbit-HabbitTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 247235F79DC49AF38CA7FD40 /* libPods-Habbit-HabbitTests.a */; };
 		7D947DC4B2B34D68A8D92293 /* ARCADECLASSIC.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 6FE5A5AB90464F90BF0D98BB /* ARCADECLASSIC.TTF */; };
+		3A0E544B18F94F7FB1C3A660 /* PressStart2P-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 635622095A7C413A88AAE4BF /* PressStart2P-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		FE62710DC733427608970C85 /* libPods-Habbit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Habbit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FE5A5AB90464F90BF0D98BB /* ARCADECLASSIC.TTF */ = {isa = PBXFileReference; name = "ARCADECLASSIC.TTF"; path = "../assets/fonts/ARCADECLASSIC.TTF"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		635622095A7C413A88AAE4BF /* PressStart2P-Regular.ttf */ = {isa = PBXFileReference; name = "PressStart2P-Regular.ttf"; path = "../assets/fonts/PressStart2P-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +207,7 @@
 			isa = "PBXGroup";
 			children = (
 				6FE5A5AB90464F90BF0D98BB /* ARCADECLASSIC.TTF */,
+				635622095A7C413A88AAE4BF /* PressStart2P-Regular.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				7D947DC4B2B34D68A8D92293 /* ARCADECLASSIC.TTF in Resources */,
+				3A0E544B18F94F7FB1C3A660 /* PressStart2P-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
