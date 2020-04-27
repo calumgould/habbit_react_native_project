@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Text} from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 class AboutContainer extends Component {
     constructor(props) {
@@ -10,7 +11,9 @@ class AboutContainer extends Component {
     }
     render() { 
         return ( 
-            <Text>Hello</Text>
+            <SafeAreaView>
+                <Text>Hello</Text>
+            </SafeAreaView>
          );
     }
 }
