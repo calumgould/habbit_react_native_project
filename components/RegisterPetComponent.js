@@ -19,7 +19,7 @@ const RegisterPetComponent = (props) => {
                 <View style={styles.inputField}>
                     <TextInput 
                         style={styles.text} 
-                        placeholder="My new name" 
+                        placeholder="Name me..." 
                         placeholderTextColor='ghostwhite' 
                         onChangeText={text => setName(text)} 
                         defaultValue={text}>
