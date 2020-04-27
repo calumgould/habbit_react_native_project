@@ -6,11 +6,13 @@ import {
   View,
   Text,
   Image,
+  StatusBar,
 } from 'react-native';
 
 const App = () => {
   return (
     <>
+      <StatusBar barStyle={'light-content'} />
       <View style={styles.body}>
         <Text style={styles.whiteText}>Habbit.</Text>
         <Image style={styles.image} source={require('./assets/images/boi1_small.png')} />
