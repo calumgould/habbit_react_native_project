@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, View} from 'react-native';
+import {Text, View, StyleSheet} from 'react-native';
 import StepsComponent from '../components/StepsComponent.js';
 import EggComponent from '../components/EggComponent';
 import EggWithEarsComponent from '../components/EggWithEarsComponent';
@@ -12,35 +12,49 @@ class PetContainer extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            totalSteps: 4000
+            totalSteps: 0
         }
         this.currentPet = this.currentPet.bind(this)
-        this.handleSubmittedSteps = this.handleSubmittedSteps.bind(this)
+        this.handleSteps = this.handleSteps.bind(this)
     }
 
-    currentPet(props){
-        console.log('props', this.props.totalSteps);
-
+    currentPet(){
         if(this.state.totalSteps < 6000) {
             return <EggWithEarsComponent />
         }
     }
 
-    handleSubmittedSteps(submittedSteps) {
-        const updatedSteps = this.state.totalSteps + submittedSteps;
+    handleSteps(totalSteps){
         this.setState({
-            totalSteps: updatedSteps
+            totalSteps: totalSteps
         })
+        
     }
 
     render() { 
         return ( 
-            <View>
+            <View style={styles.body}>
+                <StepsComponent getSteps={(totalSteps) => this.handleSteps(totalSteps)} />
+                <Text style={styles.text}>{this.state.totalSteps} (PetContainer total)</Text>
                 {this.currentPet()}
-                <StepsComponent onSubmittedSteps={this.handleSubmittedSteps} />
             </View>
          );
     }
 }
+
+const styles = StyleSheet.create({
+    body: {
+        backgroundColor: 'slategrey',
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+      },
+    text: {
+        textAlign: 'center',
+        fontSize: 15,
+        color: 'ghostwhite',
+        fontFamily: 'PressStart2P-Regular'
+    }
+})
  
 export default PetContainer;
