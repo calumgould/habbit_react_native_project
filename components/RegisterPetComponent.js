@@ -26,7 +26,7 @@ const RegisterPetComponent = (props) => {
                 <TouchableOpacity 
                     style={styles.button} 
                     onPress={() => props.navigation.navigate('Pet')}>
-                    <Text style={styles.buttonText}>Create New Pet</Text>
+                    <Text style={styles.buttonText}>Enter name</Text>
                 </TouchableOpacity>
             </View>
          );

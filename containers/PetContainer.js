@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
-import {Text} from 'react-native'
+import {Text, View} from 'react-native';
+import StepsComponent from '../components/StepsComponent.js';
+
 
 class PetContainer extends Component {
     constructor(props) {
@@ -10,7 +12,10 @@ class PetContainer extends Component {
     }
     render() { 
         return ( 
-            <Text>Hello</Text>
+            <View>
+                <Text>Hello</Text>
+                <StepsComponent />
+            </View>
          );
     }
 }
