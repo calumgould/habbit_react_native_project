@@ -1,9 +1,11 @@
 import React, {Component, useState} from 'react';
-import {Text, View, StyleSheet, TextInput} from 'react-native';
+import {Text, View, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
+
+import buttonStyles from '../styles/button'
 
 import EggComponent from './EggComponent'
 
-const RegisterPetComponent = () => {
+const RegisterPetComponent = (props) => {
 
     const [text, setText] = useState('');
 
@@ -12,21 +14,41 @@ const RegisterPetComponent = () => {
     }
 
         return ( 
-            <View>
-                <TextInput style={styles.text} placeholder="My new name" onChangeText={text => setName(text)} defaultValue={text}></TextInput>
+            <View style={styles.body}>
+                <TextInput 
+                    style={styles.text} 
+                    placeholder="My new name" 
+                    placeholderTextColor='ghostwhite' 
+                    onChangeText={text => setName(text)} 
+                    defaultValue={text}>
+                </TextInput>
                 <EggComponent />
-                {/* <ButtonComponent title='Save Pet' /> */}
+                <TouchableOpacity 
+                    style={styles.button} 
+                    onPress={() => props.navigation.navigate('Pet')}>
+                    <Text style={styles.buttonText}>Create New Pet</Text>
+                </TouchableOpacity>
             </View>
          );
     }
 
 const styles = StyleSheet.create({
+    body: {
+        backgroundColor: 'slategrey',
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
     text: {
         textAlign: 'center',
-        fontSize: 25,
-        height: 40,
-        color: 'ghostwhite'
-    }
+        fontSize: 30,
+        height: 30,
+        color: 'ghostwhite',
+        fontFamily: 'PressStart2P-Regular'
+    },
+    button: buttonStyles.button,
+    buttonText: buttonStyles.buttonText
+    
 })
  
 export default RegisterPetComponent;

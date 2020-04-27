@@ -22,7 +22,9 @@ class GameContainer extends Component {
             
         } else {
             return (
-                <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('Create')}>
+                <TouchableOpacity 
+                    style={styles.button} 
+                    onPress={() => this.props.navigation.navigate('Create')}>
                     <Text style={styles.buttonText}>Create New Pet</Text>
                 </TouchableOpacity>
             )
