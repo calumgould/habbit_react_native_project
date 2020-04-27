@@ -2,7 +2,6 @@ import React, {Component, useState} from 'react';
 import {Text, View, StyleSheet, TextInput} from 'react-native';
 
 import EggComponent from './EggComponent'
-import ButtonComponent from './ButtonComponent'
 
 const RegisterPetComponent = () => {
 
@@ -16,7 +15,7 @@ const RegisterPetComponent = () => {
             <View>
                 <TextInput style={styles.text} placeholder="My new name" onChangeText={text => setName(text)} defaultValue={text}></TextInput>
                 <EggComponent />
-                <ButtonComponent title='Save Pet' />
+                {/* <ButtonComponent title='Save Pet' /> */}
             </View>
          );
     }

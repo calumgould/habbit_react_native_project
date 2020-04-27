@@ -1,22 +1,31 @@
 import React, {Component} from 'react';
 import WelcomeMessage from '../components/WelcomeMessageComponent.js'
-import {View, Text, StyleSheet} from 'react-native';
-import ButtonComponent from '../components/ButtonComponent';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import buttonStyles from '../styles/button'
 
 
 class GameContainer extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            hasPet: true,
+            hasPet: false,
          }
     }
 
     ifHasPet() {
         if(this.state.hasPet) {
-            return <ButtonComponent onPress={() => this.props.navigation.navigate('AboutScreen')} title='Continue'/>
+            return (
+                <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('About')}>
+                    <Text style={styles.buttonText}>Continue</Text>
+                </TouchableOpacity>
+            )
+            
         } else {
-            return <ButtonComponent title='Create New Pet'/>
+            return (
+                <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('Create')}>
+                    <Text style={styles.buttonText}>Create New Pet</Text>
+                </TouchableOpacity>
+            )
         }
     }
 
@@ -37,6 +46,8 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'center',
     },
+    button: buttonStyles.button,
+    buttonText: buttonStyles.buttonText
 })
 
 

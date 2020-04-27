@@ -1,15 +1,6 @@
-import React from 'react';
-import {Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {StyleSheet} from 'react-native';
 
-const ButtonComponent = (props) => {
-  return ( 
-    <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>{props.title}</Text>
-    </TouchableOpacity>
-   );
-}
-
-const styles = StyleSheet.create({
+const buttonStyles = {
     button: {
         alignItems: 'center',
         backgroundColor: 'green',
@@ -25,6 +16,6 @@ const styles = StyleSheet.create({
         fontFamily: 'PressStart2P-Regular',
         fontSize: 12,
     }
-})
+}
 
-export default ButtonComponent;
+export default buttonStyles

@@ -25,6 +25,7 @@ const App = () => {
             <Stack.Navigator initialRouteName='Game' >
                 <Stack.Screen name='Game' component={GameContainer} />
                 <Stack.Screen name='About' component={AboutContainer} />
+                <Stack.Screen name='Create' component={RegisterPetComponent} />
             </Stack.Navigator>
       </NavigationContainer>
     // {/* <RegisterPetComponent /> */}
