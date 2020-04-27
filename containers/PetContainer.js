@@ -15,6 +15,7 @@ class PetContainer extends Component {
             totalSteps: 4000
         }
         this.currentPet = this.currentPet.bind(this)
+        this.handleSubmittedSteps = this.handleSubmittedSteps.bind(this)
     }
 
     currentPet(props){
@@ -25,11 +26,18 @@ class PetContainer extends Component {
         }
     }
 
+    handleSubmittedSteps(submittedSteps) {
+        const updatedSteps = this.state.totalSteps + submittedSteps;
+        this.setState({
+            totalSteps: updatedSteps
+        })
+    }
+
     render() { 
         return ( 
             <View>
                 {this.currentPet()}
-                <StepsComponent />
+                <StepsComponent onSubmittedSteps={this.handleSubmittedSteps} />
             </View>
          );
     }

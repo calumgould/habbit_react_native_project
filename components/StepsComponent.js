@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {View, Text} from 'react-native';
 import * as Progress from 'react-native-progress';
-import { TextInput, StyleSheet, TouchableOpacity } from 'react-native-gesture-handler';
+import { TextInput, StyleSheet, TouchableOpacity } from 'react-native';
 
 
 class StepsComponent extends Component {
@@ -21,6 +21,8 @@ class StepsComponent extends Component {
     }
 
     handleStepChange(event) {
+        const totalSteps = this.state.totalSteps + event.target.value;
+        this.props.onSubmittedSteps(totalSteps)
         this.setState({
             totalSteps: this.state.totalSteps + event.target.value,
             dailySteps: event.target.value
