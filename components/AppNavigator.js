@@ -41,7 +41,8 @@ const AppNavigator = () => {
 
 const headerStyles = {
     headerStyle: {
-        backgroundColor: 'darkslategrey'
+        backgroundColor: 'darkslategrey',
+        height: 0
     },
     headerTitleStyle: {
         color: 'ghostwhite',

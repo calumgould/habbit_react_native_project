@@ -15,7 +15,7 @@ class GameContainer extends Component {
     ifHasPet() {
         if(this.state.hasPet) {
             return (
-                <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('About')}>
+                <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('Pet')}>
                     <Text style={styles.buttonText}>Continue</Text>
                 </TouchableOpacity>
             )
@@ -24,8 +24,8 @@ class GameContainer extends Component {
             return (
                 <TouchableOpacity 
                     style={styles.button} 
-                    onPress={() => this.props.navigation.navigate('Create')}>
-                    <Text style={styles.buttonText}>Create New Pet</Text>
+                    onPress={() => this.props.navigation.navigate('About')}>
+                    <Text style={styles.buttonText}>New Pet</Text>
                 </TouchableOpacity>
             )
         }
