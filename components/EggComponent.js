@@ -1,21 +1,42 @@
-import React, {Component} from 'react';
-import {Image, StyleSheet, View, Text, Animated} from 'react-native';
+import React from 'react';
+import {Image, StyleSheet, View, Text, Animated, Easing, TouchableWithoutFeedback} from 'react-native';
 import ProgressPieComponent from './ProgressPieComponent'
 
-class EggComponent extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { 
-            growthGoal: 5000
-         }
-    }
-    render() { 
+const EggComponent = (props) => {
+   
+    const animatedValue = new Animated.Value(0);
+    
+
+    const handleAnimation = () => {
+        // A loop is needed for continuous animation
+        Animated.loop(
+          // Animation consists of a sequence of steps
+          Animated.sequence([
+            // start rotation in one direction (only half the time is needed)
+            Animated.timing(animatedValue, {toValue: 1.0, duration: 150, easing: Easing.linear, useNativeDriver: true}),
+            // rotate in other direction, to minimum value (= twice the duration of above)
+            Animated.timing(animatedValue, {toValue: -1.0, duration: 300, easing: Easing.linear, useNativeDriver: true}),
+            // return to begin position
+            Animated.timing(animatedValue, {toValue: 0.0, duration: 150, easing: Easing.linear, useNativeDriver: true})
+          ])
+        , {iterations: 3}).start(); 
+      }
+
         return ( 
-        <View>
-            <Image style={styles.image} source={require('../assets/images/boi1_egg.png')} />
-        </View>
+            <View>
+                <TouchableWithoutFeedback  onPress={() => handleAnimation()}>
+                <Animated.Image  style={[{
+                    transform: [{
+                        rotate: animatedValue.interpolate({
+                        inputRange: [-1, 1],
+                        outputRange: ['-0.1rad', '0.1rad'],
+                        })
+                    }]
+                    
+                }, styles.image]} source={require('../assets/images/boi1_egg.png')} /> 
+                </TouchableWithoutFeedback>
+            </View>
          );
-    }
 }
  
 const styles = StyleSheet.create({
@@ -24,5 +45,7 @@ const styles = StyleSheet.create({
         width: 300,
     }
 })
+
+
  
 export default EggComponent;
