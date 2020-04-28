@@ -58,8 +58,10 @@ const EggComponent = (props) => {
  
 const styles = StyleSheet.create({
     image: {
-        height: 300,
-        width: 300,
+        height: 200,
+        width: 200,
+        marginTop: 20,
+        marginBottom: 60,
     },
     rotateText: {
         textAlign: 'center',

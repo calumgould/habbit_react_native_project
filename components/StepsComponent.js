@@ -52,7 +52,7 @@ class StepsComponent extends Component {
                     style={styles.textInput} 
                     placeholder="Enter steps" 
                     placeholderTextColor='lightgrey'
-                    value={this.state.enteredSteps}
+                    value={this.state.enteredSteps.toString()}
                     keyboardType='numeric'
                     onChangeText={value => this.enterSteps(value)}
                 >

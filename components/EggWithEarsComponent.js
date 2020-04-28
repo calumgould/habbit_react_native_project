@@ -5,15 +5,16 @@ import * as Progress from 'react-native-progress';
 
 const EggWithEarsComponent = (props) => {
     return ( 
-        <Image style={styles.image} source={require('../assets/images/boi_1_egg_cracked.png')} />
+        <Image style={styles.image} source={require('../assets/images/boi1_egg_cracked.png')} />
      );
 }
 
 const styles = StyleSheet.create({
     image: {
-        height: 300,
-        width: 300,
-        borderWidth: 5,
+        height: 200,
+        width: 200,
+        marginTop: 20,
+        marginBottom: 60,
     }
 })
  
