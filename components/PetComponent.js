@@ -59,7 +59,6 @@ const PetComponent = (props) => {
         else if(props.totalSteps >= growthStage2) {
             return (
                 <View style={styles.view}>
-                    <EggWithEarsComponent />
                     <Progress.Bar 
                     progress={calculateProgress(growthStage3)}
                     animated={true}
@@ -69,6 +68,7 @@ const PetComponent = (props) => {
                     borderWidth={4}
                     borderColor='black'
                     />
+                    <EggWithEarsComponent />
                 </View>
             ) 
         }

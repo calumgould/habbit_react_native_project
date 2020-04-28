@@ -5,7 +5,7 @@ import * as Progress from 'react-native-progress';
 
 const EggWithEarsComponent = (props) => {
     return ( 
-        <Image style={styles.image} source={require('../assets/images/boi1_egg_cracked.png')} />
+        <Image style={styles.image} source={require('../assets/images/boi1_egg_cracked.png')} resizeMode="contain"/>
      );
 }
 

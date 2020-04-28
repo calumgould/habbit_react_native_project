@@ -50,7 +50,8 @@ const EggComponent = (props) => {
                             })
                         }]    
                     }, styles.image]} 
-                    source={require('../assets/images/boi1_egg.png')} /> 
+                    source={require('../assets/images/boi1_egg.png')}
+                    resizeMode="contain" /> 
                 </TouchableWithoutFeedback>
             </View>
          );

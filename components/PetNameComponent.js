@@ -1,10 +1,20 @@
 import React from 'react';
-import {Text} from 'react-native';
+import {Text, StyleSheet} from 'react-native';
 
 const PetNameComponent = (props) => {
     return ( 
-        <Text>{props.petName}</Text>
+        <Text style={styles.text}>{props.petName}</Text>
      );
 }
+
+const styles = StyleSheet.create({
+    text: {
+        textAlign: 'center',
+        fontSize: 35,
+        color: 'ghostwhite',
+        fontFamily: 'PressStart2P-Regular',
+        marginBottom: 50,
+    }
+})
  
 export default PetNameComponent;
