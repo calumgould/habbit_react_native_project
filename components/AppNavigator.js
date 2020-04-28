@@ -4,7 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import AboutContainer from '../containers/AboutContainer';
 import GameContainer from '../containers/GameContainer';
-import RegisterPetComponent from './RegisterPetComponent';
+import CreateContainer from '../containers/CreateContainer'
 import PetContainer from '../containers/PetContainer'
 
 const Stack = createStackNavigator();
@@ -26,7 +26,7 @@ const AppNavigator = () => {
                 />
                 <Stack.Screen 
                     name='Create' 
-                    component={RegisterPetComponent} 
+                    component={CreateContainer} 
                     options={headerStyles}
                 />
                 <Stack.Screen 

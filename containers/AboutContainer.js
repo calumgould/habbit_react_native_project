@@ -3,7 +3,7 @@ import {Text} from 'react-native';
 import { ScrollView, StyleSheet, TouchableOpacity} from 'react-native';
 import buttonStyles from '../styles/button'
 
-const AboutContainer = () => {
+const AboutContainer = (props) => {
     return ( 
         <ScrollView style={styles.body}>
                 <Text style={styles.title}>
@@ -37,7 +37,7 @@ const AboutContainer = () => {
                 
                 <TouchableOpacity 
                     style={styles.button} 
-                    onPress={() => this.props.navigation.navigate('Create')}>
+                    onPress={() => props.navigation.navigate('Create')}>
                     <Text style={styles.buttonText}>Create New Pet</Text>
                 </TouchableOpacity>
             </ScrollView>

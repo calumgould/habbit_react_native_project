@@ -3,6 +3,7 @@ import {Text, View, StyleSheet} from 'react-native';
 import StepsComponent from '../components/StepsComponent.js';
 import ProgressPieComponent from '../components/ProgressPieComponent';
 import PetComponent from '../components/PetComponent'
+import PetNameComponent from '../components/PetNameComponent'
 
 
 class PetContainer extends Component {
@@ -31,6 +32,7 @@ class PetContainer extends Component {
     render() { 
         return ( 
             <View style={styles.body}>
+                <PetNameComponent />
                 {/* <ProgressPieComponent /> */}
                 <PetComponent totalSteps={this.state.totalSteps} />
                 <StepsComponent getSteps={(totalSteps) => this.handleSteps(totalSteps)} /> 

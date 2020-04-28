@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Image, StyleSheet, View, Text} from 'react-native';
+import {Image, StyleSheet, View, Text, Animated} from 'react-native';
 import ProgressPieComponent from './ProgressPieComponent'
 
 class EggComponent extends Component {
