@@ -1,12 +1,23 @@
-import React from 'react';
-import {Image, StyleSheet, View} from 'react-native';
+import React, {Component} from 'react';
+import {Image, StyleSheet, View, Text} from 'react-native';
+import ProgressPieComponent from './ProgressPieComponent'
 
-const EggComponent = () => {
-    return ( 
-        <Image style={styles.image} source={require('../assets/images/boi1_egg.png')} />
-     );
+class EggComponent extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { 
+            growthGoal: 5000
+         }
+    }
+    render() { 
+        return ( 
+        <View>
+            <Image style={styles.image} source={require('../assets/images/boi1_egg.png')} />
+        </View>
+         );
+    }
 }
-
+ 
 const styles = StyleSheet.create({
     image: {
         height: 300,

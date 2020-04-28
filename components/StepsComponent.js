@@ -27,6 +27,7 @@ class StepsComponent extends Component {
         this.setState({
             enteredSteps: steps
         })
+        
     }
 
     sendSteps(){
@@ -45,9 +46,28 @@ class StepsComponent extends Component {
         return ( 
             <View>
 
-                <Text style={styles.text}>{this.state.dailySteps} / {this.state.stepGoal}
-                </Text>
+                <Text style={styles.text}>Manual Step Input:</Text>
 
+                <TextInput 
+                    style={styles.textInput} 
+                    placeholder="Enter steps" 
+                    placeholderTextColor='lightgrey'
+                    value={this.state.enteredSteps}
+                    keyboardType='numeric'
+                    onChangeText={value => this.enterSteps(value)}
+                >
+                </TextInput>
+
+                <TouchableOpacity 
+                    style={styles.button}
+                    onPress={this.updateSteps}
+                    >
+                    <Text style={styles.buttonText}>Submit</Text>
+                </TouchableOpacity>
+
+                <Text style={styles.stepCount}>{this.state.dailySteps} / {this.state.stepGoal}
+                </Text>
+                
                 <Progress.Bar 
                 progress={this.calculateProgress()} 
                 animated={true}
@@ -58,26 +78,6 @@ class StepsComponent extends Component {
                 borderColor='black'
                 style={styles.progressBar}
                 />
-
-                <Text style={styles.text}>Manual Step Input:</Text>
-
-                <TextInput 
-                    style={styles.textInput} 
-                    placeholder="Enter steps" 
-                    placeholderTextColor='lightgrey'
-                    onChangeText={value => this.enterSteps(value)}>
-                </TextInput>
-
-                <TouchableOpacity 
-                    style={styles.button}
-                    onPress={this.updateSteps}
-                    >
-                    <Text style={styles.buttonText}>Submit</Text>
-                </TouchableOpacity>
-
-                <Text style={styles.infoText}>{this.state.totalSteps} (StepsComponent total)</Text>
-                <Text style={styles.infoText}>{this.state.dailySteps} (StepsComponent daily)</Text>
-                <Text style={styles.infoText}>{this.state.enteredSteps} (StepsComponent entered)</Text>
 
             </View>
          );
@@ -109,11 +109,17 @@ const styles = StyleSheet.create({
         marginVertical: 10,
         fontFamily: 'PressStart2P-Regular'
     },
+    stepCount: {
+        textAlign: 'center',
+        fontSize: 20,
+        color: 'ghostwhite',
+        fontFamily: 'PressStart2P-Regular',
+        marginTop: 80,
+    },
     button: buttonStyles.button,
     buttonText: buttonStyles.buttonText,
     progressBar: {
         marginTop: 20,
-        marginBottom: 70,
     }
 })
  

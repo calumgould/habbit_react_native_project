@@ -1,9 +1,8 @@
 import React, {Component, useState} from 'react';
-import {Text, View, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
+import {Text, View, StyleSheet, TextInput, TouchableOpacity, Image} from 'react-native';
 
 import buttonStyles from '../styles/button';
 
-import EggComponent from './EggComponent';
 import BlinkingText from './BlinkingTextComponent';
 
 const RegisterPetComponent = (props) => {
@@ -19,7 +18,7 @@ const RegisterPetComponent = (props) => {
                 <View style={styles.inputField}>
                     <TextInput 
                         style={styles.text} 
-                        placeholder="My new name" 
+                        placeholder="Name me..." 
                         placeholderTextColor='ghostwhite' 
                         onChangeText={text => setName(text)} 
                         defaultValue={text}>
@@ -27,7 +26,7 @@ const RegisterPetComponent = (props) => {
                     <Text style={styles.text}><BlinkingText text="|" /></Text>
                 </View>
                 <View>
-                    <EggComponent />
+                    <Image style={styles.image} source={require('../assets/images/boi1_egg.png')} />
                     <TouchableOpacity 
                         style={styles.button} 
                         onPress={() => props.navigation.navigate('Pet')}>
@@ -56,7 +55,11 @@ const styles = StyleSheet.create({
         fontFamily: 'PressStart2P-Regular'
     },
     button: buttonStyles.button,
-    buttonText: buttonStyles.buttonText
+    buttonText: buttonStyles.buttonText,
+    image: {
+        height: 300,
+        width: 300,
+    }
     
 })
  
