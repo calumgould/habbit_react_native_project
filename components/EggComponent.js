@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Image, StyleSheet, View} from 'react-native';
+import {Image, StyleSheet, View, Text} from 'react-native';
 import ProgressPieComponent from './ProgressPieComponent'
 
 class EggComponent extends Component {
@@ -12,7 +12,6 @@ class EggComponent extends Component {
     render() { 
         return ( 
         <View>
-            <ProgressPieComponent growthGoal={this.state.growthGoal} totalSteps={this.props.totalSteps}/>
             <Image style={styles.image} source={require('../assets/images/boi1_egg.png')} />
         </View>
          );

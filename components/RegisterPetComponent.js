@@ -55,7 +55,11 @@ const styles = StyleSheet.create({
         fontFamily: 'PressStart2P-Regular'
     },
     button: buttonStyles.button,
-    buttonText: buttonStyles.buttonText
+    buttonText: buttonStyles.buttonText,
+    image: {
+        height: 300,
+        width: 300,
+    }
     
 })
  

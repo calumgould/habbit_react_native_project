@@ -1,56 +1,38 @@
 import React, {Component} from 'react';
 import {Text, View, StyleSheet} from 'react-native';
 import StepsComponent from '../components/StepsComponent.js';
-import EggComponent from '../components/EggComponent';
-import EggWithEarsComponent from '../components/EggWithEarsComponent';
-import SmallPetComponent from '../components/SmallPetComponent';
-import MiddlePetComponent from '../components/MiddlePetComponent';
-import BigPetComponent from '../components/BigPetComponent';
 import ProgressPieComponent from '../components/ProgressPieComponent';
+import PetComponent from '../components/PetComponent'
 
 
 class PetContainer extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            totalSteps: 0
+            totalSteps: 0,
+            growthGoal: 0
         }
-        this.currentPet = this.currentPet.bind(this)
         this.handleSteps = this.handleSteps.bind(this)
+        // this.handleGrowth = this.handleGrowth.bind(this)
     }
-
-    currentPet(){
-        if(this.state.totalSteps > 100000) {
-            return <BigPetComponent />
-        }
-        else if(this.state.totalSteps > 50000) {
-            return <MiddlePetComponent />
-        }
-        else if(this.state.totalSteps > 10000) {
-            return <SmallPetComponent />
-        }
-        else if(this.state.totalSteps > 5000) {
-            return <EggWithEarsComponent />
-        }
-        else return <EggComponent totalSteps={this.state.totalSteps}/>
-    }
-
-    // calculateGrowthProgress(){
-    //     const pet = this.currentPet()
-    //     return pet
-    // }
 
     handleSteps(totalSteps){
         this.setState({
             totalSteps: totalSteps
-        })
-        
+        }) 
     }
+
+    // handleGrowth(growthGoal){
+    //     this.setState({
+    //         growthGoal: growthGoal
+    //     }) 
+    // }
 
     render() { 
         return ( 
             <View style={styles.body}>
-                {this.currentPet()}
+                {/* <ProgressPieComponent /> */}
+                <PetComponent totalSteps={this.state.totalSteps} />
                 <StepsComponent getSteps={(totalSteps) => this.handleSteps(totalSteps)} /> 
             </View>
          );
