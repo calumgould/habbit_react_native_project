@@ -65,8 +65,7 @@ class StepsComponent extends Component {
                     style={styles.textInput} 
                     placeholder="Enter steps" 
                     placeholderTextColor='lightgrey'
-                    onChangeText={value => this.enterSteps(value)}
-                >
+                    onChangeText={value => this.enterSteps(value)}>
                 </TextInput>
 
                 <TouchableOpacity 
