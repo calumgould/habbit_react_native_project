@@ -34,7 +34,7 @@ const EggWithEarsComponent = (props) => {
                          })
                     }]    
                     }, styles.image]} 
-                     source={require('../assets/images/boi_1_egg_cracked.png')} resizeMode="contain"/>
+                     source={require('../assets/images/boi1_egg_cracked.png')} resizeMode="contain"/>
                 </TouchableWithoutFeedback>
         </View>
      );
