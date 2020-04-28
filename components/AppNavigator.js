@@ -30,13 +30,13 @@ const AppNavigator = () => {
                     name='Create' 
                     component={CreateContainer} 
                     options={headerStyles}
-                    initialParams={{ setPetName }}
+                    initialParams={{setPetName}}
                 />
                 <Stack.Screen 
                     name='Pet' 
                     component={PetContainer} 
                     options={headerStyles}
-                    initialParams={{ petName }}
+                    initialParams={{petName}}
                 />
             </Stack.Navigator>
         </NavigationContainer>
