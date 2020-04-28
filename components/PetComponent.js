@@ -9,20 +9,26 @@ import BigPetComponent from './BigPetComponent';
 
 const PetComponent = (props) => {
 
+    const growthStage1 = 0
+    const growthStage2 = 5000
+    const growthStage3 = 10000
+    const growthStage4 = 50000
+    const growthStage5 = 100000
+
     const currentPet = () => {
-        if(props.totalSteps > 100000) {
+        if(props.totalSteps >= growthStage5) {
             return <BigPetComponent />
         }
-        else if(props.totalSteps > 50000) {
+        else if(props.totalSteps >= growthStage4) {
             return <MiddlePetComponent />
         }
-        else if(props.totalSteps > 10000) {
+        else if(props.totalSteps >= growthStage3) {
             return <SmallPetComponent />
         }
-        else if(props.totalSteps > 5000) {
+        else if(props.totalSteps >= growthStage2) {
             return <EggWithEarsComponent />
         }
-        else if(props.totalSteps > props.growthGoal){
+        else if(props.totalSteps >= growthStage1){
             return <EggComponent />
         }
     }
