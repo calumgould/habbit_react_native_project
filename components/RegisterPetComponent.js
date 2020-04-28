@@ -30,14 +30,6 @@ const RegisterPetComponent = (props) => {
                 </View>
                 <View>
                     <Image style={styles.image} source={require('../assets/images/boi1_egg.png')} />
-                    {/* <TouchableOpacity 
-                        style={styles.button} 
-                        onPress={() => props.navigation.navigate('Pet')}>
-                        <Text style={styles.buttonText}>Save pet</Text>
-                    </TouchableOpacity> */}
-                </View>
-                <View>
-                    <PetNameComponent name={text}/>
                 </View>
             
             </View>
@@ -64,8 +56,9 @@ const styles = StyleSheet.create({
     button: buttonStyles.button,
     buttonText: buttonStyles.buttonText,
     image: {
-        height: 300,
-        width: 300,
+        height: 200,
+        width: 200,
+        marginTop: 50,
     },
     
 })

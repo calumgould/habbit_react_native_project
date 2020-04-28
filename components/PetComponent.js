@@ -30,9 +30,9 @@ const PetComponent = (props) => {
                     <Progress.Bar 
                     progress={calculateProgress(growthStage5)}
                     animated={true}
-                    width={50}
-                    height={25}
-                    color='crimson'
+                    width={150}
+                    height={10}
+                    color='green'
                     borderWidth={4}
                     borderColor='black'
                     />
@@ -46,9 +46,9 @@ const PetComponent = (props) => {
                     <Progress.Bar 
                     progress={calculateProgress(growthStage4)}
                     animated={true}
-                    width={50}
-                    height={25}
-                    color='crimson'
+                    width={150}
+                    height={10}
+                    color='green'
                     borderWidth={4}
                     borderColor='black'
                     />
@@ -63,9 +63,9 @@ const PetComponent = (props) => {
                     <Progress.Bar 
                     progress={calculateProgress(growthStage3)}
                     animated={true}
-                    width={70}
+                    width={150}
                     height={10}
-                    color='crimson'
+                    color='green'
                     borderWidth={4}
                     borderColor='black'
                     />
@@ -78,9 +78,9 @@ const PetComponent = (props) => {
                     <Progress.Bar 
                     progress={calculateProgress(growthStage2)}
                     animated={true}
-                    width={50}
-                    height={25}
-                    color='crimson'
+                    width={150}
+                    height={10}
+                    color='green'
                     borderWidth={4}
                     borderColor='black'
                     />
