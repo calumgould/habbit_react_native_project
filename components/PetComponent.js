@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View} from 'react-native'
+import {Text, View, StyleSheet} from 'react-native'
 import EggComponent from './EggComponent';
 import EggWithEarsComponent from './EggWithEarsComponent';
 import SmallPetComponent from './SmallPetComponent';
@@ -17,7 +17,7 @@ const PetComponent = (props) => {
     const growthStage5 = 100000
 
     const calculateProgress = (growthStage) => {
-        return growthStage / props.totalSteps;
+        return props.totalSteps / growthStage;
     }
 
     const currentPet = () => {
@@ -25,29 +25,66 @@ const PetComponent = (props) => {
             return <BigPetComponent />
         }
         else if(props.totalSteps >= growthStage4) {
-            return <MiddlePetComponent />
+            return (
+                <View style={styles.view}>
+                    <Progress.Bar 
+                    progress={calculateProgress(growthStage5)}
+                    animated={true}
+                    width={50}
+                    height={25}
+                    color='crimson'
+                    borderWidth={4}
+                    borderColor='black'
+                    />
+                    <MiddlePetComponent />
+                </View>
+            )
         }
         else if(props.totalSteps >= growthStage3) {
-            return <SmallPetComponent />
+            return (
+                <View style={styles.view}>
+                    <Progress.Bar 
+                    progress={calculateProgress(growthStage4)}
+                    animated={true}
+                    width={50}
+                    height={25}
+                    color='crimson'
+                    borderWidth={4}
+                    borderColor='black'
+                    />
+                    <SmallPetComponent />
+                </View>
+            )
         }
         else if(props.totalSteps >= growthStage2) {
-            return <EggWithEarsComponent />
-        }
-        else if(props.totalSteps >= growthStage1){
             return (
-                <View>
+                <View style={styles.view}>
+                    <EggWithEarsComponent />
                     <Progress.Bar 
                     progress={calculateProgress(growthStage3)}
                     animated={true}
-                    width={null}
+                    width={70}
+                    height={10}
+                    color='crimson'
+                    borderWidth={4}
+                    borderColor='black'
+                    />
+                </View>
+            ) 
+        }
+        else if(props.totalSteps >= growthStage1){
+            return (
+                <View style={styles.view}>
+                    <Progress.Bar 
+                    progress={calculateProgress(growthStage2)}
+                    animated={true}
+                    width={50}
                     height={25}
-                    color='darkslategrey'
+                    color='crimson'
                     borderWidth={4}
                     borderColor='black'
                     />
                     <EggComponent />
-                    <Text>{calculateProgress(growthStage3)}</Text>
-                    <Text>{props.totalSteps}</Text>
                 </View>
             ) 
         }
@@ -59,5 +96,11 @@ const PetComponent = (props) => {
         </View>
      );
 }
+
+const styles = StyleSheet.create({
+    view: {
+        alignItems: 'center'
+    }
+})
  
 export default PetComponent;

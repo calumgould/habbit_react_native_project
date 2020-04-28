@@ -11,7 +11,7 @@ class PetContainer extends Component {
         super(props);
         this.state = { 
             totalSteps: 100,
-            growthGoal: 0
+            growthSteps: 0
         }
         this.handleSteps = this.handleSteps.bind(this)
         // this.handleGrowth = this.handleGrowth.bind(this)

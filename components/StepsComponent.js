@@ -9,8 +9,8 @@ class StepsComponent extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            totalSteps: 3000,
-            dailySteps: 1000,
+            totalSteps: 0,
+            dailySteps: 0,
             stepGoal: 5000,
             enteredSteps: 0
          }
