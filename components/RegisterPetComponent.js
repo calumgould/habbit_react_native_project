@@ -9,9 +9,11 @@ import BlinkingText from './BlinkingTextComponent';
 const RegisterPetComponent = (props) => {
 
     const [text, setText] = useState('');
+    const {setPetName} = props;
 
     const setName = (value) => {
         setText(value)
+        setPetName(value);
     }
 
         return ( 

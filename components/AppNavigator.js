@@ -10,6 +10,8 @@ import PetContainer from '../containers/PetContainer'
 const Stack = createStackNavigator();
 
 const AppNavigator = () => {
+    const [petName, setPetName] = React.useState(undefined);
+
     return ( 
         <NavigationContainer>
         <StatusBar barStyle={'light-content'}/>
@@ -28,11 +30,13 @@ const AppNavigator = () => {
                     name='Create' 
                     component={CreateContainer} 
                     options={headerStyles}
+                    initialParams={{ setPetName }}
                 />
                 <Stack.Screen 
                     name='Pet' 
                     component={PetContainer} 
                     options={headerStyles}
+                    initialParams={{ petName }}
                 />
             </Stack.Navigator>
         </NavigationContainer>

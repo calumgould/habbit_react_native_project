@@ -4,9 +4,14 @@ import {View, TouchableOpacity, Text, StyleSheet} from 'react-native'
 import buttonStyles from '../styles/button';
 
 const CreateContainer = (props) => {
+    const { route } = props;
+    const { setPetName } = route.params;
+
+    setPetName('test');
+
     return ( 
         <View style={styles.body}>
-        <RegisterPetComponent />
+        <RegisterPetComponent setPetName={setPetName} />
         <TouchableOpacity 
             style={styles.button} 
             onPress={() => props.navigation.navigate('Pet')}>
