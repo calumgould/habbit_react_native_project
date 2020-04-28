@@ -11,8 +11,8 @@ import * as Progress from 'react-native-progress';
 const PetComponent = (props) => {
 
     const growthStage1 = 0
-    const growthStage2 = 5000
-    const growthStage3 = 10000
+    const growthStage2 = 10000
+    const growthStage3 = 30000
     const growthStage4 = 50000
     const growthStage5 = 100000
 

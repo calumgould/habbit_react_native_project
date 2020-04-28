@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import {View, Text, Keyboard} from 'react-native';
 import * as Progress from 'react-native-progress';
-import { TextInput, StyleSheet, TouchableOpacity } from 'react-native';
+import { TextInput, StyleSheet, TouchableOpacity, Animated } from 'react-native';
 import buttonStyles from '../styles/button'
+import { timing } from 'react-native-reanimated';
 
 
 class StepsComponent extends Component {
