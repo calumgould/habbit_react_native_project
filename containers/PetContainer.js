@@ -1,16 +1,17 @@
 import React, {Component} from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import {Text, View, StyleSheet, Animated, useRef} from 'react-native';
 import StepsComponent from '../components/StepsComponent.js';
 import ProgressPieComponent from '../components/ProgressPieComponent';
 import PetComponent from '../components/PetComponent'
+import PetNameComponent from '../components/PetNameComponent'
 
 
 class PetContainer extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            totalSteps: 0,
-            growthGoal: 0
+            totalSteps: 100,
+            growthSteps: 0
         }
         this.handleSteps = this.handleSteps.bind(this)
         // this.handleGrowth = this.handleGrowth.bind(this)
@@ -22,15 +23,10 @@ class PetContainer extends Component {
         }) 
     }
 
-    // handleGrowth(growthGoal){
-    //     this.setState({
-    //         growthGoal: growthGoal
-    //     }) 
-    // }
-
     render() { 
         return ( 
             <View style={styles.body}>
+                <PetNameComponent />
                 {/* <ProgressPieComponent /> */}
                 <PetComponent totalSteps={this.state.totalSteps} />
                 <StepsComponent getSteps={(totalSteps) => this.handleSteps(totalSteps)} /> 
@@ -51,7 +47,17 @@ const styles = StyleSheet.create({
         fontSize: 15,
         color: 'ghostwhite',
         fontFamily: 'PressStart2P-Regular'
-    }
+    },
+    rotateText: {
+        textAlign: 'center',
+        fontSize: 10,
+        color: 'ghostwhite',
+        fontFamily: 'PressStart2P-Regular',
+        top: 30,
+        transform: [{
+            rotate: '40deg'
+        }]
+    },
 })
  
 export default PetContainer;

@@ -1,5 +1,6 @@
 import React, {Component, useState} from 'react';
-import {Text, View, StyleSheet, TextInput, TouchableOpacity, Image} from 'react-native';
+import {Text, View, StyleSheet, TextInput, TouchableOpacity, Image, Keyboard} from 'react-native';
+import PetNameComponent from './PetNameComponent'
 
 import buttonStyles from '../styles/button';
 
@@ -27,12 +28,16 @@ const RegisterPetComponent = (props) => {
                 </View>
                 <View>
                     <Image style={styles.image} source={require('../assets/images/boi1_egg.png')} />
-                    <TouchableOpacity 
+                    {/* <TouchableOpacity 
                         style={styles.button} 
                         onPress={() => props.navigation.navigate('Pet')}>
                         <Text style={styles.buttonText}>Save pet</Text>
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
                 </View>
+                <View>
+                    <PetNameComponent name={text}/>
+                </View>
+            
             </View>
          );
     }
@@ -59,7 +64,7 @@ const styles = StyleSheet.create({
     image: {
         height: 300,
         width: 300,
-    }
+    },
     
 })
  

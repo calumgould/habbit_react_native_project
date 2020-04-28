@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, Keyboard} from 'react-native';
 import * as Progress from 'react-native-progress';
 import { TextInput, StyleSheet, TouchableOpacity } from 'react-native';
 import buttonStyles from '../styles/button'
@@ -9,8 +9,8 @@ class StepsComponent extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            totalSteps: 3000,
-            dailySteps: 1000,
+            totalSteps: 0,
+            dailySteps: 0,
             stepGoal: 5000,
             enteredSteps: 0
          }
