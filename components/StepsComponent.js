@@ -12,12 +12,13 @@ class StepsComponent extends Component {
         this.state = { 
             totalSteps: 0,
             dailySteps: 0,
-            stepGoal: 5000,
+            stepGoal: 10000,
             enteredSteps: '',
          }
          this.calculateProgress = this.calculateProgress.bind(this)
          this.enterSteps = this.enterSteps.bind(this)
          this.updateSteps = this.updateSteps.bind(this)
+
     }
 
     calculateProgress(){
@@ -42,6 +43,7 @@ class StepsComponent extends Component {
             enteredSteps: ''
         }, this.sendSteps)
     }
+        
 
       render() { 
         return ( 
