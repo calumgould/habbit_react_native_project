@@ -10,6 +10,7 @@ class PetContainer extends Component {
     constructor(props) {
         super(props);
         this.state = { 
+            petName: props.route.params.petName,
             totalSteps: 100,
             growthSteps: 0
         }
@@ -26,7 +27,7 @@ class PetContainer extends Component {
     render() { 
         return ( 
             <View style={styles.body}>
-                <PetNameComponent />
+                <PetNameComponent petName={this.state.petName} />
                 {/* <ProgressPieComponent /> */}
                 <PetComponent totalSteps={this.state.totalSteps} />
                 <StepsComponent getSteps={(totalSteps) => this.handleSteps(totalSteps)} /> 

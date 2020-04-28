@@ -3,7 +3,7 @@ import {Text} from 'react-native';
 
 const PetNameComponent = (props) => {
     return ( 
-        <Text>{props.name}</Text>
+        <Text>{props.petName}</Text>
      );
 }
  
