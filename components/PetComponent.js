@@ -20,6 +20,10 @@ const PetComponent = (props) => {
         return props.totalSteps / growthStage;
     }
 
+    const calculateProgress2 = (lastGrowthStage, growthStage) => {
+        return (props.totalSteps - lastGrowthStage ) / growthStage;
+    }
+
     const currentPet = () => {
         if(props.totalSteps >= growthStage5) {
             return <BigPetComponent />
@@ -28,11 +32,11 @@ const PetComponent = (props) => {
             return (
                 <View style={styles.view}>
                     <Progress.Bar 
-                    progress={calculateProgress(growthStage5)}
+                    progress={calculateProgress2(growthStage4, growthStage5)}
                     animated={true}
-                    width={50}
-                    height={25}
-                    color='crimson'
+                    width={150}
+                    height={10}
+                    color='green'
                     borderWidth={4}
                     borderColor='black'
                     />
@@ -44,11 +48,11 @@ const PetComponent = (props) => {
             return (
                 <View style={styles.view}>
                     <Progress.Bar 
-                    progress={calculateProgress(growthStage4)}
+                    progress={calculateProgress2(growthStage3, growthStage4)}
                     animated={true}
-                    width={50}
-                    height={25}
-                    color='crimson'
+                    width={150}
+                    height={10}
+                    color='green'
                     borderWidth={4}
                     borderColor='black'
                     />
@@ -61,11 +65,11 @@ const PetComponent = (props) => {
                 <View style={styles.view}>
                     <EggWithEarsComponent />
                     <Progress.Bar 
-                    progress={calculateProgress(growthStage3)}
+                    progress={calculateProgress2(growthStage2, growthStage3)}
                     animated={true}
-                    width={70}
+                    width={150}
                     height={10}
-                    color='crimson'
+                    color='green'
                     borderWidth={4}
                     borderColor='black'
                     />
@@ -78,9 +82,9 @@ const PetComponent = (props) => {
                     <Progress.Bar 
                     progress={calculateProgress(growthStage2)}
                     animated={true}
-                    width={50}
-                    height={25}
-                    color='crimson'
+                    width={150}
+                    height={10}
+                    color='green'
                     borderWidth={4}
                     borderColor='black'
                     />
