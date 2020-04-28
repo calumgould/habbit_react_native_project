@@ -1,29 +1,39 @@
 import React, { Component } from 'react';
 import {Image, StyleSheet, View, Text, Animated, Easing, TouchableWithoutFeedback, useRef} from 'react-native';
 
-const SmallPetComponent = () => {
 
-    const animatedValue = new Animated.Value(0)
+const SmallPetComponent = (props) => {
+   
+    const animatedValue = new Animated.ValueXY({x: 0, y: 0})
 
     const handleAnimation = () => {
        
         Animated.loop(
           Animated.sequence([
-            Animated.timing(animatedValue, {toValue: 1.0, duration: 150, easing: Easing.linear, useNativeDriver: true}),
-            Animated.timing(animatedValue, {toValue: -1.0, duration: 300, easing: Easing.linear, useNativeDriver: true}),
-            Animated.timing(animatedValue, {toValue: 0.0, duration: 150, easing: Easing.linear, useNativeDriver: true})
+            Animated.timing(animatedValue, {toValue: {x: 1.0, y: 1.0}, duration: 150, easing: Easing.linear, useNativeDriver: true}),
+            Animated.timing(animatedValue, {toValue: {x: -1.0, y: -1.0}, duration: 300, easing: Easing.linear, useNativeDriver: true}),
+            Animated.timing(animatedValue, {toValue: {x: 0, y: 0}, duration: 150, easing: Easing.linear, useNativeDriver: true})
           ])
         , {iterations: 3}).start(); 
       }
  
+
+    //   const revealText = () => {
+    //       setTimeout(() => {
+    //           return <Text>Hello</Text>
+    //       }, 3000)
+    //     }
+    
+
         return ( 
             <View>
                 <TouchableWithoutFeedback onPress={() => handleAnimation()}>
-                    <Animated.Image  style={[{
+                    <Animated.Image  
+                    style={[{
                         transform: [{
-                            rotate: animatedValue.interpolate({
-                            inputRange: [-1, 1],
-                            outputRange: ['-0.1rad', '0.1rad'],
+                            translateY: animatedValue.y.interpolate({
+                            inputRange: [-0.1, 0.1],
+                            outputRange: [-1, 1],
                             })
                         }]    
                     }, styles.image]} 
@@ -33,14 +43,24 @@ const SmallPetComponent = () => {
             </View>
          );
 }
-
+ 
 const styles = StyleSheet.create({
     image: {
-        height: 175,
-        width: 175,
+        height: 200,
+        width: 200,
         marginTop: 20,
         marginBottom: 60,
-    }
+    },
+    rotateText: {
+        textAlign: 'center',
+        fontSize: 10,
+        color: 'ghostwhite',
+        fontFamily: 'PressStart2P-Regular',
+        transform: [{
+            rotate: '40deg'
+        }]
+    },
 })
+
  
 export default SmallPetComponent;
