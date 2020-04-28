@@ -3,16 +3,9 @@ import {Text} from 'react-native';
 import { ScrollView, StyleSheet, TouchableOpacity} from 'react-native';
 import buttonStyles from '../styles/button'
 
-class AboutContainer extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { 
-
-         }
-    }
-    render() { 
-        return ( 
-            <ScrollView style={styles.body}>
+const AboutContainer = () => {
+    return ( 
+        <ScrollView style={styles.body}>
                 <Text style={styles.title}>
                     Welcome to {'\n'}{'\n'}HABBIT.
                 </Text>
@@ -48,8 +41,7 @@ class AboutContainer extends Component {
                     <Text style={styles.buttonText}>Create New Pet</Text>
                 </TouchableOpacity>
             </ScrollView>
-         );
-    }
+     );
 }
 
 const styles = StyleSheet.create({
