@@ -4,43 +4,29 @@ import ProgressPieComponent from './ProgressPieComponent'
 
 const EggComponent = (props) => {
    
-    const animatedValue = new Animated.Value(0);
-    // const fadeAnim = useRef(new Animated.Value(0)).current;
-    
+    const animatedValue = new Animated.Value(0)
 
     const handleAnimation = () => {
-        // A loop is needed for continuous animation
+       
         Animated.loop(
-          // Animation consists of a sequence of steps
           Animated.sequence([
-            // start rotation in one direction (only half the time is needed)
             Animated.timing(animatedValue, {toValue: 1.0, duration: 150, easing: Easing.linear, useNativeDriver: true}),
-            // rotate in other direction, to minimum value (= twice the duration of above)
             Animated.timing(animatedValue, {toValue: -1.0, duration: 300, easing: Easing.linear, useNativeDriver: true}),
-            // return to begin position
             Animated.timing(animatedValue, {toValue: 0.0, duration: 150, easing: Easing.linear, useNativeDriver: true})
           ])
         , {iterations: 3}).start(); 
       }
-      
-    //   fadeIn = () => {
-    //     Animated.timing(fadeAnim, {
-    //       toValue: 1,
-    //       duration: 2000
-    //     }).start();
-    //   };
+ 
 
-      const revealText = () => {
-          setTimeout(() => {
-              return <Text>Hello</Text>
-          }, 3000)
-        }
+    //   const revealText = () => {
+    //       setTimeout(() => {
+    //           return <Text>Hello</Text>
+    //       }, 3000)
+    //     }
     
 
         return ( 
             <View>
-                {/* <Text style={styles.rotateText}>Tap me to say hello!</Text> */}
-                
                 <TouchableWithoutFeedback onPress={() => handleAnimation()}>
                     <Animated.Image  style={[{
                         transform: [{

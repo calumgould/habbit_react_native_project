@@ -1,5 +1,5 @@
-import React from 'react';
-import {Image, StyleSheet, View} from 'react-native';
+import React, { Component } from 'react';
+import {Image, StyleSheet, View, Text, Animated, Easing, TouchableWithoutFeedback, useRef} from 'react-native';
 
 const BigPetComponent = () => {
     return ( 
