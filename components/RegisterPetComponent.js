@@ -1,5 +1,5 @@
 import React, {Component, useState} from 'react';
-import {Text, View, StyleSheet, TextInput, TouchableOpacity, Image} from 'react-native';
+import {Text, View, StyleSheet, TextInput, TouchableOpacity, Image, Keyboard} from 'react-native';
 import PetNameComponent from './PetNameComponent'
 
 import buttonStyles from '../styles/button';

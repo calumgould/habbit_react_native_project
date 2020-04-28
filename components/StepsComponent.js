@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, Keyboard} from 'react-native';
 import * as Progress from 'react-native-progress';
 import { TextInput, StyleSheet, TouchableOpacity } from 'react-native';
 import buttonStyles from '../styles/button'
