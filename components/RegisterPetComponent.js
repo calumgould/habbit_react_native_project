@@ -1,9 +1,8 @@
 import React, {Component, useState} from 'react';
-import {Text, View, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
+import {Text, View, StyleSheet, TextInput, TouchableOpacity, Image} from 'react-native';
 
 import buttonStyles from '../styles/button';
 
-import EggComponent from './EggComponent';
 import BlinkingText from './BlinkingTextComponent';
 
 const RegisterPetComponent = (props) => {
@@ -27,7 +26,7 @@ const RegisterPetComponent = (props) => {
                     <Text style={styles.text}><BlinkingText text="|" /></Text>
                 </View>
                 <View>
-                    <EggComponent />
+                    <Image style={styles.image} source={require('../assets/images/boi1_egg.png')} />
                     <TouchableOpacity 
                         style={styles.button} 
                         onPress={() => props.navigation.navigate('Pet')}>

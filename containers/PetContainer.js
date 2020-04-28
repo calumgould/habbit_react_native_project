@@ -6,6 +6,7 @@ import EggWithEarsComponent from '../components/EggWithEarsComponent';
 import SmallPetComponent from '../components/SmallPetComponent';
 import MiddlePetComponent from '../components/MiddlePetComponent';
 import BigPetComponent from '../components/BigPetComponent';
+import ProgressPieComponent from '../components/ProgressPieComponent';
 
 
 class PetContainer extends Component {
@@ -31,8 +32,13 @@ class PetContainer extends Component {
         else if(this.state.totalSteps > 5000) {
             return <EggWithEarsComponent />
         }
-        else return <EggComponent />
+        else return <EggComponent totalSteps={this.state.totalSteps}/>
     }
+
+    // calculateGrowthProgress(){
+    //     const pet = this.currentPet()
+    //     return pet
+    // }
 
     handleSteps(totalSteps){
         this.setState({
@@ -44,9 +50,8 @@ class PetContainer extends Component {
     render() { 
         return ( 
             <View style={styles.body}>
-                <StepsComponent getSteps={(totalSteps) => this.handleSteps(totalSteps)} />
-                <Text style={styles.text}>{this.state.totalSteps} (PetContainer total)</Text>
                 {this.currentPet()}
+                <StepsComponent getSteps={(totalSteps) => this.handleSteps(totalSteps)} /> 
             </View>
          );
     }

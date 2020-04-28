@@ -27,6 +27,7 @@ class StepsComponent extends Component {
         this.setState({
             enteredSteps: steps
         })
+        
     }
 
     sendSteps(){
@@ -44,20 +45,6 @@ class StepsComponent extends Component {
       render() { 
         return ( 
             <View>
-
-                <Text style={styles.text}>{this.state.dailySteps} / {this.state.stepGoal}
-                </Text>
-
-                <Progress.Bar 
-                progress={this.calculateProgress()} 
-                animated={true}
-                width={null}
-                height={25}
-                color='darkslategrey'
-                borderWidth={4}
-                borderColor='black'
-                style={styles.progressBar}
-                />
 
                 <Text style={styles.text}>Manual Step Input:</Text>
 
@@ -78,9 +65,19 @@ class StepsComponent extends Component {
                     <Text style={styles.buttonText}>Submit</Text>
                 </TouchableOpacity>
 
-                <Text style={styles.infoText}>{this.state.totalSteps} (StepsComponent total)</Text>
-                <Text style={styles.infoText}>{this.state.dailySteps} (StepsComponent daily)</Text>
-                <Text style={styles.infoText}>{this.state.enteredSteps} (StepsComponent entered)</Text>
+                <Text style={styles.stepCount}>{this.state.dailySteps} / {this.state.stepGoal}
+                </Text>
+                
+                <Progress.Bar 
+                progress={this.calculateProgress()} 
+                animated={true}
+                width={null}
+                height={25}
+                color='darkslategrey'
+                borderWidth={4}
+                borderColor='black'
+                style={styles.progressBar}
+                />
 
             </View>
          );
@@ -112,11 +109,17 @@ const styles = StyleSheet.create({
         marginVertical: 10,
         fontFamily: 'PressStart2P-Regular'
     },
+    stepCount: {
+        textAlign: 'center',
+        fontSize: 20,
+        color: 'ghostwhite',
+        fontFamily: 'PressStart2P-Regular',
+        marginTop: 80,
+    },
     button: buttonStyles.button,
     buttonText: buttonStyles.buttonText,
     progressBar: {
         marginTop: 20,
-        marginBottom: 70,
     }
 })
  
