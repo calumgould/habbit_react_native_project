@@ -66,6 +66,7 @@ class StepsComponent extends Component {
                     placeholder="Enter steps" 
                     placeholderTextColor='lightgrey'
                     value={this.state.enteredSteps}
+                    keyboardType='numeric'
                     onChangeText={value => this.enterSteps(value)}
                 >
                 </TextInput>

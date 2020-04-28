@@ -19,9 +19,19 @@ class PetContainer extends Component {
     }
 
     currentPet(){
-        if(this.state.totalSteps < 6000) {
+        if(this.state.totalSteps > 100000) {
+            return <BigPetComponent />
+        }
+        else if(this.state.totalSteps > 50000) {
+            return <MiddlePetComponent />
+        }
+        else if(this.state.totalSteps > 10000) {
+            return <SmallPetComponent />
+        }
+        else if(this.state.totalSteps > 5000) {
             return <EggWithEarsComponent />
         }
+        else return <EggComponent />
     }
 
     handleSteps(totalSteps){
