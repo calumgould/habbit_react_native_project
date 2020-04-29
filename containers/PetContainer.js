@@ -40,7 +40,7 @@ class PetContainer extends Component {
 
 const styles = StyleSheet.create({
     body: {
-        backgroundColor: '#004d4d',
+        backgroundColor: 'slategrey',
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',

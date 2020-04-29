@@ -9,7 +9,7 @@ const AboutContainer = (props) => {
         <ScrollView showsVerticalScrollIndicator={false} style={styles.body}>
             <AboutComponent />  
             <TouchableOpacity 
-                style={styles.button} 
+                style={[styles.button, {marginVertical: 60}]} 
                 onPress={() => props.navigation.navigate('Create')}>
                 <Text style={styles.buttonText}>Create New Pet</Text>
             </TouchableOpacity>

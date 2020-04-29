@@ -64,7 +64,7 @@ const PetComponent = (props) => {
                     animated={true}
                     width={150}
                     height={10}
-                    color='green'
+                    color='sienna'
                     borderWidth={4}
                     borderColor='black'
                     />
@@ -81,7 +81,7 @@ const PetComponent = (props) => {
                     animated={true}
                     width={150}
                     height={10}
-                    color='green'
+                    color='sienna'
                     borderWidth={4}
                     borderColor='black'
                     />
@@ -98,7 +98,7 @@ const PetComponent = (props) => {
                     animated={true}
                     width={150}
                     height={10}
-                    color='green'
+                    color='sienna'
                     borderWidth={4}
                     borderColor='black'
                     />
@@ -115,7 +115,7 @@ const PetComponent = (props) => {
                     animated={true}
                     width={150}
                     height={10}
-                    color='green'
+                    color='sienna'
                     borderWidth={4}
                     borderColor='black'
                     />

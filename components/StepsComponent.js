@@ -50,13 +50,13 @@ class StepsComponent extends Component {
         return ( 
             <View>
 
-                <Text style={styles.text}>Manual Step Input:</Text>
+                <Text style={[styles.text, {marginBottom: 10}]}>Manual Step Input:</Text>
                 <View style={styles.body}>
                 <View style={styles.inputField}>
                     <TextInput 
                         style={styles.textInput} 
                         placeholder="Enter steps" 
-                        placeholderTextColor='lightgrey'
+                        placeholderTextColor='grey'
                         value={this.state.enteredSteps.toString()}
                         keyboardType='numeric'
                         onChangeText={value => this.enterSteps(value)}
@@ -97,7 +97,7 @@ class StepsComponent extends Component {
 
 const styles = StyleSheet.create({
     body: {
-        backgroundColor: '#004d4d',
+        backgroundColor: 'slategrey',
         justifyContent: 'center',
         alignItems: 'center'
     },
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
     blinkingText: {
         textAlign: 'center',
         fontSize: 14,
-        color: 'ghostwhite',
+        color: 'grey',
         paddingVertical: 10,
         fontFamily: 'PressStart2P-Regular',
         marginTop: 2,
@@ -144,8 +144,8 @@ const styles = StyleSheet.create({
     inputField: {
         flexDirection: 'row',
         borderWidth: 3,
-        borderColor: 'dimgrey',
-        backgroundColor: 'dimgrey',
+        borderColor: 'darkslategrey',
+        backgroundColor: 'darkslategrey',
         width: 310,
         justifyContent: 'center',
         alignItems: 'center'

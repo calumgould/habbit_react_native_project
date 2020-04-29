@@ -13,23 +13,27 @@ const AboutComponent = () => {
                     {'\n'}{'\n'}
                     Habbit’s aim is to promote healthy habits such as exercise, by making the pet’s growth and success dependent on your step count. 
                     {'\n'}{'\n'}
-                    According to the American Council on Exercise, people who track their steps take an average of 2,500 more steps per day than those who don’t. 
-                    {'\n'}{'\n'}
-                    If you’re one of the millions who participate in a quest to hit the commonly recommended 10,000 steps-a-day goal, your efforts won’t go unrewarded. 
+                    If you’re one of the millions who participate in a quest to hit the recommended 10,000 steps a day goal, your efforts won’t go unrewarded. 
                     {'\n'}{'\n'}
                     Regular activity, including walking, offers a number of health benefits, including a reduced risk of: 
                     {'\n'}{'\n'}
-                    - Heart disease and stroke 
-                    {'\n'}{'\n'}
-                    - High blood pressure 
-                    {'\n'}{'\n'}
-                    - Diabetes 
-                    {'\n'}{'\n'}
-                    - Obesity 
-                    {'\n'}{'\n'}
-                    - Depression 
-                    {'\n'}{'\n'}
-                    - Certain cancers, including breast and colon cancer
+                    <Text style={styles.centreText}>
+                        Heart disease and stroke 
+                        {'\n'}{'\n'}
+                        High blood pressure 
+                        {'\n'}{'\n'}
+                        Diabetes 
+                        {'\n'}{'\n'}
+                        Obesity 
+                        {'\n'}{'\n'}
+                        Depression 
+                        {'\n'}{'\n'}
+                    </Text>
+                        According to the American Council on Exercise, people who track their steps take an average of 2,500 more steps per day than those who don’t. Plus, with Habbit every step you take will help your Boi grow!
+                    {'\n'}{'\n'}{'\n'}
+                    <Text style={styles.blockText}>
+                        Enjoy looking {'\n'}after your Boi!
+                    </Text>
                 </Text>
         </ScrollView>
      );
@@ -48,6 +52,22 @@ const styles = StyleSheet.create({
         fontSize: 20,
         textAlign: 'justify',
         marginHorizontal: 35,
+        color: 'ghostwhite',
+    },
+    centreText: {
+        fontSize: 20,
+        textAlign: 'justify',
+        marginHorizontal: 35,
+        color: 'ghostwhite',
+        textAlign: 'center',
+        fontWeight: 'bold',
+    },
+    blockText: {
+        textAlign: 'center',
+        fontSize: 20,
+        color: 'ghostwhite',
+        fontFamily: 'PressStart2P-Regular',
+        marginVertical: 40,
     }
 })
  

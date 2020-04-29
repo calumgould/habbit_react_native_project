@@ -1,14 +1,6 @@
 import React from 'react';
 import {Text, StyleSheet} from 'react-native';
 
-const styles = StyleSheet.create({
-    header: {
-        color: 'ghostwhite',
-        fontSize: 26,
-        fontFamily: 'PressStart2P-Regular',
-      },
-});
-
 const Header = (props) => {
   return ( 
     <Text
@@ -17,6 +9,16 @@ const Header = (props) => {
     </Text>
    );
 }
+
+const styles = StyleSheet.create({
+  header: {
+      color: 'ghostwhite',
+      fontSize: 35,
+      fontFamily: 'PressStart2P-Regular',
+      paddingBottom: 40,
+      paddingLeft: 40,
+    },
+});
  
 export default Header;
 

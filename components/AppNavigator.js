@@ -1,8 +1,8 @@
 import React from 'react';
 import {StatusBar, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { NavigationContainer, DrawerActions } from '@react-navigation/native';
-import {createDrawerNavigator} from '@react-navigation/drawer';
+import { NavigationContainer, DrawerActions, DefaultTheme, DarkTheme } from '@react-navigation/native';
+import {createDrawerNavigator, contentOptions} from '@react-navigation/drawer';
 import AboutContainer from '../containers/AboutContainer';
 import GameContainer from '../containers/GameContainer';
 import CreateContainer from '../containers/CreateContainer';
@@ -20,7 +20,12 @@ const AppNavigator = () => {
     return ( 
         <NavigationContainer>
         <StatusBar barStyle={'light-content'}/>
-        <Drawer.Navigator initialRouteName='Menu' drawerPosition='left'>
+        <Drawer.Navigator
+        drawerStyle={{
+            backgroundColor: 'slategrey',
+            width: 400,
+            color: 'ghostwhite',
+        }}>
             <Drawer.Screen name='Menu'>
             {() => ( 
                 <Stack.Navigator initialRouteName='Game' >

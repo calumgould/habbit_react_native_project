@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
 import {Image, StyleSheet, View, Text, Animated, Easing, TouchableWithoutFeedback, useRef} from 'react-native';
-import ProgressPieComponent from './ProgressPieComponent'
+import ProgressPieComponent from './ProgressPieComponent';
+import Sound from 'react-native-sound';
 
 const EggComponent = (props) => {
    
     const animatedValue = new Animated.Value(0)
+
+    // const sound = new Sound('../assets/sounds/laughing.mp3', Sound.MAIN_BUNDLE, (error) => {
+    //     if (error) {
+    //         console.log("No sound plaued")
+    //     }
+    //         sound.play();
+    //     });
 
     const handleAnimation = () => {
        
@@ -15,7 +23,15 @@ const EggComponent = (props) => {
             Animated.timing(animatedValue, {toValue: 0.0, duration: 150, easing: Easing.linear, useNativeDriver: true})
           ])
         , {iterations: 3}).start(); 
+        const sound = new Sound('../assets/sounds/laughing.mp3', Sound.MAIN_BUNDLE, (error) => {
+            if (error) {
+                console.log("No sound plaued")
+            }
+                sound.play();
+            });
       }
+
+
  
 
     //   const revealText = () => {
@@ -27,7 +43,7 @@ const EggComponent = (props) => {
 
         return ( 
             <View>
-                <TouchableWithoutFeedback onPress={() => handleAnimation()}>
+                <TouchableWithoutFeedback onPress={() => handleAnimation()} >
                     <Animated.Image  style={[{
                         transform: [{
                             rotate: animatedValue.interpolate({
