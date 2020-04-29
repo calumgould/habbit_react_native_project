@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import WelcomeMessage from '../components/WelcomeMessageComponent.js'
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import buttonStyles from '../styles/button'
+import MenuComponent from '../components/MenuComponent';
 
 
 class GameContainer extends Component {

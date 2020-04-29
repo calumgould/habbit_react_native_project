@@ -2,11 +2,6 @@ import React, {Component} from 'react';
 import RegisterPetComponent from '../components/RegisterPetComponent'
 import {View, TouchableOpacity, Text, StyleSheet} from 'react-native'
 import buttonStyles from '../styles/button';
-import { YellowBox } from 'react-native';
-
-YellowBox.ignoreWarnings([
-  'Non-serializable values were found in the navigation state',
-]);
 
 const CreateContainer = (props) => {
     const {route} = props;

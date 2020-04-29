@@ -1,11 +1,12 @@
 import React from 'react';
 import {
   StyleSheet,
-  StatusBar,
-  View,
+  YellowBox
 } from 'react-native';
 
 import AppNavigator from './components/AppNavigator';
+
+console.disableYellowBox = true;
 
 
 const App = () => {

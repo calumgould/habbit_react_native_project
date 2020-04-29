@@ -4,6 +4,7 @@ import StepsComponent from '../components/StepsComponent.js';
 import ProgressPieComponent from '../components/ProgressPieComponent';
 import PetComponent from '../components/PetComponent'
 import PetNameComponent from '../components/PetNameComponent'
+import MenuComponent from '../components/MenuComponent'
 
 
 class PetContainer extends Component {
@@ -27,6 +28,7 @@ class PetContainer extends Component {
     render() { 
         return ( 
             <View style={styles.body}>
+                <MenuComponent navigation={this.props.navigation}/>
                 <PetNameComponent petName={this.state.petName} />
                 {/* <ProgressPieComponent /> */}
                 <PetComponent totalSteps={this.state.totalSteps}/>
