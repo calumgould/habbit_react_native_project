@@ -6,6 +6,7 @@ import SmallPetComponent from './SmallPetComponent';
 import MiddlePetComponent from './MiddlePetComponent';
 import BigPetComponent from './BigPetComponent';
 import * as Progress from 'react-native-progress';
+import { NativeViewGestureHandler } from 'react-native-gesture-handler';
 
 
 const PetComponent = (props) => {
@@ -21,8 +22,13 @@ const PetComponent = (props) => {
     }
 
     const resetSteps = (growthStageA, growthStageB) => {
-        return (props.totalSteps - (growthStageA + growthStageB))
+        newTotal = props.totalSteps - (growthStageA + growthStageB)
+        if(newTotal >= 0) {
+            return newTotal
+        } else (newTotal <= 0) 
+            return newTotal = 0
     }
+
 
     const calculateProgress2 = (lastGrowthStage, growthStage) => {
         return ((props.totalSteps - lastGrowthStage) / growthStage);
@@ -31,10 +37,10 @@ const PetComponent = (props) => {
     
 
     const currentPet = () => {
-        if(props.totalSteps >= growthStage5) {
+        if((props.totalSteps - growthStage4) >= growthStage5) {
             return <BigPetComponent />
         }
-        else if(props.totalSteps >= growthStage4) {
+        else if((props.totalSteps - growthStage3) >= growthStage4) {
             return (
                 <View style={styles.view}>
                 <Text style={styles.text}>{resetSteps(growthStage3, growthStage4)} / {growthStage5} </Text>
@@ -51,7 +57,7 @@ const PetComponent = (props) => {
                 </View>
             )
         }
-        else if(props.totalSteps >= growthStage3) {
+        else if((props.totalSteps - growthStage2) >= growthStage3) {
             return (
                 <View style={styles.view}>
                 <Text style={styles.text}>{resetSteps(growthStage2, growthStage3)} / {growthStage4} </Text>
@@ -68,7 +74,7 @@ const PetComponent = (props) => {
                 </View>
             )
         }
-        else if(props.totalSteps >= growthStage2) {
+        else if((props.totalSteps - growthStage1) >= growthStage2) {
             return (
                 <View style={styles.view}>
                     <Text style={styles.text}>{resetSteps(growthStage1, growthStage2)} / {growthStage3} </Text>

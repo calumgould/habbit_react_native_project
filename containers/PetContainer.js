@@ -29,7 +29,7 @@ class PetContainer extends Component {
             <View style={styles.body}>
                 <PetNameComponent petName={this.state.petName} />
                 {/* <ProgressPieComponent /> */}
-                <PetComponent totalSteps={this.state.totalSteps} />
+                <PetComponent totalSteps={this.state.totalSteps}/>
                 <StepsComponent getSteps={(totalSteps) => this.handleSteps(totalSteps)} /> 
             </View>
          );
