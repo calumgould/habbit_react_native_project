@@ -1,10 +1,8 @@
-import React, {Component, useState} from 'react';
-import {Text, View, StyleSheet, TextInput, TouchableOpacity, Image, Keyboard} from 'react-native';
-import PetNameComponent from './PetNameComponent'
+import React, { useState } from 'react'
+import { Text, View, StyleSheet, TextInput, Image } from 'react-native'
 
-import buttonStyles from '../styles/button';
-
-import BlinkingText from './BlinkingTextComponent';
+import buttonStyles from '../styles/button'
+import BlinkingText from './BlinkingTextComponent'
 
 const RegisterPetComponent = (props) => {
 
@@ -26,10 +24,15 @@ const RegisterPetComponent = (props) => {
                         onChangeText={text => setName(text)} 
                         defaultValue={text}>
                     </TextInput>
-                    <Text style={styles.text}><BlinkingText text="|" /></Text>
+                    <Text style={styles.text}>
+                        <BlinkingText text="|" />
+                    </Text>
                 </View>
                 <View>
-                    <Image style={styles.image} source={require('../assets/images/boi1_egg.png')} />
+                    <Image 
+                        style={styles.image} 
+                        source={require('../assets/images/boi1_egg.png')} 
+                    />
                 </View>
             </View>
          );

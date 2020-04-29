@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
-import {Image, StyleSheet, View, Text, Animated, Easing, TouchableWithoutFeedback, useRef} from 'react-native';
-import ProgressPieComponent from './ProgressPieComponent';
-import Sound from 'react-native-sound';
+import React from 'react'
+import { StyleSheet, View, Animated, Easing, TouchableWithoutFeedback } from 'react-native'
+import Sound from 'react-native-sound'
 
-const EggComponent = (props) => {
+const EggComponent = () => {
    
     const animatedValue = new Animated.Value(0)
 
@@ -31,16 +30,12 @@ const EggComponent = (props) => {
             });
       }
 
-
- 
-
     //   const revealText = () => {
     //       setTimeout(() => {
     //           return <Text>Hello</Text>
     //       }, 3000)
     //     }
     
-
         return ( 
             <View>
                 <TouchableWithoutFeedback onPress={() => handleAnimation()} >
@@ -77,6 +72,4 @@ const styles = StyleSheet.create({
     },
 })
 
-
- 
 export default EggComponent;

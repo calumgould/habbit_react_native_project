@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import {Image, StyleSheet, View, Text, Animated, Easing, TouchableWithoutFeedback, useRef} from 'react-native';
+import React from 'react'
+import { StyleSheet, View, Animated, Easing, TouchableWithoutFeedback } from 'react-native'
 
 
 const MiddlePetComponent = (props) => {
@@ -17,28 +17,27 @@ const MiddlePetComponent = (props) => {
         , {iterations: 3}).start(); 
       }
  
-
     //   const revealText = () => {
     //       setTimeout(() => {
     //           return <Text>Hello</Text>
     //       }, 3000)
     //     }
     
-
         return ( 
             <View>
                 <TouchableWithoutFeedback onPress={() => handleAnimation()}>
                     <Animated.Image  
-                    style={[{
-                        transform: [{
-                            translateY: animatedValue.y.interpolate({
-                            inputRange: [-0.1, 0.1],
-                            outputRange: [-1, 1],
-                            })
-                        }]    
-                    }, styles.image]} 
-                    source={require('../assets/images/boi1_medium.png')}
-                    resizeMode="contain" /> 
+                        style={[{
+                            transform: [{
+                                translateY: animatedValue.y.interpolate({
+                                inputRange: [-0.1, 0.1],
+                                outputRange: [-1, 1],
+                                })
+                            }]    
+                        }, styles.image]} 
+                        source={require('../assets/images/boi1_medium.png')}
+                        resizeMode="contain"    
+                    /> 
                 </TouchableWithoutFeedback>
             </View>
          );
@@ -62,5 +61,4 @@ const styles = StyleSheet.create({
     },
 })
 
- 
 export default MiddlePetComponent;

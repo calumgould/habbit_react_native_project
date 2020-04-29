@@ -1,15 +1,11 @@
-import React from 'react';
-import * as Progress from 'react-native-progress';
-import {Surface, Shape} from '@react-native-community/art';
+import React from 'react'
+import * as Progress from 'react-native-progress'
 
 const ProgressPieComponent = (props) => {
 
     const calculateProgress = () => {
         return props.totalSteps / props.growthGoal
     }
-
-
-
 
     return ( 
         <Progress.Pie

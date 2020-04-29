@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import {Image, StyleSheet, View, Text, Animated, Easing, TouchableWithoutFeedback, useRef} from 'react-native';
+import React  from 'react'
+import { StyleSheet, View, Animated, Easing, TouchableWithoutFeedback } from 'react-native'
 
 
-const SmallPetComponent = (props) => {
+const SmallPetComponent = () => {
    
     const animatedValue = new Animated.ValueXY({x: 0, y: 0})
 
@@ -17,14 +17,12 @@ const SmallPetComponent = (props) => {
         , {iterations: 3}).start(); 
       }
  
-
     //   const revealText = () => {
     //       setTimeout(() => {
     //           return <Text>Hello</Text>
     //       }, 3000)
     //     }
     
-
         return ( 
             <View>
                 <TouchableWithoutFeedback onPress={() => handleAnimation()}>

@@ -1,13 +1,12 @@
-import React from 'react';
-import {Text, View, StyleSheet} from 'react-native'
-import EggComponent from './EggComponent';
-import EggWithEarsComponent from './EggWithEarsComponent';
-import SmallPetComponent from './SmallPetComponent';
-import MiddlePetComponent from './MiddlePetComponent';
-import BigPetComponent from './BigPetComponent';
-import * as Progress from 'react-native-progress';
-import { NativeViewGestureHandler } from 'react-native-gesture-handler';
+import React from 'react'
+import { Text, View, StyleSheet } from 'react-native'
+import * as Progress from 'react-native-progress'
 
+import EggComponent from './EggComponent'
+import EggWithEarsComponent from './EggWithEarsComponent'
+import SmallPetComponent from './SmallPetComponent'
+import MiddlePetComponent from './MiddlePetComponent'
+import BigPetComponent from './BigPetComponent'
 
 const PetComponent = (props) => {
 

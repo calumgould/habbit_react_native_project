@@ -1,6 +1,7 @@
-import React, {Component} from 'react';
-import { ScrollView, StyleSheet} from 'react-native';
-import AboutComponent from '../components/AboutComponent';
+import React from 'react'
+import { ScrollView, StyleSheet } from 'react-native'
+
+import AboutComponent from '../components/AboutComponent'
 
 const InfoContainer = () => {
     return ( 
