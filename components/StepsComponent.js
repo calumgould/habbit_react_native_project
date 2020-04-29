@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
-import {View, Text, Keyboard} from 'react-native';
-import * as Progress from 'react-native-progress';
-import { TextInput, StyleSheet, TouchableOpacity, Animated } from 'react-native';
+import React, { Component } from 'react'
+import { View, Text, Keyboard } from 'react-native'
+import * as Progress from 'react-native-progress'
+import { TextInput, StyleSheet, TouchableOpacity } from 'react-native'
+
 import buttonStyles from '../styles/button'
-import { timing } from 'react-native-reanimated';
-import BlinkingText from './BlinkingTextComponent';
+import BlinkingText from './BlinkingTextComponent'
 
 
 class StepsComponent extends Component {
@@ -45,49 +45,59 @@ class StepsComponent extends Component {
         }, this.sendSteps)
     }
         
-
       render() { 
         return ( 
             <View>
 
-                <Text style={[styles.text, {marginBottom: 10}]}>Manual Step Input:</Text>
+                <Text 
+                    style={[styles.text, {marginBottom: 10}]}>
+                    Manual Step Input:
+                </Text>
+
                 <View style={styles.body}>
-                <View style={styles.inputField}>
-                    <TextInput 
-                        style={styles.textInput} 
-                        placeholder="Enter steps" 
-                        placeholderTextColor='grey'
-                        value={this.state.enteredSteps.toString()}
-                        keyboardType='numeric'
-                        onChangeText={value => this.enterSteps(value)}
-                        returnKeyLabel='Done'
-                        returnKeyType='done'
-                        onSubmitEditing={Keyboard.dismiss}
-                    >
-                    </TextInput>
-                    <Text style={styles.blinkingText}><BlinkingText text="|" /></Text>
-                </View>
+                    <View style={styles.inputField}>
+                        <TextInput 
+                            style={styles.textInput} 
+                            placeholder="Enter steps" 
+                            placeholderTextColor='grey'
+                            value={this.state.enteredSteps.toString()}
+                            keyboardType='numeric'
+                            onChangeText={value => this.enterSteps(value)}
+                            returnKeyLabel='Done'
+                            returnKeyType='done'
+                            onSubmitEditing={Keyboard.dismiss}
+                        />
+                        <Text style={styles.blinkingText}>
+                            <BlinkingText text="|" />
+                        </Text>
+                    </View>
                 </View>
 
                 <TouchableOpacity 
                     style={[styles.button, {marginBottom: 80}]}
-                    onPress={this.updateSteps}
-                    >
-                    <Text style={styles.buttonText}>Submit</Text>
+                    onPress={this.updateSteps}>
+                    <Text style={styles.buttonText}>
+                        Submit
+                    </Text>
                 </TouchableOpacity>
-                <Text style={[styles.text, {fontSize: 16}]}>Daily Steps</Text>
-                <Text style={styles.stepCount}>{this.state.dailySteps} / {this.state.stepGoal}
+
+                <Text style={[styles.text, {fontSize: 16}]}>
+                    Daily Steps
+                </Text>
+
+                <Text style={styles.stepCount}>
+                    {this.state.dailySteps} / {this.state.stepGoal}
                 </Text>
                 
                 <Progress.Bar 
-                progress={this.calculateProgress()} 
-                animated={true}
-                width={null}
-                height={25}
-                color='darkslategrey'
-                borderWidth={4}
-                borderColor='black'
-                style={styles.progressBar}
+                    progress={this.calculateProgress()} 
+                    animated={true}
+                    width={null}
+                    height={25}
+                    color='darkslategrey'
+                    borderWidth={4}
+                    borderColor='black'
+                    style={styles.progressBar}
                 />
 
             </View>

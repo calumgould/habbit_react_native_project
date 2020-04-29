@@ -1,7 +1,8 @@
-import React, {Component} from 'react';
+import React from 'react'
 import RegisterPetComponent from '../components/RegisterPetComponent'
-import {View, TouchableOpacity, Text, StyleSheet} from 'react-native'
-import buttonStyles from '../styles/button';
+import { View, TouchableOpacity, Text, StyleSheet } from 'react-native'
+
+import buttonStyles from '../styles/button'
 
 const CreateContainer = (props) => {
     const {route} = props;
@@ -15,7 +16,9 @@ const CreateContainer = (props) => {
         <TouchableOpacity 
             style={[styles.button, {marginTop:70}]} 
             onPress={() => props.navigation.navigate('Pet')}>
-            <Text style={styles.buttonText}>Save pet</Text>
+            <Text style={styles.buttonText}>
+                Save pet
+            </Text>
         </TouchableOpacity>
     </View>
      );

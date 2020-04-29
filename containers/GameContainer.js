@@ -1,9 +1,8 @@
-import React, {Component} from 'react';
+import React, {Component} from 'react'
 import WelcomeMessage from '../components/WelcomeMessageComponent.js'
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
-import buttonStyles from '../styles/button'
-import MenuComponent from '../components/MenuComponent';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native'
 
+import buttonStyles from '../styles/button'
 
 class GameContainer extends Component {
     constructor(props) {
@@ -52,7 +51,5 @@ const styles = StyleSheet.create({
     button: buttonStyles.button,
     buttonText: buttonStyles.buttonText
 })
-
-
  
 export default GameContainer;

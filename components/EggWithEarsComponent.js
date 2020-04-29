@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 import React from 'react';
 import {Image, StyleSheet, View, Text, Animated, Easing, TouchableWithoutFeedback, useRef} from 'react-native';
 import Sound from 'react-native-sound';
+=======
+import React from 'react'
+import { StyleSheet, View, Animated, Easing, TouchableWithoutFeedback } from 'react-native'
+
+>>>>>>> c4f2b1027c98ee1f6d191b9d6383833f34882cda
 
 const EggWithEarsComponent = (props) => {
 

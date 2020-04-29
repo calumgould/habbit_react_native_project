@@ -1,5 +1,5 @@
-import React from 'react';
-import {Text, TouchableOpacity, StyleSheet, Image, TouchableWithoutFeedback} from 'react-native';
+import React from 'react'
+import { StyleSheet, Image, TouchableWithoutFeedback } from 'react-native'
 
 const MenuComponent = ({navigation}) => {
 
@@ -16,7 +16,7 @@ const MenuComponent = ({navigation}) => {
 const styles = StyleSheet.create({
     nav: {
         marginTop: 20,
-        height: 30,
+        height: 25,
         position: 'absolute',
         right: -110,
         top: 40,

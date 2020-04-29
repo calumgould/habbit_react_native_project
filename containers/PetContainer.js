@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
-import {Text, View, StyleSheet, Animated, useRef} from 'react-native';
-import StepsComponent from '../components/StepsComponent.js';
-import ProgressPieComponent from '../components/ProgressPieComponent';
+import React, { Component } from 'react'
+import { View, StyleSheet } from 'react-native'
+
+import StepsComponent from '../components/StepsComponent.js'
 import PetComponent from '../components/PetComponent'
 import PetNameComponent from '../components/PetNameComponent'
 import MenuComponent from '../components/MenuComponent'
@@ -30,7 +30,6 @@ class PetContainer extends Component {
             <View style={styles.body}>
                 <MenuComponent navigation={this.props.navigation}/>
                 <PetNameComponent petName={this.state.petName} />
-                {/* <ProgressPieComponent /> */}
                 <PetComponent totalSteps={this.state.totalSteps}/>
                 <StepsComponent getSteps={(totalSteps) => this.handleSteps(totalSteps)} /> 
             </View>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Image, StyleSheet, View, Text, Animated, Easing, TouchableWithoutFeedback, useRef} from 'react-native';
 import Sound from 'react-native-sound';
 
-const BigPetComponent = (props) => {
+const BigPetComponent = () => {
    
     const animatedValue = new Animated.ValueXY({x: 0, y: 0})
 
@@ -21,7 +21,6 @@ const BigPetComponent = (props) => {
           ])
         , {iterations: 3}).start(); 
       }
-
         return ( 
             <View>
                 <TouchableWithoutFeedback onPress={() => handleAnimation()}>
@@ -59,5 +58,4 @@ const styles = StyleSheet.create({
     },
 })
 
- 
 export default BigPetComponent;
