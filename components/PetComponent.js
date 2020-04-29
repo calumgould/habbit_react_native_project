@@ -20,9 +20,15 @@ const PetComponent = (props) => {
         return props.totalSteps / growthStage;
     }
 
-    const calculateProgress2 = (lastGrowthStage, growthStage) => {
-        return (props.totalSteps - lastGrowthStage ) / growthStage;
+    const resetSteps = (growthStageA, growthStageB) => {
+        return (props.totalSteps - (growthStageA + growthStageB))
     }
+
+    const calculateProgress2 = (lastGrowthStage, growthStage) => {
+        return ((props.totalSteps - lastGrowthStage) / growthStage);
+    }
+
+    
 
     const currentPet = () => {
         if(props.totalSteps >= growthStage5) {
@@ -31,6 +37,7 @@ const PetComponent = (props) => {
         else if(props.totalSteps >= growthStage4) {
             return (
                 <View style={styles.view}>
+                <Text style={styles.text}>{resetSteps(growthStage3, growthStage4)} / {growthStage5} </Text>
                     <Progress.Bar 
                     progress={calculateProgress2(growthStage4, growthStage5)}
                     animated={true}
@@ -47,6 +54,7 @@ const PetComponent = (props) => {
         else if(props.totalSteps >= growthStage3) {
             return (
                 <View style={styles.view}>
+                <Text style={styles.text}>{resetSteps(growthStage2, growthStage3)} / {growthStage4} </Text>
                     <Progress.Bar 
                     progress={calculateProgress2(growthStage3, growthStage4)}
                     animated={true}
@@ -63,6 +71,7 @@ const PetComponent = (props) => {
         else if(props.totalSteps >= growthStage2) {
             return (
                 <View style={styles.view}>
+                    <Text style={styles.text}>{resetSteps(growthStage1, growthStage2)} / {growthStage3} </Text>
                     <Progress.Bar 
                     progress={calculateProgress2(growthStage2, growthStage3)}
                     animated={true}
@@ -79,6 +88,7 @@ const PetComponent = (props) => {
         else if(props.totalSteps >= growthStage1){
             return (
                 <View style={styles.view}>
+                <Text style={styles.text}>{props.totalSteps} / {growthStage2} </Text>
                     <Progress.Bar 
                     progress={calculateProgress(growthStage2)}
                     animated={true}
@@ -104,7 +114,14 @@ const PetComponent = (props) => {
 const styles = StyleSheet.create({
     view: {
         alignItems: 'center'
-    }
+    },
+    text: {
+        textAlign: 'center',
+        fontSize: 12,
+        color: 'ghostwhite',
+        fontFamily: 'PressStart2P-Regular',
+        paddingBottom: 5,
+    },
 })
  
 export default PetComponent;

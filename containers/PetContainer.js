@@ -11,7 +11,7 @@ class PetContainer extends Component {
         super(props);
         this.state = { 
             petName: props.route.params.petName,
-            totalSteps: 100,
+            totalSteps: 0,
             growthSteps: 0
         }
         this.handleSteps = this.handleSteps.bind(this)

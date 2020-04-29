@@ -5,7 +5,7 @@ import buttonStyles from '../styles/button'
 
 const AboutContainer = (props) => {
     return ( 
-        <ScrollView style={styles.body}>
+        <ScrollView showsVerticalScrollIndicator={false} style={styles.body}>
                 <Text style={styles.title}>
                     Welcome to {'\n'}{'\n'}HABBIT.
                 </Text>
