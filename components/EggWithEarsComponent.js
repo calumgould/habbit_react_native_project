@@ -1,23 +1,23 @@
 import React from 'react';
 import {Image, StyleSheet, View, Text, Animated, Easing, TouchableWithoutFeedback, useRef} from 'react-native';
-
+import Sound from 'react-native-sound';
 
 const EggWithEarsComponent = (props) => {
 
     const animatedValue = new Animated.Value(0);
     // const fadeAnim = useRef(new Animated.Value(0)).current;
-    
+
+    const sound = new Sound(require('../assets/sounds/smallEggSound2.mp3'), null, (error) => {
+      if (error) {console.log("No sound played", error)}
+          sound.play();
+      });
 
     const handleAnimation = () => {
-        // A loop is needed for continuous animation
+      sound.play()
         Animated.loop(
-          // Animation consists of a sequence of steps
           Animated.sequence([
-            // start rotation in one direction (only half the time is needed)
             Animated.timing(animatedValue, {toValue: 1.0, duration: 150, easing: Easing.linear, useNativeDriver: true}),
-            // rotate in other direction, to minimum value (= twice the duration of above)
             Animated.timing(animatedValue, {toValue: -1.0, duration: 300, easing: Easing.linear, useNativeDriver: true}),
-            // return to begin position
             Animated.timing(animatedValue, {toValue: 0.0, duration: 150, easing: Easing.linear, useNativeDriver: true})
           ])
         , {iterations: 3}).start(); 

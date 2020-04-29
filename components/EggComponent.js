@@ -7,15 +7,13 @@ const EggComponent = (props) => {
    
     const animatedValue = new Animated.Value(0)
 
-    // const sound = new Sound('../assets/sounds/laughing.mp3', Sound.MAIN_BUNDLE, (error) => {
-    //     if (error) {
-    //         console.log("No sound plaued")
-    //     }
-    //         sound.play();
-    //     });
+    const sound = new Sound(require('../assets/sounds/smallEggSound.mp3'), null, (error) => {
+        if (error) {console.log("No sound played", error)}
+            sound.play();
+        });
 
     const handleAnimation = () => {
-       
+       sound.play();
         Animated.loop(
           Animated.sequence([
             Animated.timing(animatedValue, {toValue: 1.0, duration: 150, easing: Easing.linear, useNativeDriver: true}),
@@ -23,16 +21,8 @@ const EggComponent = (props) => {
             Animated.timing(animatedValue, {toValue: 0.0, duration: 150, easing: Easing.linear, useNativeDriver: true})
           ])
         , {iterations: 3}).start(); 
-        const sound = new Sound('../assets/sounds/laughing.mp3', Sound.MAIN_BUNDLE, (error) => {
-            if (error) {
-                console.log("No sound plaued")
-            }
-                sound.play();
-            });
       }
 
-
- 
 
     //   const revealText = () => {
     //       setTimeout(() => {
@@ -40,7 +30,6 @@ const EggComponent = (props) => {
     //       }, 3000)
     //     }
     
-
         return ( 
             <View>
                 <TouchableWithoutFeedback onPress={() => handleAnimation()} >
