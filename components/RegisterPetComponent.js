@@ -31,7 +31,6 @@ const RegisterPetComponent = (props) => {
                 <View>
                     <Image style={styles.image} source={require('../assets/images/boi1_egg.png')} />
                 </View>
-            
             </View>
          );
     }
@@ -42,7 +41,6 @@ const styles = StyleSheet.create({
     },
     body: {
         backgroundColor: 'slategrey',
-        flex: 1,
         justifyContent: 'center',
         alignItems: 'center'
     },

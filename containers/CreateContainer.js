@@ -13,7 +13,7 @@ const CreateContainer = (props) => {
         <View style={styles.body}>
         <RegisterPetComponent setPetName={setPetName} />
         <TouchableOpacity 
-            style={styles.button} 
+            style={[styles.button, {marginTop:70}]} 
             onPress={() => props.navigation.navigate('Pet')}>
             <Text style={styles.buttonText}>Save pet</Text>
         </TouchableOpacity>
