@@ -1,12 +1,6 @@
-<<<<<<< HEAD
-import React, { Component } from 'react';
-import {Image, StyleSheet, View, Text, Animated, Easing, TouchableWithoutFeedback, useRef} from 'react-native';
-import Sound from 'react-native-sound';
-=======
-import React  from 'react'
+import React from 'react'
 import { StyleSheet, View, Animated, Easing, TouchableWithoutFeedback } from 'react-native'
-
->>>>>>> c4f2b1027c98ee1f6d191b9d6383833f34882cda
+import Sound from 'react-native-sound'
 
 const SmallPetComponent = () => {
    
@@ -27,17 +21,7 @@ const SmallPetComponent = () => {
           ])
         , {iterations: 3}).start(); 
       }
-<<<<<<< HEAD
-
-=======
- 
-    //   const revealText = () => {
-    //       setTimeout(() => {
-    //           return <Text>Hello</Text>
-    //       }, 3000)
-    //     }
-    
->>>>>>> c4f2b1027c98ee1f6d191b9d6383833f34882cda
+      
         return ( 
             <View>
                 <TouchableWithoutFeedback onPress={() => handleAnimation()}>

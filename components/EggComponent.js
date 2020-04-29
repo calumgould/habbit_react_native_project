@@ -21,17 +21,7 @@ const EggComponent = () => {
           ])
         , {iterations: 3}).start(); 
       }
-
-<<<<<<< HEAD
-
-=======
->>>>>>> c4f2b1027c98ee1f6d191b9d6383833f34882cda
-    //   const revealText = () => {
-    //       setTimeout(() => {
-    //           return <Text>Hello</Text>
-    //       }, 3000)
-    //     }
-    
+      
         return ( 
             <View>
                 <TouchableWithoutFeedback onPress={() => handleAnimation()} >
