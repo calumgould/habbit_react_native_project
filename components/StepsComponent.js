@@ -97,7 +97,7 @@ class StepsComponent extends Component {
 
 const styles = StyleSheet.create({
     body: {
-        backgroundColor: 'slategrey',
+        backgroundColor: '#004d4d',
         justifyContent: 'center',
         alignItems: 'center'
     },
@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
     inputField: {
         flexDirection: 'row',
         borderWidth: 3,
-        borderColor: 'darkslategray',
+        borderColor: 'dimgrey',
         backgroundColor: 'dimgrey',
         width: 310,
         justifyContent: 'center',
