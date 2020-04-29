@@ -42,11 +42,11 @@ const PetComponent = (props) => {
     }
 
     const calculateProgress3 = (lastGrowthStageA, growthStage) => {
-        return (((props.totalSteps - lastGrowthStageA) - 10000) / growthStage);
+        return ((props.totalSteps - lastGrowthStageA) / growthStage);
     }
 
     const calculateProgress4 = (lastGrowthStageA, growthStage) => {
-        return (((props.totalSteps - lastGrowthStageA) - 40000) / growthStage);
+        return ((props.totalSteps - lastGrowthStageA) / growthStage);
     }
 
     

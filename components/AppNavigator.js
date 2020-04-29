@@ -23,8 +23,13 @@ const AppNavigator = () => {
         <Drawer.Navigator
         drawerStyle={{
             backgroundColor: 'slategrey',
-            width: 400,
-            color: 'ghostwhite',
+            width: 200,
+            contentOptions : {
+                labelStyle: {
+                    fontFamily: 'PressStart2P-Regular',
+                    color: 'ghostwhite',
+                }
+            }
         }}>
             <Drawer.Screen name='Menu'>
             {() => ( 
@@ -78,5 +83,17 @@ const styles = StyleSheet.create({
         marginTop: 100,
     }
 })
- 
+
+const habbitTheme = {
+    dark: false,
+    colors: {
+        primary: 'sienna',
+        background: 'slategrey',
+        card: 'yellow',
+        text: 'ghostwhite',
+        border: 'black'
+    },
+}
+
+    
 export default AppNavigator;
