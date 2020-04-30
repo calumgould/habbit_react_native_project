@@ -32,7 +32,7 @@ const PetComponent = (props) => {
             animated={true}
             width={150}
             height={10}
-            color='sienna'
+            color='#b32d00'
             borderWidth={4}
             borderColor='black'
             />
