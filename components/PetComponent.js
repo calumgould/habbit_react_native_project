@@ -77,7 +77,7 @@ const PetComponent = (props) => {
             return (
                 <View style={styles.view}>
                 <Text style={styles.text}>{props.growthSteps} / {growthStage2} </Text>
-                {showProgressBar(props.growthSteps, growthStage2)}
+                    {showProgressBar(props.growthSteps, growthStage2)}
                     <EggComponent />
                 </View>
             ) 
