@@ -1,5 +1,5 @@
 import React from 'react'
-import {ScrollView, StyleSheet, Text} from 'react-native'
+import { ScrollView, StyleSheet, Text } from 'react-native'
 
 import AboutComponent from '../components/AboutComponent'
 
