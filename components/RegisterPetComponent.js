@@ -31,7 +31,8 @@ const RegisterPetComponent = (props) => {
                 <View>
                     <Image 
                         style={styles.image} 
-                        source={require('../assets/images/boi1_egg.png')} 
+                        source={require('../assets/images/boi1_egg.png')}
+                        resizeMode='contain'
                     />
                 </View>
             </View>
