@@ -1,12 +1,13 @@
 import React from 'react'
-import { ScrollView, StyleSheet } from 'react-native'
+import {ScrollView, StyleSheet, Text} from 'react-native'
 
 import AboutComponent from '../components/AboutComponent'
 
 const InfoContainer = () => {
     return ( 
         <ScrollView showsVerticalScrollIndicator={false} style={styles.body}>
-            <AboutComponent />  
+            <AboutComponent /> 
+            <Text>{'\n'}{'\n'}</Text>
         </ScrollView>
      );
 }

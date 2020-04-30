@@ -1,10 +1,7 @@
-import React from 'react';
-import {
-  StyleSheet,
-  YellowBox
-} from 'react-native';
+import React from 'react'
+import { StyleSheet } from 'react-native'
 
-import AppNavigator from './components/AppNavigator';
+import AppNavigator from './components/AppNavigator'
 
 console.disableYellowBox = true;
 
