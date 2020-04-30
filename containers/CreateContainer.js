@@ -1,6 +1,6 @@
 import React from 'react'
 import RegisterPetComponent from '../components/RegisterPetComponent'
-import {View, TouchableOpacity, Text, StyleSheet} from 'react-native'
+import { View, TouchableOpacity, Text, StyleSheet } from 'react-native'
 
 import buttonStyles from '../styles/button'
 
