@@ -8,7 +8,7 @@ const CreateContainer = (props) => {
     const {route} = props;
     const {setPetName} = route.params;
 
-    setPetName('test');
+    setPetName('Boi');
 
     return ( 
         <View style={styles.body}>
