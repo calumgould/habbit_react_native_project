@@ -40,10 +40,10 @@ const PetComponent = (props) => {
     }
     
     const currentPet = () => {
-        if((props.totalSteps - growthStage4) >= growthStage5) {
+        if((props.totalSteps - (growthStage2 + growthStage3 + growthStage4) >= growthStage5)) {
             return <BigPetComponent />
         }
-        else if((props.totalSteps - growthStage3) >= growthStage4) {
+        else if((props.totalSteps - (growthStage2 + growthStage3)) >= growthStage4) {
             const progressSteps = resetGrowthStage(growthStage2 + growthStage3 + growthStage4)
             return (
                 <View style={styles.view}>
