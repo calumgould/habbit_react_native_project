@@ -10,10 +10,11 @@ const PetNameComponent = (props) => {
 const styles = StyleSheet.create({
     text: {
         textAlign: 'center',
-        fontSize: 35,
+        fontSize: 30,
         color: 'ghostwhite',
         fontFamily: 'PressStart2P-Regular',
         marginBottom: 50,
+        width: 300,
     }
 })
  
