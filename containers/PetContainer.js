@@ -16,12 +16,12 @@ class PetContainer extends Component {
             growthSteps: 0
         }
         this.handleSteps = this.handleSteps.bind(this)
-        // this.handleGrowth = this.handleGrowth.bind(this)
     }
 
-    handleSteps(totalSteps){
+    handleSteps(totalSteps, growthSteps){
         this.setState({
-            totalSteps: totalSteps
+            totalSteps: totalSteps,
+            growthSteps: growthSteps
         }) 
     }
 
@@ -30,8 +30,8 @@ class PetContainer extends Component {
             <View style={styles.body}>
                 <MenuComponent navigation={this.props.navigation}/>
                 <PetNameComponent petName={this.state.petName} />
-                <PetComponent totalSteps={this.state.totalSteps}/>
-                <StepsComponent getSteps={(totalSteps) => this.handleSteps(totalSteps)} /> 
+                <PetComponent totalSteps={this.state.totalSteps} growthSteps={this.state.growthSteps}/>
+                <StepsComponent getSteps={(totalSteps, growthSteps) => this.handleSteps(totalSteps, growthSteps)} /> 
             </View>
          );
     }
