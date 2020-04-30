@@ -17,6 +17,9 @@ const PetComponent = (props) => {
     const growthStage4 = 50000
     const growthStage5 = 100000
 
+    const restStepsForProgress1 = 40000
+    const restStepsForProgress2 = 100000
+
     const calculateProgress = (growthStage) => {
         return props.totalSteps / growthStage;
     }
@@ -46,7 +49,7 @@ const PetComponent = (props) => {
     }
 
     const calculateProgress4 = (lastGrowthStageA, growthStage) => {
-        return ((props.totalSteps - lastGrowthStageA) / growthStage);
+        return ((props.totalSteps - lastGrowthStageA)/ growthStage);
     }
 
     
@@ -60,7 +63,7 @@ const PetComponent = (props) => {
                 <View style={styles.view}>
                 <Text style={styles.text}>{resetSteps1(growthStage3, growthStage4)} / {growthStage5} </Text>
                     <Progress.Bar 
-                    progress={calculateProgress4(growthStage4, growthStage5)}
+                    progress={calculateProgress4(restStepsForProgress2, growthStage5)}
                     animated={true}
                     width={150}
                     height={10}
@@ -77,7 +80,7 @@ const PetComponent = (props) => {
                 <View style={styles.view}>
                 <Text style={styles.text}>{resetSteps(growthStage2, growthStage3)} / {growthStage4} </Text>
                     <Progress.Bar 
-                    progress={calculateProgress3(growthStage3, growthStage4)}
+                    progress={calculateProgress3(restStepsForProgress1, growthStage4)}
                     animated={true}
                     width={150}
                     height={10}
