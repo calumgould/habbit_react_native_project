@@ -16,94 +16,59 @@ const PetComponent = (props) => {
     const growthStage4 = 50000
     const growthStage5 = 100000
 
-    const restStepsForProgress1 = 40000
-    const restStepsForProgress2 = 100000
-
-    const calculateProgress = (growthStage) => {
-        return props.totalSteps / growthStage;
+    const calculateProgress = (newGrowthSteps, growthStage) => {
+        return newGrowthSteps / growthStage;
     }
 
-    const resetSteps = (growthStageA, growthStageB) => {
-        newTotal = props.totalSteps - (growthStageA + growthStageB)
-        if(newTotal >= 0) {
-            return newTotal
-        } else (newTotal <= 0) 
-            return newTotal = 0
+    const resetGrowthStage = (previousGrowthStages) => {
+        const progressSteps = props.growthSteps - previousGrowthStages
+        return progressSteps
     }
 
-    const resetSteps1 = (growthStageA, growthStageB) => {
-        newTotal = (props.totalSteps - (growthStageA + growthStageB) - 10000)
-        if(newTotal >= 0) {
-            return newTotal
-        } else (newTotal <= 0) 
-            return newTotal = 0
+    const showProgressBar = (progressSteps, growthStage) => {
+        return (
+            <Progress.Bar 
+            progress={calculateProgress(progressSteps, growthStage)}
+            animated={true}
+            width={150}
+            height={10}
+            color='#b32d00'
+            borderWidth={4}
+            borderColor='black'
+            />
+        )
     }
-
-    const calculateProgress2 = (lastGrowthStageA, growthStage) => {
-        return ((props.totalSteps - lastGrowthStageA) / growthStage);
-    }
-
-    const calculateProgress3 = (lastGrowthStageA, growthStage) => {
-        return ((props.totalSteps - lastGrowthStageA) / growthStage);
-    }
-
-    const calculateProgress4 = (lastGrowthStageA, growthStage) => {
-        return ((props.totalSteps - lastGrowthStageA)/ growthStage);
-    }
-
     
-
     const currentPet = () => {
-        if((props.totalSteps - growthStage4) >= growthStage5) {
+        if((props.totalSteps - (growthStage2 + growthStage3 + growthStage4) >= growthStage5)) {
             return <BigPetComponent />
         }
-        else if((props.totalSteps - growthStage3) >= growthStage4) {
+        else if((props.totalSteps - (growthStage2 + growthStage3)) >= growthStage4) {
+            const progressSteps = resetGrowthStage(growthStage2 + growthStage3 + growthStage4)
             return (
                 <View style={styles.view}>
-                <Text style={styles.text}>{resetSteps1(growthStage3, growthStage4)} / {growthStage5} </Text>
-                    <Progress.Bar 
-                    progress={calculateProgress4(restStepsForProgress2, growthStage5)}
-                    animated={true}
-                    width={150}
-                    height={10}
-                    color='sienna'
-                    borderWidth={4}
-                    borderColor='black'
-                    />
+                <Text style={styles.text}>{progressSteps} / {growthStage5} </Text>
+                    {showProgressBar(progressSteps, growthStage5)}
                     <MiddlePetComponent />
                 </View>
             )
         }
         else if((props.totalSteps - growthStage2) >= growthStage3) {
+            const progressSteps = resetGrowthStage(growthStage2 + growthStage3)
             return (
                 <View style={styles.view}>
-                <Text style={styles.text}>{resetSteps(growthStage2, growthStage3)} / {growthStage4} </Text>
-                    <Progress.Bar 
-                    progress={calculateProgress3(restStepsForProgress1, growthStage4)}
-                    animated={true}
-                    width={150}
-                    height={10}
-                    color='sienna'
-                    borderWidth={4}
-                    borderColor='black'
-                    />
+                <Text style={styles.text}>{progressSteps} / {growthStage4} </Text>
+                    {showProgressBar(progressSteps, growthStage4)}
                     <SmallPetComponent />
                 </View>
             )
         }
         else if((props.totalSteps - growthStage1) >= growthStage2) {
+            const progressSteps = resetGrowthStage(growthStage2)
             return (
                 <View style={styles.view}>
-                    <Text style={styles.text}>{resetSteps(growthStage1, growthStage2)} / {growthStage3} </Text>
-                    <Progress.Bar 
-                    progress={calculateProgress2(growthStage2, growthStage3)}
-                    animated={true}
-                    width={150}
-                    height={10}
-                    color='sienna'
-                    borderWidth={4}
-                    borderColor='black'
-                    />
+                    <Text style={styles.text}>{progressSteps} / {growthStage3} </Text>
+                    {showProgressBar(progressSteps, growthStage3)}
                     <EggWithEarsComponent />
                 </View>
             ) 
@@ -111,16 +76,8 @@ const PetComponent = (props) => {
         else if(props.totalSteps >= growthStage1){
             return (
                 <View style={styles.view}>
-                <Text style={styles.text}>{props.totalSteps} / {growthStage2} </Text>
-                    <Progress.Bar 
-                    progress={calculateProgress(growthStage2)}
-                    animated={true}
-                    width={150}
-                    height={10}
-                    color='sienna'
-                    borderWidth={4}
-                    borderColor='black'
-                    />
+                <Text style={styles.text}>{props.growthSteps} / {growthStage2} </Text>
+                    {showProgressBar(props.growthSteps, growthStage2)}
                     <EggComponent />
                 </View>
             ) 
@@ -146,5 +103,14 @@ const styles = StyleSheet.create({
         paddingBottom: 5,
     },
 })
+
+const progressBarSettings = {
+    animated: true,
+    width: 150,
+    height: 10,
+    color: 'sienna',
+    borderWidth: 4,
+    borderColor: 'black',
+}
  
 export default PetComponent;

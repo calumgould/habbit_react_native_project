@@ -15,11 +15,11 @@ class StepsComponent extends Component {
             dailySteps: 0,
             stepGoal: 10000,
             enteredSteps: '',
+            growthSteps: 0
          }
          this.calculateProgress = this.calculateProgress.bind(this)
          this.enterSteps = this.enterSteps.bind(this)
          this.updateSteps = this.updateSteps.bind(this)
-
     }
 
     calculateProgress(){
@@ -33,14 +33,21 @@ class StepsComponent extends Component {
         
     }
 
+    resetGrowthSteps(){
+        this.setState({
+            growthSteps: 0
+        })
+    }
+
     sendSteps(){
-        this.props.getSteps(this.state.totalSteps)
+        this.props.getSteps(this.state.totalSteps, this.state.growthSteps)
     }
     
     updateSteps() {
         this.setState({
             totalSteps: this.state.totalSteps + parseInt(this.state.enteredSteps),
             dailySteps: this.state.dailySteps + parseInt(this.state.enteredSteps),
+            growthSteps: this.state.growthSteps + parseInt(this.state.enteredSteps),
             enteredSteps: ''
         }, this.sendSteps)
     }
@@ -48,7 +55,6 @@ class StepsComponent extends Component {
       render() { 
         return ( 
             <View>
-
                 <Text 
                     style={[styles.text, {marginBottom: 10}]}>
                     Manual Step Input:
