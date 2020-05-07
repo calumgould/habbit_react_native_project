@@ -1,13 +1,18 @@
-import React, { Component } from 'react';
-import {Image, StyleSheet, View, Text, Animated, Easing, TouchableWithoutFeedback, useRef} from 'react-native';
+import React from 'react'
+import { StyleSheet, View, Animated, Easing, TouchableWithoutFeedback } from 'react-native'
+import Sound from 'react-native-sound'
 
-
-const SmallPetComponent = (props) => {
+const SmallPetComponent = () => {
    
     const animatedValue = new Animated.ValueXY({x: 0, y: 0})
 
+    const sound = new Sound(require('../assets/sounds/smallBoiSound.mp3'), null, (error) => {
+        if (error) {console.log("No sound played", error)}
+            sound.play();
+        });
+
     const handleAnimation = () => {
-       
+       sound.play()
         Animated.loop(
           Animated.sequence([
             Animated.timing(animatedValue, {toValue: {x: 1.0, y: 1.0}, duration: 150, easing: Easing.linear, useNativeDriver: true}),
@@ -16,15 +21,7 @@ const SmallPetComponent = (props) => {
           ])
         , {iterations: 3}).start(); 
       }
- 
-
-    //   const revealText = () => {
-    //       setTimeout(() => {
-    //           return <Text>Hello</Text>
-    //       }, 3000)
-    //     }
-    
-
+      
         return ( 
             <View>
                 <TouchableWithoutFeedback onPress={() => handleAnimation()}>

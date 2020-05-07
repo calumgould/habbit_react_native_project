@@ -17,11 +17,18 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* HabbitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* HabbitTests.m */; };
+		3A0E544B18F94F7FB1C3A660 /* PressStart2P-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 635622095A7C413A88AAE4BF /* PressStart2P-Regular.ttf */; };
 		708D047579BADAF214557736 /* libPods-Habbit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE62710DC733427608970C85 /* libPods-Habbit.a */; };
+		7D947DC4B2B34D68A8D92293 /* ARCADECLASSIC.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 6FE5A5AB90464F90BF0D98BB /* ARCADECLASSIC.TTF */; };
 		98B9317771208CAD9AC6B450 /* libPods-Habbit-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F0C24326918226F78D3ABD2 /* libPods-Habbit-tvOSTests.a */; };
 		D5FCE25C153C5582A1E689B6 /* libPods-Habbit-HabbitTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 247235F79DC49AF38CA7FD40 /* libPods-Habbit-HabbitTests.a */; };
-		7D947DC4B2B34D68A8D92293 /* ARCADECLASSIC.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 6FE5A5AB90464F90BF0D98BB /* ARCADECLASSIC.TTF */; };
-		3A0E544B18F94F7FB1C3A660 /* PressStart2P-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 635622095A7C413A88AAE4BF /* PressStart2P-Regular.ttf */; };
+		E12E5031245A2D9F0079C232 /* laughing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E12E5030245A2D9F0079C232 /* laughing.mp3 */; };
+		E12E5033245A312C0079C232 /* eggSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E12E5032245A312C0079C232 /* eggSound.mp3 */; };
+		E12E5035245A313C0079C232 /* smallEggSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E12E5034245A313C0079C232 /* smallEggSound.mp3 */; };
+		E12E5037245A32950079C232 /* smallBoiSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E12E5036245A32950079C232 /* smallBoiSound.mp3 */; };
+		E12E5039245A332B0079C232 /* middleBoiHello.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E12E5038245A332B0079C232 /* middleBoiHello.mp3 */; };
+		E12E503B245A34060079C232 /* smallEggSound2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E12E503A245A34060079C232 /* smallEggSound2.mp3 */; };
+		E12E503D245A36200079C232 /* bigBoiTalk.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E12E503C245A36200079C232 /* bigBoiTalk.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,7 +65,9 @@
 		2D02E4901E0B4A5D006451C7 /* Habbit-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Habbit-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B85E0BC7C4665D104FFCAC3 /* Pods-Habbit-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habbit-tvOS.release.xcconfig"; path = "Target Support Files/Pods-Habbit-tvOS/Pods-Habbit-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		5F0C24326918226F78D3ABD2 /* libPods-Habbit-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Habbit-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		635622095A7C413A88AAE4BF /* PressStart2P-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "PressStart2P-Regular.ttf"; path = "../assets/fonts/PressStart2P-Regular.ttf"; sourceTree = "<group>"; };
 		6BAB6B6E8502680C12DDD607 /* Pods-Habbit-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habbit-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-Habbit-tvOS/Pods-Habbit-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		6FE5A5AB90464F90BF0D98BB /* ARCADECLASSIC.TTF */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = ARCADECLASSIC.TTF; path = ../assets/fonts/ARCADECLASSIC.TTF; sourceTree = "<group>"; };
 		75DA8730E38D144117C5376E /* Pods-Habbit-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habbit-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-Habbit-tvOSTests/Pods-Habbit-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		92EC6211B60AD4D1D21F45E3 /* Pods-Habbit-HabbitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habbit-HabbitTests.debug.xcconfig"; path = "Target Support Files/Pods-Habbit-HabbitTests/Pods-Habbit-HabbitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9F6D7F49C9D8DF2367DFD4C8 /* Pods-Habbit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habbit.debug.xcconfig"; path = "Target Support Files/Pods-Habbit/Pods-Habbit.debug.xcconfig"; sourceTree = "<group>"; };
@@ -66,11 +75,16 @@
 		B9DEA06F4A8122CB938EADEE /* Pods-Habbit-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habbit-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-Habbit-tvOSTests/Pods-Habbit-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C9FE50E4E034F17DBBB2CE38 /* Pods-Habbit-HabbitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habbit-HabbitTests.release.xcconfig"; path = "Target Support Files/Pods-Habbit-HabbitTests/Pods-Habbit-HabbitTests.release.xcconfig"; sourceTree = "<group>"; };
 		D8D0CB9B9B8880F3E48A99FC /* Pods-Habbit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habbit.release.xcconfig"; path = "Target Support Files/Pods-Habbit/Pods-Habbit.release.xcconfig"; sourceTree = "<group>"; };
+		E12E5030245A2D9F0079C232 /* laughing.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = laughing.mp3; path = ../assets/sounds/laughing.mp3; sourceTree = "<group>"; };
+		E12E5032245A312C0079C232 /* eggSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = eggSound.mp3; path = ../../../../../Downloads/eggSound.mp3; sourceTree = "<group>"; };
+		E12E5034245A313C0079C232 /* smallEggSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = smallEggSound.mp3; path = ../../../../../Downloads/smallEggSound.mp3; sourceTree = "<group>"; };
+		E12E5036245A32950079C232 /* smallBoiSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = smallBoiSound.mp3; path = "../../../../../Music/iTunes/iTunes Media/Music/Unknown Artist/Unknown Album/smallBoiSound.mp3"; sourceTree = "<group>"; };
+		E12E5038245A332B0079C232 /* middleBoiHello.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = middleBoiHello.mp3; path = ../assets/sounds/middleBoiHello.mp3; sourceTree = "<group>"; };
+		E12E503A245A34060079C232 /* smallEggSound2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = smallEggSound2.mp3; path = ../../../../../Downloads/smallEggSound2.mp3; sourceTree = "<group>"; };
+		E12E503C245A36200079C232 /* bigBoiTalk.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = bigBoiTalk.mp3; path = ../../../../../Downloads/bigBoiTalk.mp3; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		FE62710DC733427608970C85 /* libPods-Habbit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Habbit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6FE5A5AB90464F90BF0D98BB /* ARCADECLASSIC.TTF */ = {isa = PBXFileReference; name = "ARCADECLASSIC.TTF"; path = "../assets/fonts/ARCADECLASSIC.TTF"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		635622095A7C413A88AAE4BF /* PressStart2P-Regular.ttf */ = {isa = PBXFileReference; name = "PressStart2P-Regular.ttf"; path = "../assets/fonts/PressStart2P-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +143,13 @@
 		13B07FAE1A68108700A75B9A /* Habbit */ = {
 			isa = PBXGroup;
 			children = (
+				E12E503C245A36200079C232 /* bigBoiTalk.mp3 */,
+				E12E503A245A34060079C232 /* smallEggSound2.mp3 */,
+				E12E5038245A332B0079C232 /* middleBoiHello.mp3 */,
+				E12E5036245A32950079C232 /* smallBoiSound.mp3 */,
+				E12E5034245A313C0079C232 /* smallEggSound.mp3 */,
+				E12E5032245A312C0079C232 /* eggSound.mp3 */,
+				E12E5030245A2D9F0079C232 /* laughing.mp3 */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -153,6 +174,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		31F512CA7C7042D6A1ED704C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6FE5A5AB90464F90BF0D98BB /* ARCADECLASSIC.TTF */,
+				635622095A7C413A88AAE4BF /* PressStart2P-Regular.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		7067FFA11738303C39D489DE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,7 +195,6 @@
 				B9DEA06F4A8122CB938EADEE /* Pods-Habbit-tvOSTests.debug.xcconfig */,
 				75DA8730E38D144117C5376E /* Pods-Habbit-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -202,16 +231,6 @@
 			);
 			name = Products;
 			sourceTree = "<group>";
-		};
-		31F512CA7C7042D6A1ED704C /* Resources */ = {
-			isa = "PBXGroup";
-			children = (
-				6FE5A5AB90464F90BF0D98BB /* ARCADECLASSIC.TTF */,
-				635622095A7C413A88AAE4BF /* PressStart2P-Regular.ttf */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-			path = "";
 		};
 /* End PBXGroup section */
 
@@ -353,10 +372,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E12E5039245A332B0079C232 /* middleBoiHello.mp3 in Resources */,
+				E12E503D245A36200079C232 /* bigBoiTalk.mp3 in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				E12E5033245A312C0079C232 /* eggSound.mp3 in Resources */,
+				E12E5037245A32950079C232 /* smallBoiSound.mp3 in Resources */,
 				7D947DC4B2B34D68A8D92293 /* ARCADECLASSIC.TTF in Resources */,
+				E12E5035245A313C0079C232 /* smallEggSound.mp3 in Resources */,
+				E12E503B245A34060079C232 /* smallEggSound2.mp3 in Resources */,
 				3A0E544B18F94F7FB1C3A660 /* PressStart2P-Regular.ttf in Resources */,
+				E12E5031245A2D9F0079C232 /* laughing.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

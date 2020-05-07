@@ -1,13 +1,9 @@
-import React from 'react';
+import React from 'react'
 
 const SpeechBubbleComponent = () => {
 
-
-
     return ( 
-        <Text>
-
-        </Text>
+        <Text></Text>
      );
 }
  

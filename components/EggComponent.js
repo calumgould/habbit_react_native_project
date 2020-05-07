@@ -1,21 +1,18 @@
-import React, { Component } from 'react';
-import {Image, StyleSheet, View, Text, Animated, Easing, TouchableWithoutFeedback, useRef} from 'react-native';
-import ProgressPieComponent from './ProgressPieComponent';
-import Sound from 'react-native-sound';
+import React from 'react'
+import { StyleSheet, View, Animated, Easing, TouchableWithoutFeedback } from 'react-native'
+import Sound from 'react-native-sound'
 
-const EggComponent = (props) => {
+const EggComponent = () => {
    
     const animatedValue = new Animated.Value(0)
 
-    // const sound = new Sound('../assets/sounds/laughing.mp3', Sound.MAIN_BUNDLE, (error) => {
-    //     if (error) {
-    //         console.log("No sound plaued")
-    //     }
-    //         sound.play();
-    //     });
+    const sound = new Sound(require('../assets/sounds/smallEggSound.mp3'), null, (error) => {
+        if (error) {console.log("No sound played", error)}
+            sound.play();
+        });
 
     const handleAnimation = () => {
-       
+       sound.play();
         Animated.loop(
           Animated.sequence([
             Animated.timing(animatedValue, {toValue: 1.0, duration: 150, easing: Easing.linear, useNativeDriver: true}),
@@ -23,24 +20,8 @@ const EggComponent = (props) => {
             Animated.timing(animatedValue, {toValue: 0.0, duration: 150, easing: Easing.linear, useNativeDriver: true})
           ])
         , {iterations: 3}).start(); 
-        const sound = new Sound('../assets/sounds/laughing.mp3', Sound.MAIN_BUNDLE, (error) => {
-            if (error) {
-                console.log("No sound plaued")
-            }
-                sound.play();
-            });
       }
-
-
- 
-
-    //   const revealText = () => {
-    //       setTimeout(() => {
-    //           return <Text>Hello</Text>
-    //       }, 3000)
-    //     }
-    
-
+      
         return ( 
             <View>
                 <TouchableWithoutFeedback onPress={() => handleAnimation()} >
@@ -77,6 +58,4 @@ const styles = StyleSheet.create({
     },
 })
 
-
- 
 export default EggComponent;
