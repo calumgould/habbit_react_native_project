@@ -1,8 +1,12 @@
-import React, { useState } from 'react'
-import { Text, View, StyleSheet, TextInput, Image } from 'react-native'
+import React, { useState } from 'react';
+import { Text, View, StyleSheet, TextInput, Image } from 'react-native';
 
-import buttonStyles from '../styles/button'
-import BlinkingText from './BlinkingTextComponent'
+import buttonStyles from '../styles/button';
+import BlinkingText from './BlinkingTextComponent';
+
+import Database from '../Database';
+
+const db = new Database();
 
 const RegisterPetComponent = (props) => {
 

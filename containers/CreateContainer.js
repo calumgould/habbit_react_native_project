@@ -1,21 +1,47 @@
-import React from 'react'
+import React, {useState} from 'react'
 import RegisterPetComponent from '../components/RegisterPetComponent'
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native'
 
 import buttonStyles from '../styles/button'
 
+import Database from '../Database'
+
+const db = new Database();
+
 const CreateContainer = (props) => {
     const {route} = props;
     const {setPetName} = route.params;
 
+    const [user, setUser] = useState([]);
+
     setPetName('Boi');
+
+    const saveUser = () => {
+        setUser([
+            '',
+            'roosa',
+            '0',
+            'May 14 2020',
+            '0',
+            '0',
+        ])
+        .then(() => {
+            db.addUser(user)
+        })
+
+        .then((result) => {
+            console.log('result', result);
+        })
+        console.log('user', user);
+        props.navigation.navigate('Pet')
+    }
 
     return ( 
         <View style={styles.body}>
         <RegisterPetComponent setPetName={setPetName} />
         <TouchableOpacity 
             style={[styles.button, {marginTop:70}]} 
-            onPress={() => props.navigation.navigate('Pet')}>
+            onPress={saveUser}>
             <Text style={styles.buttonText}>
                 Save pet
             </Text>

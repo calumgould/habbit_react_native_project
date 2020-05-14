@@ -129,7 +129,7 @@ export default class Database {
         return new Promise((resolve) => {
           this.initDB().then((db) => {
             db.transaction((tx) => {
-              tx.executeSql('INSERT INTO User VALUES (?, ?, ?, ?, ?)', [user.userId, user.petName, user.petAge, use.dateCreated, user.totalSteps, user.dailySteps]).then(([tx, results]) => {
+              tx.executeSql('INSERT INTO User VALUES (?, ?, ?, ?, ?, ?)', [user.userId, user.petName, user.petAge, user.dateCreated, user.totalSteps, user.dailySteps]).then(([tx, results]) => {
                 resolve(results);
               });
             }).then((result) => {
