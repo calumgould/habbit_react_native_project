@@ -4,6 +4,8 @@ import {View, Text, StyleSheet, TouchableOpacity} from 'react-native'
 
 import buttonStyles from '../styles/button'
 
+import Database from '../Database.js';
+
 class GameContainer extends Component {
     constructor(props) {
         super(props);
