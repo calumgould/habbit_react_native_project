@@ -6,12 +6,41 @@ import buttonStyles from '../styles/button'
 
 import Database from '../Database.js';
 
+const db = new Database();
+
 class GameContainer extends Component {
     constructor(props) {
         super(props);
         this.state = { 
             hasPet: false,
+            isLoading: true,
+            users: [],
+            notFound: 'Pet not found'
          }
+    }
+
+    componentDidMount() {
+        console.log('mount');
+            this.getUsers()
+    }
+
+    getUsers() {
+        console.log('hello from getUsers');
+        let users = []
+        db.listDetails()
+        .then((data) => {
+            users = data
+            this.setState({
+                users: users,
+                isLoading: false,
+            });
+        }).catch((err) => {
+            console.log(err);
+            this.setState = {
+                isLoading: false
+            }
+        })
+        console.log(this.state.users);
     }
 
     ifHasPet() {
