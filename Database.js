@@ -179,4 +179,23 @@ export default class Database {
           });
         });  
       }
+
+      deleteAllUsers() {
+        return new Promise((resolve) => {
+          this.initDB().then((db) => {
+            db.transaction((tx) => {
+              tx.executeSql('DELETE FROM User').then(([tx, results]) => {
+                console.log(results);
+                resolve(results);
+              });
+            }).then((result) => {
+              this.closeDatabase(db);
+            }).catch((err) => {
+              console.log(err);
+            });
+          }).catch((err) => {
+            console.log(err);
+          });
+        });  
+      }
 }

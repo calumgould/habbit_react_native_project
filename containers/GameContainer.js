@@ -40,7 +40,6 @@ class GameContainer extends Component {
                 isLoading: false
             }
         })
-        console.log(this.state.users);
     }
 
     ifHasPet() {
