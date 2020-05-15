@@ -32,6 +32,7 @@ const CreateContainer = (props) => {
         .catch((err) => {
             console.log('error', err);
         })
+        props.navigation.navigate('Pet')
     }
 
     // const saveUser = () => {
