@@ -20,7 +20,6 @@ class PetContainer extends Component {
         }
         this.handleSteps = this.handleSteps.bind(this)
         this.handleNewUser = this.handleNewUser.bind(this)
- 
     }
 
     handleNewUser(){
