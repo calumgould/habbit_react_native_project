@@ -7,7 +7,7 @@ const db = new Database();
 const User = ({user}) => {
 
     const saveUser = (user) => {
-        if(user === {}) return;
+        if(Object.keys(user).length === 0) return;
         db.addUser(user)
         .then((result) => {
             console.log('result', result);
