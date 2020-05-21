@@ -17,29 +17,41 @@ class GameContainer extends Component {
             users: [],
             notFound: 'Pet not found'
          }
+         this.checkUserExists = this.checkUserExists.bind(this)
+         this.ifHasPet = this.ifHasPet.bind(this)
+         
     }
 
     componentDidMount() {
         console.log('mount');
-            this.getUsers()
+        this.getUsers()
     }
 
     getUsers() {
         console.log('hello from getUsers');
-        let users = []
         db.listDetails()
         .then((data) => {
-            users = data
+            console.log('DATADATA', data)
             this.setState({
-                users: users,
+                users: data,
                 isLoading: false,
-            });
+            }, this.checkUserExists)
         }).catch((err) => {
             console.log(err);
             this.setState = {
                 isLoading: false
             }
-        })
+        }, this.checkUserExists)
+        console.log('users', this.state.users)
+    }
+
+    checkUserExists() {
+        if(this.state.users.length > 0){
+            this.setState({
+                hasPet: true
+            })
+        }
+        console.log('USERSUSERS', this.state.users)
     }
 
     ifHasPet() {
@@ -61,6 +73,7 @@ class GameContainer extends Component {
         }
     }
 
+    
     render() { 
         return ( 
             <View style={styles.body}>
