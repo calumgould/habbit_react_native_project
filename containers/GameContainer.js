@@ -12,6 +12,8 @@ class GameContainer extends Component {
          }
     }
 
+    
+
     ifHasPet() {
         if(this.state.hasPet) {
             return (
@@ -30,6 +32,8 @@ class GameContainer extends Component {
             )
         }
     }
+
+
 
     render() { 
         return ( 
