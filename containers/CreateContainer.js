@@ -16,51 +16,12 @@ const CreateContainer = (props) => {
 
     setPetName('Boi');
 
-    const saveUser = () => {
-        const user = {
-            userId: '1',
-            petName: 'Roosa',
-            petAge: '5',
-            dateCreated: 'May 5 2020',
-            totalSteps: '5000',
-            dailySteps: '1000',
-        }
-        db.addUser(user)
-        .then((result) => {
-            console.log('result', result);
-        })
-        .catch((err) => {
-            console.log('error', err);
-        })
-        props.navigation.navigate('Pet')
-    }
-
-    // const saveUser = () => {
-    //     setUser([
-    //         '',
-    //         'roosa',
-    //         '0',
-    //         'May 14 2020',
-    //         '0',
-    //         '0',
-    //     ])
-    //     .then(() => {
-    //         db.addUser(user)
-    //     })
-
-    //     .then((result) => {
-    //         console.log('result', result);
-    //     })
-    //     console.log('user', user);
-    //     props.navigation.navigate('Pet')
-    // }
-
     return ( 
         <View style={styles.body}>
         <RegisterPetComponent setPetName={setPetName} />
         <TouchableOpacity 
             style={[styles.button, {marginTop:70}]} 
-            onPress={saveUser}>
+            onPress={() => props.navigation.navigate('Pet')}>
             <Text style={styles.buttonText}>
                 Save pet
             </Text>
