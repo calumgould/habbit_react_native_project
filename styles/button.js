@@ -1,6 +1,4 @@
-import {StyleSheet} from 'react-native';
-
-const buttonStyles = {
+export default buttonStyles = {
     button: {
         alignItems: 'center',
         backgroundColor: '#b32d00',
@@ -18,8 +16,5 @@ const buttonStyles = {
         color: 'ghostwhite',
         fontFamily: 'PressStart2P-Regular',
         fontSize: 16,
-
     }
 }
-
-export default buttonStyles

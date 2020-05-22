@@ -2,9 +2,11 @@ import React, {useState} from 'react'
 import RegisterPetComponent from '../components/RegisterPetComponent'
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native'
 
-import buttonStyles from '../styles/button'
+import buttonStyles from '../styles/Button'
 
 import Database from '../Database'
+
+import mainStyles from '../styles/MainStyles';
 
 const db = new Database();
 
@@ -20,7 +22,7 @@ const CreateContainer = (props) => {
         <View style={styles.body}>
         <RegisterPetComponent setPetName={setPetName} />
         <TouchableOpacity 
-            style={[styles.button, {marginTop:70}]} 
+            style={[styles.button]} 
             onPress={() => props.navigation.navigate('Pet')}>
             <Text style={styles.buttonText}>
                 Save pet
@@ -31,29 +33,9 @@ const CreateContainer = (props) => {
 }
 
 const styles = StyleSheet.create({
-    inputField: {
-        flexDirection: 'row',
-    },
-    body: {
-        backgroundColor: 'slategrey',
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    text: {
-        textAlign: 'center',
-        fontSize: 25,
-        height: 30,
-        color: 'ghostwhite',
-        fontFamily: 'PressStart2P-Regular'
-    },
+    body: mainStyles.body,
     button: buttonStyles.button,
     buttonText: buttonStyles.buttonText,
-    image: {
-        height: 300,
-        width: 300,
-    }
-    
 })
  
 export default CreateContainer;

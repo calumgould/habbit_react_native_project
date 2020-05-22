@@ -3,9 +3,11 @@ import { ScrollView, StyleSheet, Text } from 'react-native'
 
 import AboutComponent from '../components/AboutComponent'
 
+import mainStyles from '../styles/MainStyles'
+
 const InfoContainer = () => {
     return ( 
-        <ScrollView showsVerticalScrollIndicator={false} style={styles.body}>
+        <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollBody}>
             <AboutComponent /> 
             <Text>{'\n'}{'\n'}</Text>
         </ScrollView>
@@ -13,10 +15,7 @@ const InfoContainer = () => {
 }
 
 const styles = StyleSheet.create({
-    body: {
-      backgroundColor: 'slategrey',
-      flex: 1,
-    }
+    scrollBody: mainStyles.scrollBody
 })
  
 export default InfoContainer;

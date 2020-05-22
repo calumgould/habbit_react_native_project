@@ -1,12 +1,14 @@
 import React from 'react'
 import { ScrollView, StyleSheet, TouchableOpacity, Text } from 'react-native'
 
-import buttonStyles from '../styles/button'
+import buttonStyles from '../styles/Button'
 import AboutComponent from '../components/AboutComponent'
+
+import mainStyles from '../styles/MainStyles'
 
 const AboutContainer = (props) => {
     return ( 
-        <ScrollView showsVerticalScrollIndicator={false} style={styles.body}>
+        <ScrollView showsVerticalScrollIndicator={false} style={styles.scroll}>
             <AboutComponent />  
             <TouchableOpacity 
                 style={[styles.button, {marginVertical: 60}]} 
@@ -20,7 +22,7 @@ const AboutContainer = (props) => {
 }
 
 const styles = StyleSheet.create({
-    body: {
+    scroll: {
       backgroundColor: 'slategrey',
       flex: 1,
     },

@@ -3,8 +3,10 @@ import { View, Text, Keyboard } from 'react-native'
 import * as Progress from 'react-native-progress'
 import { TextInput, StyleSheet, TouchableOpacity } from 'react-native'
 
-import buttonStyles from '../styles/button'
+import buttonStyles from '../styles/Button'
 import BlinkingText from './BlinkingTextComponent'
+
+import mainStyles from '../styles/MainStyles'
 
 
 class StepsComponent extends Component {
@@ -14,7 +16,7 @@ class StepsComponent extends Component {
             totalSteps: 0,
             dailySteps: 0,
             stepGoal: 10000,
-            enteredSteps: '',
+            enteredSteps: 0,
             growthSteps: 0
          }
          this.calculateProgress = this.calculateProgress.bind(this)
@@ -56,24 +58,24 @@ class StepsComponent extends Component {
         return ( 
             <View>
                 <Text 
-                    style={[styles.text, {marginBottom: 10}]}>
+                    style={[styles.text, {marginBottom: 10, height: 30}]}>
                     Manual Step Input:
                 </Text>
 
-                <View style={styles.body}>
+                <View style={[styles.body, {flex: 0}]}>
                     <View style={styles.inputField}>
                         <TextInput 
-                            style={styles.textInput} 
+                            style={[styles.text, {paddingVertical: 10, fontSize: 14}]} 
                             placeholder="Enter steps" 
                             placeholderTextColor='grey'
-                            value={this.state.enteredSteps.toString()}
+                            value={this.state.enteredSteps}
                             keyboardType='numeric'
                             onChangeText={value => this.enterSteps(value)}
                             returnKeyLabel='Done'
                             returnKeyType='done'
                             onSubmitEditing={Keyboard.dismiss}
                         />
-                        <Text style={styles.blinkingText}>
+                        <Text style={[styles.text, {color: 'grey', paddingVertical: 10, fontSize: 14, marginTop: 2}]}>
                             <BlinkingText text="|" />
                         </Text>
                     </View>
@@ -87,11 +89,11 @@ class StepsComponent extends Component {
                     </Text>
                 </TouchableOpacity>
 
-                <Text style={[styles.text, {fontSize: 16}]}>
+                <Text style={[styles.text, {paddingBottom: 10}]}>
                     Daily Steps
                 </Text>
 
-                <Text style={styles.stepCount}>
+                <Text style={styles.text}>
                     {this.state.dailySteps} / {this.state.stepGoal}
                 </Text>
                 
@@ -103,7 +105,7 @@ class StepsComponent extends Component {
                     color='darkslategrey'
                     borderWidth={4}
                     borderColor='black'
-                    style={styles.progressBar}
+                    style={{marginTop: 20}}
                 />
 
             </View>
@@ -112,60 +114,11 @@ class StepsComponent extends Component {
 }
 
 const styles = StyleSheet.create({
-    body: {
-        backgroundColor: 'slategrey',
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    text: {
-        textAlign: 'center',
-        fontSize: 20,
-        color: 'ghostwhite',
-        fontFamily: 'PressStart2P-Regular',
-        height: 30,
-    },
-    infoText: {
-        textAlign: 'center',
-        fontSize: 15,
-        color: 'ghostwhite',
-        fontFamily: 'PressStart2P-Regular',
-        paddingVertical: 10,
-    },
-    textInput: {
-        textAlign: 'center',
-        fontSize: 14,
-        color: 'ghostwhite',
-        paddingVertical: 10,
-        fontFamily: 'PressStart2P-Regular',
-    },
-    blinkingText: {
-        textAlign: 'center',
-        fontSize: 14,
-        color: 'grey',
-        paddingVertical: 10,
-        fontFamily: 'PressStart2P-Regular',
-        marginTop: 2,
-    },
-    stepCount: {
-        textAlign: 'center',
-        fontSize: 20,
-        color: 'ghostwhite',
-        fontFamily: 'PressStart2P-Regular',
-    },
+    body: mainStyles.body,
+    text: mainStyles.text,
+    inputField: mainStyles.inputField,
     button: buttonStyles.button,
     buttonText: buttonStyles.buttonText,
-    progressBar: {
-        marginTop: 20,
-    },
-    inputField: {
-        flexDirection: 'row',
-        borderWidth: 3,
-        borderColor: 'darkslategrey',
-        backgroundColor: 'darkslategrey',
-        width: 310,
-        justifyContent: 'center',
-        alignItems: 'center'
-    }
 })
  
 export default StepsComponent;

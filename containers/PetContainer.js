@@ -7,6 +7,8 @@ import PetNameComponent from '../components/PetNameComponent'
 import MenuComponent from '../components/MenuComponent'
 import User from '../components/UserComponent';
 
+import mainStyles from '../styles/MainStyles';
+
 
 
 class PetContainer extends Component {
@@ -74,28 +76,7 @@ class PetContainer extends Component {
 }
 
 const styles = StyleSheet.create({
-    body: {
-        backgroundColor: 'slategrey',
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-      },
-    text: {
-        textAlign: 'center',
-        fontSize: 15,
-        color: 'ghostwhite',
-        fontFamily: 'PressStart2P-Regular'
-    },
-    rotateText: {
-        textAlign: 'center',
-        fontSize: 10,
-        color: 'ghostwhite',
-        fontFamily: 'PressStart2P-Regular',
-        top: 30,
-        transform: [{
-            rotate: '40deg'
-        }]
-    },
+    body: mainStyles.body,
 })
  
 export default PetContainer;

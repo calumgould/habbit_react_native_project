@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Text, View, StyleSheet, TextInput, Image } from 'react-native';
 
-import buttonStyles from '../styles/button';
+import buttonStyles from '../styles/Button';
+import mainStyles from '../styles/MainStyles'
 import BlinkingText from './BlinkingTextComponent';
 
 import Database from '../Database';
@@ -19,16 +20,16 @@ const RegisterPetComponent = (props) => {
     }
 
         return ( 
-            <View style={styles.body}>
+            <View style={[styles.body, {flex: 0}]}>
                 <View style={styles.inputField}>
                     <TextInput 
-                        style={styles.text} 
+                        style={[styles.text, {fontSize: 25}]} 
                         placeholder="Name me..." 
                         placeholderTextColor='ghostwhite' 
                         onChangeText={text => setName(text)} 
                         defaultValue={text}>
                     </TextInput>
-                    <Text style={styles.text}>
+                    <Text style={[styles.text, {fontSize: 25}]}>
                         <BlinkingText text="|" />
                     </Text>
                 </View>
@@ -47,25 +48,11 @@ const styles = StyleSheet.create({
     inputField: {
         flexDirection: 'row',
     },
-    body: {
-        backgroundColor: 'slategrey',
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    text: {
-        textAlign: 'center',
-        fontSize: 25,
-        height: 30,
-        color: 'ghostwhite',
-        fontFamily: 'PressStart2P-Regular'
-    },
+    body: mainStyles.body,
+    text: mainStyles.text,
     button: buttonStyles.button,
     buttonText: buttonStyles.buttonText,
-    image: {
-        height: 200,
-        width: 200,
-        marginTop: 50,
-    },
+    image: mainStyles.image,
     
 })
  

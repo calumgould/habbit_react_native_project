@@ -8,6 +8,8 @@ import SmallPetComponent from './SmallPetComponent'
 import MiddlePetComponent from './MiddlePetComponent'
 import BigPetComponent from './BigPetComponent'
 
+import mainStyles from '../styles/MainStyles'
+
 const PetComponent = (props) => {
 
     const growthStage1 = 0
@@ -47,7 +49,7 @@ const PetComponent = (props) => {
             const progressSteps = resetGrowthStage(growthStage2 + growthStage3 + growthStage4)
             return (
                 <View style={styles.view}>
-                <Text style={styles.text}>{progressSteps} / {growthStage5} </Text>
+                <Text style={[styles.text, {fontSize: 12, paddingBottom: 5}]}>{progressSteps} / {growthStage5} </Text>
                     {showProgressBar(progressSteps, growthStage5)}
                     <MiddlePetComponent />
                 </View>
@@ -57,7 +59,7 @@ const PetComponent = (props) => {
             const progressSteps = resetGrowthStage(growthStage2 + growthStage3)
             return (
                 <View style={styles.view}>
-                <Text style={styles.text}>{progressSteps} / {growthStage4} </Text>
+                <Text style={[styles.text, {fontSize: 12, paddingBottom: 5}]}>{progressSteps} / {growthStage4} </Text>
                     {showProgressBar(progressSteps, growthStage4)}
                     <SmallPetComponent />
                 </View>
@@ -67,7 +69,7 @@ const PetComponent = (props) => {
             const progressSteps = resetGrowthStage(growthStage2)
             return (
                 <View style={styles.view}>
-                    <Text style={styles.text}>{progressSteps} / {growthStage3} </Text>
+                    <Text style={[styles.text, {fontSize: 12, paddingBottom: 5}]}>{progressSteps} / {growthStage3} </Text>
                     {showProgressBar(progressSteps, growthStage3)}
                     <EggWithEarsComponent />
                 </View>
@@ -76,7 +78,7 @@ const PetComponent = (props) => {
         else if(props.totalSteps >= growthStage1){
             return (
                 <View style={styles.view}>
-                <Text style={styles.text}>{props.growthSteps} / {growthStage2} </Text>
+                <Text style={[styles.text, {fontSize: 12, paddingBottom: 5}]}>{props.growthSteps} / {growthStage2} </Text>
                     {showProgressBar(props.growthSteps, growthStage2)}
                     <EggComponent />
                 </View>
@@ -95,22 +97,7 @@ const styles = StyleSheet.create({
     view: {
         alignItems: 'center'
     },
-    text: {
-        textAlign: 'center',
-        fontSize: 12,
-        color: 'ghostwhite',
-        fontFamily: 'PressStart2P-Regular',
-        paddingBottom: 5,
-    },
+    text: mainStyles.text,
 })
-
-const progressBarSettings = {
-    animated: true,
-    width: 150,
-    height: 10,
-    color: 'sienna',
-    borderWidth: 4,
-    borderColor: 'black',
-}
  
 export default PetComponent;

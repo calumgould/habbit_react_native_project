@@ -1,6 +1,7 @@
 import React from 'react'
 import { StyleSheet, View, Animated, Easing, TouchableWithoutFeedback } from 'react-native'
 import Sound from 'react-native-sound'
+import mainStyles from '../styles/MainStyles'
 
 const BigPetComponent = () => {
    
@@ -41,21 +42,7 @@ const BigPetComponent = () => {
 }
  
 const styles = StyleSheet.create({
-    image: {
-        height: 200,
-        width: 200,
-        marginTop: 20,
-        marginBottom: 60,
-    },
-    rotateText: {
-        textAlign: 'center',
-        fontSize: 10,
-        color: 'ghostwhite',
-        fontFamily: 'PressStart2P-Regular',
-        transform: [{
-            rotate: '40deg'
-        }]
-    },
+    image: mainStyles.image,
 })
 
 export default BigPetComponent;

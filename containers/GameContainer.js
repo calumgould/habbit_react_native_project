@@ -2,7 +2,8 @@ import React, {Component} from 'react'
 import WelcomeMessage from '../components/WelcomeMessageComponent.js'
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native'
 
-import buttonStyles from '../styles/button'
+import buttonStyles from '../styles/Button';
+import mainStyles from '../styles/MainStyles';
 
 import Database from '../Database.js';
 
@@ -24,6 +25,7 @@ class GameContainer extends Component {
 
     componentDidMount() {
         console.log('mount');
+        db.deleteAllUsers()
         this.getUsers()
     }
 
@@ -85,12 +87,7 @@ class GameContainer extends Component {
 }
 
 const styles = StyleSheet.create({
-    body: {
-      backgroundColor: 'slategrey',
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
+    body: mainStyles.body,
     button: buttonStyles.button,
     buttonText: buttonStyles.buttonText
 })

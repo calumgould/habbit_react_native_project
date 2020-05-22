@@ -1,13 +1,15 @@
 import React from 'react'
 import { StyleSheet, ScrollView, Text } from 'react-native'
 
+import mainStyles from '../styles/MainStyles'
+
 const AboutComponent = () => {
     return ( 
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollBody}>
             <Text style={styles.title}>
                     Welcome to {'\n'}{'\n'}HABBIT.
             </Text>
-            <Text style={styles.text}>
+            <Text style={styles.bodyText}>
                 {'\n'}{'\n'}
                 Habbit is an interactive mobile game inspired by the legendary Tamagotchi, featuring a pet character that can grow and react based on user action and input. 
                 {'\n'}{'\n'}
@@ -17,7 +19,7 @@ const AboutComponent = () => {
                 {'\n'}{'\n'}
                 Regular activity, including walking, offers a number of health benefits, including a reduced risk of: 
                 {'\n'}{'\n'}
-                <Text style={styles.centreText}>
+                <Text style={[styles.bodyText, {textAlign: 'center', fontWeight: 'bold',}]}>
                     Heart disease and stroke 
                     {'\n'}{'\n'}
                     High blood pressure 
@@ -31,7 +33,7 @@ const AboutComponent = () => {
                 </Text>
                     According to the American Council on Exercise, people who track their steps take an average of 2,500 more steps per day than those who don’t. Plus, with Habbit every step you take will help your Boi grow!
                     {'\n'}{'\n'}{'\n'}
-                <Text style={styles.blockText}>
+                <Text style={styles.text}>
                     Enjoy looking 
                     {'\n'}{'\n'}
                     after your Boi!
@@ -50,26 +52,9 @@ const styles = StyleSheet.create({
         marginHorizontal: 20,
         marginTop: 70,
     },
-    text: {
-        fontSize: 20,
-        textAlign: 'justify',
-        marginHorizontal: 35,
-        color: 'ghostwhite',
-    },
-    centreText: {
-        fontSize: 20,
-        textAlign: 'justify',
-        marginHorizontal: 35,
-        color: 'ghostwhite',
-        textAlign: 'center',
-        fontWeight: 'bold',
-    },
-    blockText: {
-        textAlign: 'center',
-        fontSize: 20,
-        color: 'ghostwhite',
-        fontFamily: 'PressStart2P-Regular',
-    }
+    scroll: mainStyles.scrollBody,
+    text: mainStyles.text,
+    bodyText: mainStyles.bodyText,
 })
  
 export default AboutComponent;
