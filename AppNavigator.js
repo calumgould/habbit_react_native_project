@@ -1,5 +1,5 @@
 import React from 'react';
-import { StatusBar, StyleSheet } from 'react-native';
+import { StatusBar } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -59,13 +59,6 @@ const AppNavigator = () => {
         </AppearanceProvider>
      );
 }
-
-
-const styles = StyleSheet.create({
-    nav: {
-        marginTop: 100,
-    }
-})
 
 const headerStyles = {
     headerStyle: {
