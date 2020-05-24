@@ -5,7 +5,7 @@ export default Header = styled.Text `
     font-family: PressStart2P-Regular;
     font-size: 30px;
     line-height: 40;
-    margin: 0 10%;
+    margin: 5% 10%;
     text-align: center;
     color: ghostwhite;
 `

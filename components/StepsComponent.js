@@ -1,13 +1,8 @@
-import React, { Component } from 'react'
-import { View, Text, Keyboard } from 'react-native'
-import * as Progress from 'react-native-progress'
-import { TextInput, StyleSheet, TouchableOpacity } from 'react-native'
+import React, { Component } from 'react';
+import { Keyboard } from 'react-native';
+import * as Progress from 'react-native-progress';
 
-import buttonStyles from '../styles/Button'
-import BlinkingText from './BlinkingTextComponent'
-
-import mainStyles from '../styles/MainStyles'
-
+import BlinkingText from './BlinkingTextComponent';
 
 class StepsComponent extends Component {
     constructor(props) {
@@ -56,69 +51,53 @@ class StepsComponent extends Component {
         
       render() { 
         return ( 
-            <View>
-                <Text 
-                    style={[styles.text, {marginBottom: 10, height: 30}]}>
+            <>
+                <StyledText size='16px'>
                     Manual Step Input:
-                </Text>
+                </StyledText>
 
-                <View style={[styles.body, {flex: 0}]}>
-                    <View style={styles.inputField}>
-                        <TextInput 
-                            style={[styles.text, {paddingVertical: 10, fontSize: 14}]} 
-                            placeholder="Enter steps" 
-                            placeholderTextColor='grey'
-                            value={this.state.enteredSteps}
-                            keyboardType='numeric'
-                            onChangeText={value => this.enterSteps(value)}
-                            returnKeyLabel='Done'
-                            returnKeyType='done'
-                            onSubmitEditing={Keyboard.dismiss}
-                        />
-                        <Text style={[styles.text, {color: 'grey', paddingVertical: 10, fontSize: 14, marginTop: 2}]}>
-                            <BlinkingText text="|" />
-                        </Text>
-                    </View>
-                </View>
+                <BlinkingWrapper
+                backgroundColor='darkslategrey'
+                border='2px solid black'>
+                    <StyledTextInput size='14px'
+                        placeholder=" Enter steps" 
+                        placeholderTextColor='grey'
+                        value={this.state.enteredSteps}
+                        keyboardType='numeric'
+                        onChangeText={value => this.enterSteps(value)}
+                        returnKeyLabel='Done'
+                        returnKeyType='done'
+                        onSubmitEditing={Keyboard.dismiss}
+                    />
+                    <BlinkingText text="|" color='slategrey' />
+                </BlinkingWrapper>
 
-                <TouchableOpacity 
-                    style={[styles.button, {marginBottom: 80}]}
+                <ButtonContainer 
                     onPress={this.updateSteps}>
-                    <Text style={styles.buttonText}>
+                    <ButtonText>
                         Submit
-                    </Text>
-                </TouchableOpacity>
+                    </ButtonText>
+                </ButtonContainer>
 
-                <Text style={[styles.text, {paddingBottom: 10}]}>
+                <StyledText size='20px'>
                     Daily Steps
-                </Text>
-
-                <Text style={styles.text}>
+                    {'\n'}
                     {this.state.dailySteps} / {this.state.stepGoal}
-                </Text>
+                </StyledText>
                 
                 <Progress.Bar 
                     progress={this.calculateProgress()} 
                     animated={true}
-                    width={null}
+                    width={320}
                     height={25}
                     color='darkslategrey'
                     borderWidth={4}
                     borderColor='black'
                     style={{marginTop: 20}}
                 />
-
-            </View>
+            </>
          );
     }
 }
-
-const styles = StyleSheet.create({
-    body: mainStyles.body,
-    text: mainStyles.text,
-    inputField: mainStyles.inputField,
-    button: buttonStyles.button,
-    buttonText: buttonStyles.buttonText,
-})
  
 export default StepsComponent;

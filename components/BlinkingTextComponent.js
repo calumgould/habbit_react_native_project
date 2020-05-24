@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { Text } from 'react-native'
+import React, { Component } from 'react';
+import { Text } from 'react-native';
 
 
 class BlinkingText extends Component {
@@ -18,9 +18,9 @@ class BlinkingText extends Component {
   render() {
     let display = this.state.showText ? this.props.text : ' ';
     return (
-      <InputText>
+      <StyledText color={this.props.color}>
         <Text>{display}</Text>
-      </InputText>
+      </StyledText>
     );
   }
 }

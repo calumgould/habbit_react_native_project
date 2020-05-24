@@ -7,7 +7,7 @@ const InfoContainer = () => {
         <Scroll contentContainerStyle={
             {justifyContent: 'center', 
             alignItems: 'center',
-            paddingBottom: 100}}>
+            paddingBottom: 50}}>
             <AboutComponent /> 
         </Scroll>
      );

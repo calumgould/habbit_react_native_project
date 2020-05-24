@@ -1,15 +1,15 @@
-import React from 'react'
-import { StatusBar, StyleSheet } from 'react-native'
-import { createStackNavigator } from '@react-navigation/stack'
-import { NavigationContainer } from '@react-navigation/native'
-import { createDrawerNavigator } from '@react-navigation/drawer'
-import { AppearanceProvider } from 'react-native-appearance'
+import React from 'react';
+import { StatusBar, StyleSheet } from 'react-native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { AppearanceProvider } from 'react-native-appearance';
 
-import AboutContainer from './containers/AboutContainer'
-import GameContainer from './containers/GameContainer'
-import CreateContainer from './containers/CreateContainer'
-import PetContainer from './containers/PetContainer'
-import InfoContainer from './containers/InfoContainer'
+import AboutContainer from './containers/AboutContainer';
+import GameContainer from './containers/GameContainer';
+import CreateContainer from './containers/CreateContainer';
+import PetContainer from './containers/PetContainer';
+import InfoContainer from './containers/InfoContainer';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();

@@ -14,7 +14,7 @@ const RegisterPetComponent = (props) => {
 
         return ( 
             <>
-                <BlinkingInputWrapper>
+                <BlinkingWrapper>
                 <StyledTextInput 
                     placeholder="Name me..." 
                     placeholderTextColor='ghostwhite' 
@@ -22,7 +22,7 @@ const RegisterPetComponent = (props) => {
                     defaultValue={text}>
                 </StyledTextInput>
                     <BlinkingText text="|" />
-                </BlinkingInputWrapper>
+                </BlinkingWrapper>
                 <PetImage 
                     source={require('../assets/images/boi1_egg.png')}
                     resizeMode='contain'>
