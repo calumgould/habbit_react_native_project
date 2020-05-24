@@ -9,6 +9,13 @@ export default mainStyles = {
         backgroundColor: 'slategrey',
         flex: 1,
     },
+    header: {
+        color: 'ghostwhite',
+        fontSize: 35,
+        fontFamily: 'PressStart2P-Regular',
+        paddingBottom: 40,
+        paddingLeft: 40,
+    },
     text: {
         textAlign: 'center',
         fontSize: 20,

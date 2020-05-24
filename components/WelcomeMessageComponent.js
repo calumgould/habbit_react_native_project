@@ -1,6 +1,8 @@
 import React from 'react'
 import { Text, StyleSheet } from 'react-native'
 
+import mainStyles from '../styles/MainStyles'
+
 const WelcomeMessage = (props) => {
     return ( 
         <Text
@@ -11,13 +13,7 @@ const WelcomeMessage = (props) => {
     }
     
     const styles = StyleSheet.create({
-      header: {
-          color: 'ghostwhite',
-          fontSize: 35,
-          fontFamily: 'PressStart2P-Regular',
-          paddingBottom: 40,
-          paddingLeft: 40,
-        },
+      header: mainStyles.header,
     });
  
 export default WelcomeMessage;
