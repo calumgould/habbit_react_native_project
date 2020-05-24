@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { StyleSheet, ScrollView, Text } from 'react-native'
 
 import mainStyles from '../styles/MainStyles'
