@@ -30,7 +30,7 @@ export default mainStyles = {
         justifyContent: 'center',
         alignItems: 'center'
     },
-        image: {
+    image: {
         height: 200,
         width: 200,
         marginTop: 40,

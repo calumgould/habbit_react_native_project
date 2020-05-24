@@ -1,15 +1,13 @@
-import React from 'react'
-import { StyleSheet, ScrollView, Text } from 'react-native'
-
-import mainStyles from '../styles/MainStyles'
+import React from 'react';
 
 const AboutComponent = () => {
     return ( 
-        <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollBody}>
-            <Text style={styles.title}>
-                    Welcome to {'\n'}{'\n'}HABBIT.
-            </Text>
-            <Text style={styles.bodyText}>
+        <Container>
+            <Header>
+                    Welcome to
+                    HABBIT.
+            </Header>
+            <BodyText>
                 {'\n'}{'\n'}
                 Habbit is an interactive mobile game inspired by the legendary Tamagotchi, featuring a pet character that can grow and react based on user action and input. 
                 {'\n'}{'\n'}
@@ -19,42 +17,30 @@ const AboutComponent = () => {
                 {'\n'}{'\n'}
                 Regular activity, including walking, offers a number of health benefits, including a reduced risk of: 
                 {'\n'}{'\n'}
-                <Text style={[styles.bodyText, {textAlign: 'center', fontWeight: 'bold',}]}>
-                    Heart disease and stroke 
-                    {'\n'}{'\n'}
-                    High blood pressure 
-                    {'\n'}{'\n'}
-                    Diabetes 
-                    {'\n'}{'\n'}
-                    Obesity 
-                    {'\n'}{'\n'}
-                    Depression 
-                    {'\n'}{'\n'}
-                </Text>
-                    According to the American Council on Exercise, people who track their steps take an average of 2,500 more steps per day than those who don’t. Plus, with Habbit every step you take will help your Boi grow!
-                    {'\n'}{'\n'}{'\n'}
-                <Text style={styles.text}>
-                    Enjoy looking 
-                    {'\n'}{'\n'}
-                    after your Boi!
-                </Text>
-            </Text>
-        </ScrollView>
+            </BodyText>
+            <ListText>
+                Heart disease and stroke 
+                {'\n'}{'\n'}
+                High blood pressure 
+                {'\n'}{'\n'}
+                Diabetes 
+                {'\n'}{'\n'}
+                Obesity 
+                {'\n'}{'\n'}
+                Depression 
+                {'\n'}{'\n'}
+            </ListText>
+            <BodyText>
+                According to the American Council on Exercise, people who track their steps take an average of 2,500 more steps per day than those who don’t. Plus, with Habbit every step you take will help your Boi grow!
+                {'\n'}{'\n'}
+            </BodyText>
+            <SubHeader>
+                Enjoy looking after your Boi!
+                {'\n'}
+            </SubHeader>
+            
+        </Container>
      );
 }
-
-const styles = StyleSheet.create({
-    title: {
-        textAlign: 'center',
-        fontSize: 20,
-        color: 'ghostwhite',
-        fontFamily: 'PressStart2P-Regular',
-        marginHorizontal: 20,
-        marginTop: 70,
-    },
-    scroll: mainStyles.scrollBody,
-    text: mainStyles.text,
-    bodyText: mainStyles.bodyText,
-})
  
 export default AboutComponent;

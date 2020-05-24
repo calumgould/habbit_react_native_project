@@ -18,7 +18,9 @@ class BlinkingText extends Component {
   render() {
     let display = this.state.showText ? this.props.text : ' ';
     return (
-      <Text>{display}</Text>
+      <InputText>
+        <Text>{display}</Text>
+      </InputText>
     );
   }
 }

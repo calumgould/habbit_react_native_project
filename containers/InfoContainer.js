@@ -1,21 +1,16 @@
-import React from 'react'
-import { ScrollView, StyleSheet, Text } from 'react-native'
+import React from 'react';
 
-import AboutComponent from '../components/AboutComponent'
-
-import mainStyles from '../styles/MainStyles'
+import AboutComponent from '../components/AboutComponent';
 
 const InfoContainer = () => {
     return ( 
-        <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollBody}>
+        <Scroll contentContainerStyle={
+            {justifyContent: 'center', 
+            alignItems: 'center',
+            paddingBottom: 100}}>
             <AboutComponent /> 
-            <Text>{'\n'}{'\n'}</Text>
-        </ScrollView>
+        </Scroll>
      );
 }
-
-const styles = StyleSheet.create({
-    scrollBody: mainStyles.scrollBody
-})
  
 export default InfoContainer;
