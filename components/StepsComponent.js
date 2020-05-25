@@ -60,7 +60,7 @@ class StepsComponent extends Component {
                 backgroundColor='darkslategrey'
                 border='2px solid black'>
                     <StyledTextInput size='14px'
-                        placeholder=" Enter steps" 
+                        placeholder="Enter steps" 
                         placeholderTextColor='grey'
                         value={this.state.enteredSteps}
                         keyboardType='numeric'
@@ -69,11 +69,13 @@ class StepsComponent extends Component {
                         returnKeyType='done'
                         onSubmitEditing={Keyboard.dismiss}
                     />
-                    <BlinkingText text="|" color='slategrey' />
+                    <BlinkingText text="|" color='grey' size='18px' />
                 </BlinkingWrapper>
 
                 <ButtonContainer 
-                    onPress={this.updateSteps}>
+                    onPress={this.updateSteps}
+                    marginTop='10px'
+                    marginBottom='25%'>
                     <ButtonText>
                         Submit
                     </ButtonText>

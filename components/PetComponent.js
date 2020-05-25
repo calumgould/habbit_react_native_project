@@ -1,11 +1,11 @@
 import React from 'react';
 import * as Progress from 'react-native-progress';
 
-import EggComponent from './EggComponent';
-import EggWithEarsComponent from './EggWithEarsComponent';
-import SmallPetComponent from './SmallPetComponent';
-import MiddlePetComponent from './MiddlePetComponent';
-import BigPetComponent from './BigPetComponent';
+import EggComponent from './pet_stages/EggComponent';
+import EggWithEarsComponent from './pet_stages/EggWithEarsComponent';
+import SmallPetComponent from './pet_stages/SmallPetComponent';
+import MiddlePetComponent from './pet_stages/MiddlePetComponent';
+import BigPetComponent from './pet_stages/BigPetComponent';
 
 const PetComponent = (props) => {
 

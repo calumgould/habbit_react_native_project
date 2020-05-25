@@ -2,19 +2,19 @@ import React from 'react';
 import { Animated, Easing, TouchableWithoutFeedback } from 'react-native';
 import Sound from 'react-native-sound';
 
-import styles from '../styles/styles';
+import styles from '../../styles/styles';
 
-const EggWithEarsComponent = () => {
+const EggComponent = () => {
+   
+    const animatedValue = new Animated.Value(0)
 
-    const animatedValue = new Animated.Value(0);
-
-    const sound = new Sound(require('../assets/sounds/smallEggSound2.mp3'), null, (error) => {
+    const sound = new Sound(require('../../assets/sounds/smallEggSound.mp3'), null, (error) => {
         if (error) {console.log("No sound played", error)}
         sound.play();
     });
 
     const handleAnimation = () => {
-        sound.play()
+       sound.play();
         Animated.loop(
             Animated.sequence([
                 Animated.timing(animatedValue, {toValue: 1.0, duration: 150, easing: Easing.linear, useNativeDriver: true}),
@@ -23,7 +23,7 @@ const EggWithEarsComponent = () => {
             ])
         , {iterations: 3}).start(); 
     }
-
+      
     return ( 
         <>
             <TouchableWithoutFeedback onPress={() => handleAnimation()}>
@@ -35,10 +35,11 @@ const EggWithEarsComponent = () => {
                         })
                     }]    
                 }, styles.image]} 
-                source={require('../assets/images/boi1_egg_cracked.png')} resizeMode="contain"/>
+                source={require('../../assets/images/boi1_egg.png')}
+                resizeMode="contain" /> 
             </TouchableWithoutFeedback>
         </>
-     );
+    );
 }
- 
-export default EggWithEarsComponent;
+
+export default EggComponent;
