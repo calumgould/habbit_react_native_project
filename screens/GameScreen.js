@@ -4,7 +4,7 @@ import Database from '../Database.js';
 
 const db = new Database();
 
-class GameContainer extends Component {
+class GameScreen extends Component {
     constructor(props) {
         super(props);
         this.state = { 
@@ -79,4 +79,4 @@ class GameContainer extends Component {
     }
 }
 
-export default GameContainer;
+export default GameScreen;

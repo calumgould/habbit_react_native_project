@@ -5,11 +5,11 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { AppearanceProvider } from 'react-native-appearance';
 
-import AboutContainer from './containers/AboutContainer';
-import GameContainer from './containers/GameContainer';
-import CreateContainer from './containers/CreateContainer';
-import PetContainer from './containers/PetContainer';
-import InfoContainer from './containers/InfoContainer';
+import AboutScreen from './screens/AboutScreen';
+import GameScreen from './screens/GameScreen';
+import CreateScreen from './screens/CreateScreen';
+import PetScreen from './screens/PetScreen';
+import InfoScreen from './screens/InfoScreen';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -27,23 +27,23 @@ const AppNavigator = () => {
                         <Stack.Navigator initialRouteName='Game' >
                             <Stack.Screen 
                                 name='Game' 
-                                component={GameContainer} 
+                                component={GameScreen} 
                                 options={headerStyles}
                             />
                             <Stack.Screen 
                                 name='About' 
-                                component={AboutContainer} 
+                                component={AboutScreen} 
                                 options={headerStyles}
                             />
                             <Stack.Screen 
                                 name='Create' 
-                                component={CreateContainer} 
+                                component={CreateScreen} 
                                 options={headerStyles}
                                 initialParams={{setPetName}}
                             />
                             <Stack.Screen 
                                 name='Pet' 
-                                component={PetContainer} 
+                                component={PetScreen} 
                                 options={headerStyles}
                                 initialParams={{petName}}
                             />
@@ -52,7 +52,7 @@ const AppNavigator = () => {
                     </Drawer.Screen>
                     <Drawer.Screen 
                         name='Information' 
-                        component={InfoContainer} 
+                        component={InfoScreen} 
                     />
                 </Drawer.Navigator>
             </NavigationContainer>

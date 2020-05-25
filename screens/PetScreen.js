@@ -6,7 +6,7 @@ import PetNameComponent from '../components/PetNameComponent';
 import MenuComponent from '../components/MenuComponent';
 import User from '../components/UserComponent';
 
-class PetContainer extends Component {
+class PetScreen extends Component {
     constructor(props) {
         super(props);
         this.state = { 
@@ -70,4 +70,4 @@ class PetContainer extends Component {
     }
 }
  
-export default PetContainer;
+export default PetScreen;

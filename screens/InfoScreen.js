@@ -2,7 +2,7 @@ import React from 'react';
 
 import AboutComponent from '../components/AboutComponent';
 
-const InfoContainer = () => {
+const InfoScreen = () => {
     return ( 
         <Scroll contentContainerStyle={
             {justifyContent: 'center', 
@@ -13,4 +13,4 @@ const InfoContainer = () => {
      );
 }
  
-export default InfoContainer;
+export default InfoScreen;

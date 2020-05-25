@@ -2,7 +2,7 @@ import React from 'react';
 
 import RegisterPetComponent from '../components/RegisterPetComponent';
 
-const CreateContainer = (props) => {
+const CreateScreen = (props) => {
     const {route} = props;
     const {setPetName} = route.params;
 
@@ -21,4 +21,4 @@ const CreateContainer = (props) => {
      );
 }
  
-export default CreateContainer;
+export default CreateScreen;
