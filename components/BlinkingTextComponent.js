@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
-
 
 class BlinkingText extends Component {
   constructor(props) {
