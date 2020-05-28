@@ -4,11 +4,11 @@ import Database from '../Database';
 
 const db = new Database();
 
-const User = ({user}) => {
+const User = ({newUser}) => {
 
-    const saveUser = (user) => {
-        if(Object.keys(user).length === 0) return;
-        db.addUser(user)
+    const saveUser = (newUser) => {
+        if(Object.keys(newUser).length === 0) return;
+        db.addUser(newUser)
         .then((result) => {
             console.log('result', result);
         })
@@ -18,9 +18,9 @@ const User = ({user}) => {
     }
 
     useEffect(() => {
-        console.log('user', user)
-        saveUser(user)
-    }, [user])
+        console.log('user', newUser)
+        saveUser(newUser)
+    }, [newUser])
 
     return null;
 }

@@ -13,28 +13,29 @@ class PetScreen extends Component {
             petName: props.route.params.petName,
             totalSteps: 0,
             growthSteps: 0,
-            user: {}
+            // user: {}
         }
         this.handleSteps = this.handleSteps.bind(this)
-        this.handleNewUser = this.handleNewUser.bind(this)
+        // this.handleNewUser = this.handleNewUser.bind(this)
     }
 
-    handleNewUser(){
-        this.setState({
-            user: {
-                userId: '1',
-                petName: this.state.petName,
-                petAge: '0',
-                dateCreated: 'date now',
-                totalSteps: '0',
-                dailySteps: '0',
-            }
-        })
-    }
+    // handleNewUser(){
+    //     if(Object.keys(this.state.user).length > 0) return;
+    //     this.setState({
+    //         user: {
+    //             userId: '1',
+    //             petName: this.state.petName,
+    //             petAge: '0',
+    //             dateCreated: 'date now',
+    //             totalSteps: '0',
+    //             dailySteps: '0',
+    //         }
+    //     })
+    // }
 
     componentDidMount(){
 
-        this.handleNewUser();
+        // this.handleNewUser();
         //Save all data to user
 
         // Name of pet
@@ -64,7 +65,7 @@ class PetScreen extends Component {
                 <PetNameComponent petName={this.state.petName} />
                 <PetComponent totalSteps={this.state.totalSteps} growthSteps={this.state.growthSteps}/>
                 <StepsComponent getSteps={(totalSteps, growthSteps) => this.handleSteps(totalSteps, growthSteps)} />
-                <User user={this.state.user} />
+                {/* <User user={this.state.user} /> */}
             </Container>
          );
     }

@@ -10,6 +10,7 @@ const RegisterPetComponent = (props) => {
     const setName = (value) => {
         setText(value)
         setPetName(value);
+        props.getPetName(value)
     }
 
         return ( 
