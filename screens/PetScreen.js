@@ -21,6 +21,7 @@ class PetScreen extends Component {
         this.handleSteps = this.handleSteps.bind(this)
         this.getUser = this.getUser.bind(this)
         this.updateUserInfo = this.updateUserInfo.bind(this)
+        // this.renderSteps = this.renderSteps.bind(this)
     }
 
     getUser() {
@@ -45,7 +46,18 @@ class PetScreen extends Component {
         this.setState({
             petName: this.state.user.petName
         })
+        // this.renderSteps()
     }
+
+    // renderSteps(){
+    //     const StepsComponent = () => {
+    //         <StepsComponent 
+    //             user={this.state.user}
+    //             getSteps={(totalSteps, growthSteps) => this.handleSteps(totalSteps, growthSteps)}
+    //         />
+    //     }
+    //     return StepsComponent
+    // }
 
     componentDidMount(){
         this.getUser()
@@ -75,7 +87,10 @@ class PetScreen extends Component {
                 <MenuComponent navigation={this.props.navigation}/>
                 <PetNameComponent petName={this.state.petName} />
                 <PetComponent totalSteps={this.state.totalSteps} growthSteps={this.state.growthSteps}/>
-                <StepsComponent getSteps={(totalSteps, growthSteps) => this.handleSteps(totalSteps, growthSteps)} />
+                <StepsComponent 
+                user={this.state.user}
+                getSteps={(totalSteps, growthSteps) => this.handleSteps(totalSteps, growthSteps)}
+                />
             </Container>
          );
     }
