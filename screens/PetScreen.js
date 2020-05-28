@@ -19,11 +19,11 @@ class PetScreen extends Component {
             user: {}
         }
         this.handleSteps = this.handleSteps.bind(this)
-        this.getUsers = this.getUsers.bind(this)
+        this.getUser = this.getUser.bind(this)
         this.updateUserInfo = this.updateUserInfo.bind(this)
     }
 
-    getUsers() {
+    getUser() {
         console.log('hello from getUsers');
         db.userById('1')
         .then((data) => {
@@ -48,7 +48,7 @@ class PetScreen extends Component {
     }
 
     componentDidMount(){
-        this.getUsers()
+        this.getUser()
         // Name of pet
 
         // Current time
@@ -76,7 +76,6 @@ class PetScreen extends Component {
                 <PetNameComponent petName={this.state.petName} />
                 <PetComponent totalSteps={this.state.totalSteps} growthSteps={this.state.growthSteps}/>
                 <StepsComponent getSteps={(totalSteps, growthSteps) => this.handleSteps(totalSteps, growthSteps)} />
-                {/* <User user={this.state.user} /> */}
             </Container>
          );
     }

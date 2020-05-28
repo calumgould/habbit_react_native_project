@@ -10,7 +10,7 @@ class GameScreen extends Component {
         this.state = { 
             hasPet: false,
             isLoading: true,
-            users: [],
+            user: {},
             notFound: 'Pet not found'
          }
          this.checkUserExists = this.checkUserExists.bind(this)
@@ -20,16 +20,16 @@ class GameScreen extends Component {
 
     componentDidMount() {
         console.log('mount');
-        this.getUsers()
+        this.getUser()
     }
 
-    getUsers() {
-        console.log('hello from getUsers');
-        db.listDetails()
+    getUser() {
+        console.log('hello from getUser');
+        db.userById('1')
         .then((data) => {
             console.log('DATADATA', data)
             this.setState({
-                users: data,
+                user: data,
                 isLoading: false,
             }, this.checkUserExists)
         }).catch((err) => {
@@ -38,16 +38,15 @@ class GameScreen extends Component {
                 isLoading: false
             }
         }, this.checkUserExists)
-        console.log('users', this.state.users)
+        console.log('user', this.state.user)
     }
 
     checkUserExists() {
-        if(this.state.users.length > 0){
+        if(Object.keys(this.state.user).length === 0) return;
             this.setState({
                 hasPet: true
             })
-        }
-        console.log('USERSUSERS', this.state.users)
+        console.log('USERUSER', this.state.user)
     }
 
     ifHasPet() {
