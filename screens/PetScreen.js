@@ -1,17 +1,12 @@
-import React, { Component } from 'react'
-import { View, StyleSheet } from 'react-native'
+import React, { Component } from 'react';
 
-import StepsComponent from '../components/StepsComponent.js'
-import PetComponent from '../components/PetComponent'
-import PetNameComponent from '../components/PetNameComponent'
-import MenuComponent from '../components/MenuComponent'
+import StepsComponent from '../components/StepsComponent.js';
+import PetComponent from '../components/PetComponent';
+import PetNameComponent from '../components/PetNameComponent';
+import MenuComponent from '../components/MenuComponent';
 import User from '../components/UserComponent';
 
-import mainStyles from '../styles/MainStyles';
-
-
-
-class PetContainer extends Component {
+class PetScreen extends Component {
     constructor(props) {
         super(props);
         this.state = { 
@@ -64,19 +59,15 @@ class PetContainer extends Component {
 
     render() { 
         return ( 
-            <View style={styles.body}>
+            <Container>
                 <MenuComponent navigation={this.props.navigation}/>
                 <PetNameComponent petName={this.state.petName} />
                 <PetComponent totalSteps={this.state.totalSteps} growthSteps={this.state.growthSteps}/>
                 <StepsComponent getSteps={(totalSteps, growthSteps) => this.handleSteps(totalSteps, growthSteps)} />
                 <User user={this.state.user} />
-            </View>
+            </Container>
          );
     }
 }
-
-const styles = StyleSheet.create({
-    body: mainStyles.body,
-})
  
-export default PetContainer;
+export default PetScreen;

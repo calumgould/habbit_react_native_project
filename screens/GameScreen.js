@@ -1,15 +1,10 @@
-import React, {Component} from 'react'
-import WelcomeMessage from '../components/WelcomeMessageComponent.js'
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native'
-
-import buttonStyles from '../styles/Button';
-import mainStyles from '../styles/MainStyles';
+import React, {Component} from 'react';
 
 import Database from '../Database.js';
 
 const db = new Database();
 
-class GameContainer extends Component {
+class GameScreen extends Component {
     constructor(props) {
         super(props);
         this.state = { 
@@ -59,37 +54,29 @@ class GameContainer extends Component {
     ifHasPet() {
         if(this.state.hasPet) {
             return (
-                <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('Pet')}>
-                    <Text style={styles.buttonText}>Continue</Text>
-                </TouchableOpacity>
+                <ButtonContainer onPress={() => this.props.navigation.navigate('Pet')}>
+                    <ButtonText>Continue</ButtonText>
+                </ButtonContainer>
             )
             
         } else {
             return (
-                <TouchableOpacity 
-                    style={styles.button} 
+                <ButtonContainer 
                     onPress={() => this.props.navigation.navigate('About')}>
-                    <Text style={styles.buttonText}>Create New Pet</Text>
-                </TouchableOpacity>
+                    <ButtonText>Create New Pet</ButtonText>
+                </ButtonContainer>
             )
         }
     }
 
-    
     render() { 
         return ( 
-            <View style={styles.body}>
-                <WelcomeMessage title='HABBIT.'/>
+            <Container>
+                <Header>HABBIT.</Header>
                 {this.ifHasPet()}
-            </View>
+            </Container>
          );
     }
 }
 
-const styles = StyleSheet.create({
-    body: mainStyles.body,
-    button: buttonStyles.button,
-    buttonText: buttonStyles.buttonText
-})
- 
-export default GameContainer;
+export default GameScreen;

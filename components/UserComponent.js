@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import {useEffect} from 'react';
 
-import Database from '../Database'
+import Database from '../Database';
 
 const db = new Database();
 
