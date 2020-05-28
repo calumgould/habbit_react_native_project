@@ -5,6 +5,9 @@ import PetComponent from '../components/PetComponent';
 import PetNameComponent from '../components/PetNameComponent';
 import MenuComponent from '../components/MenuComponent';
 import User from '../components/UserComponent';
+import Database from '../Database.js';
+
+const db = new Database();
 
 class PetScreen extends Component {
     constructor(props) {
@@ -13,31 +16,39 @@ class PetScreen extends Component {
             petName: props.route.params.petName,
             totalSteps: 0,
             growthSteps: 0,
-            // user: {}
+            user: {}
         }
         this.handleSteps = this.handleSteps.bind(this)
-        // this.handleNewUser = this.handleNewUser.bind(this)
+        this.getUsers = this.getUsers.bind(this)
+        this.updateUserInfo = this.updateUserInfo.bind(this)
     }
 
-    // handleNewUser(){
-    //     if(Object.keys(this.state.user).length > 0) return;
-    //     this.setState({
-    //         user: {
-    //             userId: '1',
-    //             petName: this.state.petName,
-    //             petAge: '0',
-    //             dateCreated: 'date now',
-    //             totalSteps: '0',
-    //             dailySteps: '0',
-    //         }
-    //     })
-    // }
+    getUsers() {
+        console.log('hello from getUsers');
+        db.userById('1')
+        .then((data) => {
+            console.log('PETSCREENDATA', data)
+            this.setState({
+                user: data,
+                isLoading: false,
+            }, this.updateUserInfo)
+        }).catch((err) => {
+            console.log(err);
+            this.setState = {
+                isLoading: false
+            }
+        })
+        console.log('PETSCREENUSER:', this.state.user)
+    }
+
+    updateUserInfo(){
+        this.setState({
+            petName: this.state.user.petName
+        })
+    }
 
     componentDidMount(){
-
-        // this.handleNewUser();
-        //Save all data to user
-
+        this.getUsers()
         // Name of pet
 
         // Current time
