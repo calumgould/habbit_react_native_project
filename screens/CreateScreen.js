@@ -7,7 +7,7 @@ const CreateScreen = (props) => {
     const {route} = props;
     const {setPetName} = route.params;
 
-    setPetName('Boi');
+    // setPetName('Boi');
 
     const [user, setUser] = useState({})
     const [userPetName, setUserPetName] = useState('')

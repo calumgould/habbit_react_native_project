@@ -20,6 +20,7 @@ class GameScreen extends Component {
 
     componentDidMount() {
         console.log('mount');
+        // db.deleteAllUsers()
         this.getUser()
     }
 
