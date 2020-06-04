@@ -77,6 +77,8 @@ target 'Habbit' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
+  pod 'RCTAppleHealthKit', :path => '../node_modules/rn-apple-healthkit'
+
   target 'HabbitTests' do
     inherit! :complete
     # Pods for testing

@@ -1,4 +1,7 @@
 import React, {Component} from 'react';
+import AppleHealthKit from 'rn-apple-healthkit';
+
+
 
 import Database from '../Database.js';
 
@@ -11,17 +14,18 @@ class GameScreen extends Component {
             hasPet: false,
             isLoading: true,
             user: {},
-            notFound: 'Pet not found'
+            notFound: 'Pet not found',
          }
          this.checkUserExists = this.checkUserExists.bind(this)
          this.ifHasPet = this.ifHasPet.bind(this)
-         
+         this.getHealthKitSteps = this.getHealthKitSteps.bind(this)
     }
 
     componentDidMount() {
         console.log('mount');
         // db.deleteAllUsers()
         this.getUser()
+        this.getHealthKitSteps()
     }
 
     getUser() {
@@ -49,6 +53,35 @@ class GameScreen extends Component {
             })
         console.log('USERUSER', this.state.user)
     }
+
+    getHealthKitSteps() {
+        // let d = new Date(2020,6,4);
+        // let options = {
+        //     date: d.toISOString()
+        // };
+
+        let options = {
+            permissions: {
+                read: ["StepCount"],
+                write: ["StepCount"]
+            }
+        };
+
+        AppleHealthKit.initHealthKit(options, (err, results) => {
+        if (err) {
+            console.log("error initializing Healthkit: ", err);
+            return;
+        }
+     
+        AppleHealthKit.getStepCount((err, results) => {
+            if (err) {
+                return;
+            }
+            console.log("RESULTS", results)
+        });
+     
+    });
+    }   
 
     ifHasPet() {
         if(this.state.hasPet) {

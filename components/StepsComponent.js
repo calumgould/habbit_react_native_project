@@ -25,8 +25,6 @@ class StepsComponent extends Component {
     }
 
     updateUser(){
-        console.log('TOTALSTEPSTOTALSTEPS', this.props.totalSteps)
-        console.log('DAILYSTEPSDAILYSTEPS', this.props.dailySteps)
 
         if(this.props.totalSteps !== null) {    
             this.setState({

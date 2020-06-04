@@ -20,6 +20,7 @@ const CreateScreen = (props) => {
                 dateCreated: 'date now',
                 totalSteps: '0',
                 dailySteps: '0',
+                //lastLogin(timestart for the Fitness.getSteps)
             })
         }
 

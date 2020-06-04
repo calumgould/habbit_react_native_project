@@ -10,7 +10,6 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@ovalmoney/react-native-fitness": "^0.3.0",
     "@react-native-community/art": "^1.2.0",
     "@react-native-community/masked-view": "^0.1.10",
     "@react-navigation/drawer": "^5.5.1",
@@ -29,6 +28,7 @@
     "react-native-sound": "^0.11.0",
     "react-native-sound-player": "^0.10.4",
     "react-native-sqlite-storage": "^5.0.0",
+    "rn-apple-healthkit": "^0.8.0",
     "styled-components": "^5.1.0"
   },
   "devDependencies": {
