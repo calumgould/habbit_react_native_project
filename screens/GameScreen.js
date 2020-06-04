@@ -70,20 +70,37 @@ class GameScreen extends Component {
             return;
         }
 
-        // let d = new Date(2020,6,4);
         // let stepOptions = {
-        //     date: d.toISOString()
+        //     startDate: (new Date(2020,5,5)).toISOString(),
         // };
-        console.log('TESTTWTAWTAWTAWRTAWTAFGAWGAB')
+        console.log('TESTTWTAWTAWTAWRTAWTAFGAWGAB', stepOptions)
         AppleHealthKit.getStepCount(null, (err, results) => {
             if (err) {
                 return;
             }
             console.log("RESULTSRESULTSRESULTS", results)
         });
+
+        let MultipleStepOptions = {
+            endDate:   (new Date()).toISOString(),
+            startDate: (new Date(2020,5,2)).toISOString()
+        };
+
+        console.log('STARTDATESTARTDATE', MultipleStepOptions)
+
+        AppleHealthKit.getDailyStepCountSamples(MultipleStepOptions, (err, results) => {
+            if (err) {
+                console.log('ERRORERROR', err)
+                return;
+            }
+
+            console.log('RESULTSRESULTSRESULTSRESULTSRESULTSRESULTS', results)
+        });
      
     });
     }   
+
+    // RESULTSRESULTSRESULTS {"endDate": "2020-06-04T14:58:00.000+0100", "startDate": "2020-06-04T08:59:00.000+0100", "value": 17000}
 
     ifHasPet() {
         if(this.state.hasPet) {
