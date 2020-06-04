@@ -55,29 +55,31 @@ class GameScreen extends Component {
     }
 
     getHealthKitSteps() {
-        // let d = new Date(2020,6,4);
-        // let options = {
-        //     date: d.toISOString()
-        // };
-
-        let options = {
+       
+        
+        let HealthOptions = {
             permissions: {
                 read: ["StepCount"],
                 write: ["StepCount"]
             }
         };
 
-        AppleHealthKit.initHealthKit(options, (err, results) => {
+        AppleHealthKit.initHealthKit(HealthOptions, (err, results) => {
         if (err) {
             console.log("error initializing Healthkit: ", err);
             return;
         }
-     
-        AppleHealthKit.getStepCount((err, results) => {
+
+        // let d = new Date(2020,6,4);
+        // let stepOptions = {
+        //     date: d.toISOString()
+        // };
+        console.log('TESTTWTAWTAWTAWRTAWTAFGAWGAB')
+        AppleHealthKit.getStepCount(null, (err, results) => {
             if (err) {
                 return;
             }
-            console.log("RESULTS", results)
+            console.log("RESULTSRESULTSRESULTS", results)
         });
      
     });
