@@ -73,7 +73,6 @@ class GameScreen extends Component {
         // let stepOptions = {
         //     startDate: (new Date(2020,5,5)).toISOString(),
         // };
-        console.log('TESTTWTAWTAWTAWRTAWTAFGAWGAB', stepOptions)
         AppleHealthKit.getStepCount(null, (err, results) => {
             if (err) {
                 return;
