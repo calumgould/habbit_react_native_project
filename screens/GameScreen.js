@@ -76,9 +76,6 @@ class GameScreen extends Component {
             return;
         }
 
-        // let stepOptions = {
-        //     startDate: (new Date(2020,5,5)).toISOString(),
-        // };
         // AppleHealthKit.getStepCount(null, (err, results) => {
         //     if (err) {
         //         return;
@@ -99,12 +96,17 @@ class GameScreen extends Component {
                 return;
             }
             console.log('RESULTSRESULTSRESULTSRESULTSRESULTSRESULTS', results)
+            const stepsSinceLastLogin = results.reduce((prev, cur) => {
+                return prev + cur.value;
+              }, 0);
+            console.log('stepsSinceLastLoginstepsSinceLastLoginstepsSinceLastLoginstepsSinceLastLoginstepsSinceLastLoginstepsSinceLastLogin', stepsSinceLastLogin);
+            
+            
+            
         });
      
     });
     }   
-
-    // RESULTSRESULTSRESULTS {"endDate": "2020-06-04T14:58:00.000+0100", "startDate": "2020-06-04T08:59:00.000+0100", "value": 17000}
 
     ifHasPet() {
         if(this.state.hasPet) {
