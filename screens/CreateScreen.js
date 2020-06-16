@@ -17,7 +17,7 @@ const CreateScreen = (props) => {
                 userId: '1',
                 petName: userPetName,
                 petAge: '0',
-                dateCreated: 'date now',
+                dateCreated: new Date().toISOString(),
                 totalSteps: '0',
                 dailySteps: '0',
                 //lastLogin(timestart for the Fitness.getSteps)

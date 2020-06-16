@@ -26,3 +26,5 @@ const User = ({newUser}) => {
 }
  
 export default User;
+
+
