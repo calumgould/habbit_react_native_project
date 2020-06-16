@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import AppleHealthKit from 'rn-apple-healthkit';
 
-
-
 import Database from '../Database.js';
 
 const db = new Database();
@@ -20,32 +18,37 @@ class GameScreen extends Component {
          this.ifHasPet = this.ifHasPet.bind(this)
          this.getHealthKitSteps = this.getHealthKitSteps.bind(this)
          this.updatePetAge = this.updatePetAge.bind(this)
+         this.initialSetup = this.initialSetup.bind(this)
     }
 
     componentDidMount() {
         console.log('mount');
         // db.deleteAllUsers()
-        this.getUser()
-        this.getHealthKitSteps()
-        
+        this.getUser()    
     }
 
     getUser() {
         console.log('hello from getUser');
         db.userById('1')
         .then((data) => {
-            console.log('DATADATA', data)
+            console.log('DATADATADATADATADATA', data)
             this.setState({
                 user: data,
                 isLoading: false,
-            }, this.checkUserExists)
+            }, this.initialSetup)
         }).catch((err) => {
             console.log(err);
             this.setState = {
                 isLoading: false
             }
-        }, this.checkUserExists)
+        }, this.initialSetup)
         console.log('user', this.state.user)
+    }
+
+    initialSetup() {
+        this.checkUserExists()
+        this.getHealthKitSteps()
+        this.updatePetAge()
     }
 
     checkUserExists() {
@@ -54,12 +57,13 @@ class GameScreen extends Component {
                 hasPet: true
             })
         console.log('USERUSER', this.state.user)
-        this.updatePetAge()
     }
 
     getHealthKitSteps() {
        
         const PERMS = AppleHealthKit.Constants.Permissions;
+        // let stepsSinceLastLogin;
+        // let options = {};
 
         const healthKitOptions = {
             permissions: {
@@ -79,27 +83,33 @@ class GameScreen extends Component {
             return;
         }
 
-        let options = {
-            startDate: (new Date(2020,5,10)).toISOString(),
-            endDate:   (new Date()).toISOString(),
+        const options = {
+            startDate: this.state.user.lastLogin,
+            endDate:   new Date().toISOString(),
             includeManuallyAdded: true,
         };
 
+        console.log("OPTIONPTIONS", options)
+        
         AppleHealthKit.getDailyStepCountSamples(options, (err, results) => {
             if (err) {
                 return;
             }
-            console.log('RESULTSRESULTSRESULTSRESULTSRESULTSRESULTS', results)
             const stepsSinceLastLogin = results.reduce((prev, cur) => {
                 return prev + cur.value;
             }, 0);
+            console.log('STEPSSINCELASTLOGINSTEPSSINCELASTLOGIN', stepsSinceLastLogin);
 
-            const date1 = new Date('7/13/2010');
-            console.log('DATE1DATE1OTHER', date1);
-            const date2 = new Date('12/15/2010');
-            const diffTime = Math.abs(date2 - date1);
-            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
-            console.log("DIFFDAYSOTHER", diffDays + " days");
+            let user = {
+                ...this.state.user,
+                totalSteps: (parseInt(this.state.user.totalSteps) + stepsSinceLastLogin).toString(),
+                lastLogin: options.endDate
+            }
+            console.log('USERSTATEUSERSTATE', this.state.user);
+            db.updateUser(this.state.user.userId, user)
+            user = {}
+            console.log('LASTLOGINLASTLOGINLASTLOGIN', this.state.user.lastLogin);
+            
         });
     });
 
@@ -117,8 +127,6 @@ class GameScreen extends Component {
             petAge: petAge
         }
         db.updateUser(this.state.user.userId, user)
-        console.log('UPDATEDUSERUPDATEDUSER', user);
-        
     }
 
     ifHasPet() {

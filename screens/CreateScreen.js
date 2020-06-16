@@ -20,7 +20,7 @@ const CreateScreen = (props) => {
                 dateCreated: new Date().toISOString(),
                 totalSteps: '0',
                 dailySteps: '0',
-                //lastLogin(timestart for the Fitness.getSteps)
+                lastLogin: new Date().toISOString(),
             })
         }
 

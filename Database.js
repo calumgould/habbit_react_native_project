@@ -33,9 +33,9 @@ export default class Database {
                       console.log('Received error: ', error);
                       console.log('Database not yet ready ... populating data');
                       db.transaction((tx) => {
-                          tx.executeSql('CREATE TABLE IF NOT EXISTS User (userId, petName, petAge, dateCreated, totalSteps, dailySteps)');
+                          tx.executeSql('CREATE TABLE IF NOT EXISTS User (userId, petName, petAge, dateCreated, totalSteps, dailySteps, lastLogin)');
                       }).then(() => {
-                          console.log('Table created successfully');
+                          console.log('TABLETABLETABLETABLETABLE');
                       }).catch(error => {
                           console.log(error);
                       });
@@ -78,14 +78,15 @@ export default class Database {
                 for (let i = 0; i < length; i++) {
                   let row = results.rows.item(i);
                   console.log(`User ID: ${row.userId}, PetName: ${row.petName}`)
-                  const { userId, petName, petAge, dateCreated, totalSteps, dailySteps } = row;
+                  const { userId, petName, petAge, dateCreated, totalSteps, dailySteps, lastLogin } = row;
                   users.push({
                     userId,
                     petName,
                     petAge,
                     dateCreated,
                     totalSteps,
-                    dailySteps
+                    dailySteps,
+                    lastLogin
                   });
                 }
                 console.log(users);
@@ -129,7 +130,7 @@ export default class Database {
         return new Promise((resolve) => {
           this.initDB().then((db) => {
             db.transaction((tx) => {
-              tx.executeSql('INSERT INTO User VALUES (?, ?, ?, ?, ?, ?)', [user.userId, user.petName, user.petAge, user.dateCreated, user.totalSteps, user.dailySteps]).then(([tx, results]) => {
+              tx.executeSql('INSERT INTO User VALUES (?, ?, ?, ?, ?, ?, ?)', [user.userId, user.petName, user.petAge, user.dateCreated, user.totalSteps, user.dailySteps, user.lastLogin]).then(([tx, results]) => {
                 resolve(results);
               });
             }).then((result) => {
@@ -147,7 +148,7 @@ export default class Database {
         return new Promise((resolve) => {
           this.initDB().then((db) => {
             db.transaction((tx) => {
-              tx.executeSql('UPDATE user SET petName = ?, petAge = ?, dateCreated = ?, totalSteps = ?, dailySteps = ? WHERE userId = ?', [user.petName, user.petAge, user.dateCreated, user.totalSteps, user.dailySteps, id]).then(([tx, results]) => {
+              tx.executeSql('UPDATE user SET petName = ?, petAge = ?, dateCreated = ?, totalSteps = ?, dailySteps = ?, lastLogin = ? WHERE userId = ?', [user.petName, user.petAge, user.dateCreated, user.totalSteps, user.dailySteps, user.lastLogin, id]).then(([tx, results]) => {
                 resolve(results);
               });
             }).then((result) => {
@@ -187,8 +188,16 @@ export default class Database {
               tx.executeSql('DELETE FROM User').then(([tx, results]) => {
                 console.log(results);
                 resolve(results);
-              });
-            }).then((result) => {
+              })
+              
+            })
+            db.transaction((tx) => {
+                tx.executeSql('DROP TABLE User').then(([tx, results]) => {
+                console.log('TABLEDROPPEDTABLEDROPPED');
+                resolve(results);
+              })
+            })
+            .then((result) => {
               this.closeDatabase(db);
             }).catch((err) => {
               console.log(err);
