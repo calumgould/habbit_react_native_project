@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import AppleHealthKit from 'rn-apple-healthkit';
 
 import Database from '../Database.js';
@@ -8,41 +8,40 @@ const db = new Database();
 class GameScreen extends Component {
     constructor(props) {
         super(props);
-        this.state = { 
+        this.state = {
             hasPet: false,
             isLoading: true,
             user: {},
             notFound: 'Pet not found',
-         }
-         this.checkUserExists = this.checkUserExists.bind(this)
-         this.ifHasPet = this.ifHasPet.bind(this)
-         this.getHealthKitSteps = this.getHealthKitSteps.bind(this)
-         this.updatePetAge = this.updatePetAge.bind(this)
-         this.initialSetup = this.initialSetup.bind(this)
+        }
+        this.checkUserExists = this.checkUserExists.bind(this)
+        this.ifHasPet = this.ifHasPet.bind(this)
+        this.getHealthKitSteps = this.getHealthKitSteps.bind(this)
+        this.updatePetAge = this.updatePetAge.bind(this)
+        this.initialSetup = this.initialSetup.bind(this)
+        this.getStepsSinceLastLogin = this.getStepsSinceLastLogin.bind(this)
     }
 
     componentDidMount() {
-        console.log('mount');
         // db.deleteAllUsers()
-        this.getUser()    
+        this.getUser()
     }
 
     getUser() {
         console.log('hello from getUser');
         db.userById('1')
-        .then((data) => {
-            console.log('DATADATADATADATADATA', data)
-            this.setState({
-                user: data,
-                isLoading: false,
+            .then((data) => {
+                console.log('DATADATADATADATADATA', data)
+                this.setState({
+                    user: data,
+                    isLoading: false,
+                }, this.initialSetup)
+            }).catch((err) => {
+                console.log(err);
+                this.setState = {
+                    isLoading: false
+                }
             }, this.initialSetup)
-        }).catch((err) => {
-            console.log(err);
-            this.setState = {
-                isLoading: false
-            }
-        }, this.initialSetup)
-        console.log('user', this.state.user)
     }
 
     initialSetup() {
@@ -52,22 +51,20 @@ class GameScreen extends Component {
     }
 
     checkUserExists() {
-        if(Object.keys(this.state.user).length === 0) return;
-            this.setState({
-                hasPet: true
-            })
+        if (Object.keys(this.state.user).length === 0) return;
+        this.setState({
+            hasPet: true
+        })
         console.log('USERUSER', this.state.user)
     }
 
     getHealthKitSteps() {
-       
+
         const PERMS = AppleHealthKit.Constants.Permissions;
-        // let stepsSinceLastLogin;
-        // let options = {};
 
         const healthKitOptions = {
             permissions: {
-                read:  [
+                read: [
                     PERMS.StepCount,
                     PERMS.Steps,
                 ],
@@ -78,20 +75,46 @@ class GameScreen extends Component {
         };
 
         AppleHealthKit.initHealthKit(healthKitOptions, (err, results) => {
-        if (err) {
-            console.log("error initializing Healthkit: ", err);
-            return;
-        }
+            if (err) {
+                console.log("error initializing Healthkit: ", err);
+                return;
+            }
+
+            AppleHealthKit.getStepCount(null, (err, results) => {
+                if (err) {
+                    return;
+                }
+                console.log('GAMESCREENUSER', this.state.user)
+
+                let user = {
+                    ...this.state.user,
+                    dailySteps: results.value
+                }
+
+                db.updateUser(this.state.user.userId, user)
+
+                db.userById('1')
+                    .then((data) => {
+                        this.setState({
+                            user: data,
+                            isLoading: false,
+                        }, this.getStepsSinceLastLogin)
+                    })
+            });
+        });
+    }
+
+    getStepsSinceLastLogin() {
 
         const options = {
             startDate: this.state.user.lastLogin,
-            endDate:   new Date().toISOString(),
+            endDate: new Date().toISOString(),
             includeManuallyAdded: true,
         };
 
-        console.log("OPTIONPTIONS", options)
-        
         AppleHealthKit.getDailyStepCountSamples(options, (err, results) => {
+            console.log('USERSTATEUSERSTATE', this.state.user);
+
             if (err) {
                 return;
             }
@@ -105,23 +128,19 @@ class GameScreen extends Component {
                 totalSteps: (parseInt(this.state.user.totalSteps) + stepsSinceLastLogin).toString(),
                 lastLogin: options.endDate
             }
-            console.log('USERSTATEUSERSTATE', this.state.user);
             db.updateUser(this.state.user.userId, user)
             user = {}
             console.log('LASTLOGINLASTLOGINLASTLOGIN', this.state.user.lastLogin);
-            
         });
-    });
-
     }
-    
+
     updatePetAge() {
         const dateCreated = new Date(this.state.user.dateCreated);
         const currentDate = new Date(new Date().toISOString());
         const diffTime = Math.abs(currentDate - dateCreated);
-        const petAge = Math.ceil((diffTime / (1000 * 60 * 60 * 24)));
+        const petAge = Math.ceil((diffTime / (1000 * 60 * 60 * 24)) + 1);
         console.log('PETAGEPETAGE', petAge);
-        
+
         const user = {
             ...this.state.user,
             petAge: petAge
@@ -130,16 +149,16 @@ class GameScreen extends Component {
     }
 
     ifHasPet() {
-        if(this.state.hasPet) {
+        if (this.state.hasPet) {
             return (
                 <ButtonContainer onPress={() => this.props.navigation.navigate('Pet')}>
                     <ButtonText>Continue</ButtonText>
                 </ButtonContainer>
             )
-            
+
         } else {
             return (
-                <ButtonContainer 
+                <ButtonContainer
                     onPress={() => this.props.navigation.navigate('About')}>
                     <ButtonText>Create New Pet</ButtonText>
                 </ButtonContainer>
@@ -147,13 +166,13 @@ class GameScreen extends Component {
         }
     }
 
-    render() { 
-        return ( 
+    render() {
+        return (
             <Container>
                 <Header>HABBIT.</Header>
                 {this.ifHasPet()}
             </Container>
-         );
+        );
     }
 }
 

@@ -42,8 +42,11 @@ class PetScreen extends Component {
     }
 
     updateUserInfo(){
+        console.log('CURRENTUSER', this.state.user);
+        
         this.setState({
             petName: this.state.user.petName,
+            dailySteps: this.state.user.dailySteps,
             totalSteps: this.state.user.totalSteps,
             growthSteps: this.state.user.totalSteps
             //update steps from pedomoter
