@@ -56,15 +56,21 @@ class GameScreen extends Component {
 
     getHealthKitSteps() {
        
-        
-        let HealthOptions = {
-            permissions: {
-                read: ["StepCount"],
-                write: ["StepCount"]
-            }
-        };
+        const PERMS = AppleHealthKit.Constants.Permissions;
 
-        AppleHealthKit.initHealthKit(HealthOptions, (err, results) => {
+        const healthKitOptions = {
+    permissions: {
+        read:  [
+            PERMS.StepCount,
+            PERMS.Steps,
+        ],
+        write: [
+            PERMS.StepCount
+        ],
+    }
+};
+
+        AppleHealthKit.initHealthKit(healthKitOptions, (err, results) => {
         if (err) {
             console.log("error initializing Healthkit: ", err);
             return;
@@ -73,26 +79,25 @@ class GameScreen extends Component {
         // let stepOptions = {
         //     startDate: (new Date(2020,5,5)).toISOString(),
         // };
-        AppleHealthKit.getStepCount(null, (err, results) => {
-            if (err) {
-                return;
-            }
-            console.log("RESULTSRESULTSRESULTS", results)
-        });
+        // AppleHealthKit.getStepCount(null, (err, results) => {
+        //     if (err) {
+        //         return;
+        //     }
+        //     console.log("RESULTSRESULTSRESULTS", results)
+        // });
 
-        let MultipleStepOptions = {
+        let options = {
+            startDate: (new Date(2020,5,10)).toISOString(),
             endDate:   (new Date()).toISOString(),
-            startDate: (new Date(2020,5,2)).toISOString()
+            includeManuallyAdded: true,
         };
 
-        console.log('STARTDATESTARTDATE', MultipleStepOptions)
+        console.log('STARTDATESTARTDATE', options)
 
-        AppleHealthKit.getDailyStepCountSamples(MultipleStepOptions, (err, results) => {
+        AppleHealthKit.getDailyStepCountSamples(options, (err, results) => {
             if (err) {
-                console.log('ERRORERROR', err)
                 return;
             }
-
             console.log('RESULTSRESULTSRESULTSRESULTSRESULTSRESULTS', results)
         });
      
