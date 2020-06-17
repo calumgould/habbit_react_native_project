@@ -10,10 +10,10 @@ import BigPetComponent from './pet_stages/BigPetComponent';
 const PetComponent = (props) => {
 
     const growthStage1 = 0
-    const growthStage2 = 10000
-    const growthStage3 = 30000
-    const growthStage4 = 50000
-    const growthStage5 = 100000
+    const growthStage2 = 25000
+    const growthStage3 = 50000
+    const growthStage4 = 100000
+    const growthStage5 = 250000
 
     const calculateProgress = (newGrowthSteps, growthStage) => {
         return newGrowthSteps / growthStage;

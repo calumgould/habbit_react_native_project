@@ -6,8 +6,10 @@ const db = new Database();
 
 const User = ({newUser}) => {
 
-    const saveUser = (newUser) => {
+    const saveUser = (newUser) => {;
         if(Object.keys(newUser).length === 0) return;
+        console.log('NEWUSERNEWUSERNEWUSER>>>>>>>>', newUser)
+        
         db.addUser(newUser)
         .then((result) => {
             console.log('result', result);
@@ -18,7 +20,6 @@ const User = ({newUser}) => {
     }
 
     useEffect(() => {
-        console.log('user', newUser)
         saveUser(newUser)
     }, [newUser])
 

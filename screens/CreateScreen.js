@@ -23,6 +23,7 @@ const CreateScreen = (props) => {
                 totalSteps: initalSteps,
                 dailySteps: initalSteps,
                 lastLogin: new Date().toISOString(),
+                stepGoal: '15000'
             })
         }
 

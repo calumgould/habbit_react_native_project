@@ -14,7 +14,6 @@ class StepsComponent extends Component {
         this.state = { 
             totalSteps: 0,
             dailySteps: 0,
-            stepGoal: 10000,
             enteredSteps: 0,
             growthSteps: 0
          }
@@ -45,7 +44,8 @@ class StepsComponent extends Component {
     }
 
     calculateProgress(){
-        return this.state.dailySteps / this.state.stepGoal
+        if(!this.props.user.stepGoal) return;
+        return this.state.dailySteps / parseInt(this.props.user.stepGoal)
     }
 
     enterSteps(steps){
@@ -71,7 +71,6 @@ class StepsComponent extends Component {
             dailySteps: this.state.dailySteps
         }
         db.updateUser(this.props.user.userId, user)
-        console.log("USERIDIDIDIDID", this.props.user.userId)
         this.sendSteps()
         this.updateHealthKitDailySteps()
     }
@@ -116,7 +115,7 @@ class StepsComponent extends Component {
          
 
         this.setState({
-            enteredSteps: ''
+            enteredSteps: 0
         })
 
         console.log('ENTEREDSTEPSAFTER >>>>>', this.state.enteredSteps);
@@ -164,7 +163,7 @@ class StepsComponent extends Component {
                 <StyledText size='20px'>
                     Daily Steps
                     {'\n'}
-                    {this.state.dailySteps} / {this.state.stepGoal}
+                    {this.state.dailySteps} / {this.props.user.stepGoal}
                 </StyledText>
                 
                 <Progress.Bar 
