@@ -24,27 +24,28 @@ const AppNavigator = () => {
                 <Drawer.Navigator drawerStyle={{width: 200}}>
                     <Drawer.Screen name='Menu'>
                     {() => ( 
-                        <Stack.Navigator initialRouteName='Game' >
+                        <Stack.Navigator 
+                        initialRouteName='Game'>
                             <Stack.Screen 
                                 name='Game' 
                                 component={GameScreen} 
-                                options={headerStyles}
+                                options={options}
                             />
                             <Stack.Screen 
                                 name='About' 
                                 component={AboutScreen} 
-                                options={headerStyles}
+                                options={options}
                             />
                             <Stack.Screen 
                                 name='Create' 
                                 component={CreateScreen} 
-                                options={headerStyles}
+                                options={options}
                                 initialParams={{setPetName}}
                             />
                             <Stack.Screen 
                                 name='Pet' 
                                 component={PetScreen} 
-                                options={headerStyles}
+                                options={options}
                                 initialParams={{petName}}
                             />
                         </Stack.Navigator>
@@ -60,15 +61,20 @@ const AppNavigator = () => {
      );
 }
 
-const headerStyles = {
+const options = {
     headerStyle: {
         backgroundColor: 'darkslategrey',
         height: 0
     },
     headerTitleStyle: {
         color: 'ghostwhite',
-    }
+    },
+    gestureEnabled: false
 }
+
+// const navigationOptions = {
+//     gesturesEnabled: false
+// }
 
 const habbitTheme = {
     dark: false,
