@@ -28,10 +28,8 @@ class GameScreen extends Component {
     }
 
     getUser() {
-        console.log('hello from getUser');
         db.userById('1')
             .then((data) => {
-                console.log('DATADATADATADATADATA', data)
                 this.setState({
                     user: data,
                     isLoading: false,
@@ -84,7 +82,8 @@ class GameScreen extends Component {
                 if (err) {
                     return;
                 }
-                console.log('GAMESCREENUSER', this.state.user)
+
+
 
                 let user = {
                     ...this.state.user,
@@ -106,15 +105,19 @@ class GameScreen extends Component {
 
     getStepsSinceLastLogin() {
 
+        const lastLoginDate = new Date(this.state.user.lastLogin);
+        const lastLoginStartOfDay = new Date(lastLoginDate).toISOString();
+
+        console.log('LAST LOGIN START DATE >>>>>>', lastLoginStartOfDay);
+        
+
         const options = {
-            startDate: this.state.user.lastLogin,
+            startDate: lastLoginStartOfDay,
             endDate: new Date().toISOString(),
             includeManuallyAdded: true,
         };
 
         AppleHealthKit.getDailyStepCountSamples(options, (err, results) => {
-            console.log('USERSTATEUSERSTATE', this.state.user);
-
             if (err) {
                 return;
             }

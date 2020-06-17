@@ -24,7 +24,6 @@ class PetScreen extends Component {
     }
 
     getUser() {
-        console.log('hello from getUsers');
         db.userById('1')
         .then((data) => {
             console.log('PETSCREENDATA', data)
@@ -49,23 +48,13 @@ class PetScreen extends Component {
             dailySteps: this.state.user.dailySteps,
             totalSteps: this.state.user.totalSteps,
             growthSteps: this.state.user.totalSteps
-            //update steps from pedomoter
         })
-        console.log('PETNAMEPETNAMEPETNAME', this.state.user.petName)
     }
 
     componentDidMount(){
-        this.getUser()
-
-        // Current time
-
-        //Steps from last login
-
-        //total steps
-
-        // user{}
-
-        // saveuser(user)
+        setTimeout(() => {
+            this.getUser();
+        }, 100)
     }
 
     handleSteps(totalSteps, growthSteps){

@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import AppleHealthKit from 'rn-apple-healthkit';
 
 import RegisterPetComponent from '../components/RegisterPetComponent';
 import User from '../components/UserComponent';
@@ -11,6 +12,7 @@ const CreateScreen = (props) => {
 
     const [user, setUser] = useState({})
     const [userPetName, setUserPetName] = useState('')
+    const [initalSteps, setInitialSteps] = useState('')
 
     const handleNewUser = () => {
         setUser({
@@ -18,10 +20,49 @@ const CreateScreen = (props) => {
                 petName: userPetName,
                 petAge: '0',
                 dateCreated: new Date().toISOString(),
-                totalSteps: '0',
-                dailySteps: '0',
+                totalSteps: initalSteps,
+                dailySteps: initalSteps,
                 lastLogin: new Date().toISOString(),
             })
+        }
+
+        console.log('INITALSTEPS >>>>', initalSteps);
+        
+        useEffect(() => {
+            getInitialSteps()
+        }, [])
+
+        const getInitialSteps = () => {
+
+            const PERMS = AppleHealthKit.Constants.Permissions;
+    
+            const healthKitOptions = {
+                permissions: {
+                    read: [
+                        PERMS.StepCount,
+                        PERMS.Steps,
+                    ],
+                    write: [
+                        PERMS.StepCount
+                    ],
+                }
+            };
+    
+            AppleHealthKit.initHealthKit(healthKitOptions, (err, results) => {
+                if (err) {
+                    console.log("error initializing Healthkit: ", err);
+                    return;
+                }
+    
+                AppleHealthKit.getStepCount(null, (err, results) => {
+                    if (err) {
+                        return;
+                    }
+                    console.log(results.value);
+                    
+                    setInitialSteps(results.value)
+                });
+            });
         }
 
     const handlePress = () => {

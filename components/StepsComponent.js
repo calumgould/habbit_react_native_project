@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Keyboard } from 'react-native';
 import * as Progress from 'react-native-progress';
+import AppleHealthKit from 'rn-apple-healthkit';
 
 import BlinkingText from './BlinkingTextComponent';
 import Database from '../Database.js';
@@ -22,6 +23,7 @@ class StepsComponent extends Component {
          this.updateSteps = this.updateSteps.bind(this)
          this.updateUserSteps = this.updateUserSteps.bind(this)
          this.updateUser = this.updateUser.bind(this)
+         this.updateHealthKitDailySteps = this.updateHealthKitDailySteps.bind(this)
     }
 
     updateUser(){
@@ -41,8 +43,6 @@ class StepsComponent extends Component {
             this.updateUser();
         }
     }
-
-    
 
     calculateProgress(){
         return this.state.dailySteps / this.state.stepGoal
@@ -68,21 +68,65 @@ class StepsComponent extends Component {
     updateUserSteps() {
         const user = {
             ...this.props.user,
-            totalSteps: this.state.totalSteps,
             dailySteps: this.state.dailySteps
         }
         db.updateUser(this.props.user.userId, user)
         console.log("USERIDIDIDIDID", this.props.user.userId)
         this.sendSteps()
+        this.updateHealthKitDailySteps()
     }
-    
+
     updateSteps() {
         this.setState({
             totalSteps: this.state.totalSteps + parseInt(this.state.enteredSteps),
             dailySteps: this.state.dailySteps + parseInt(this.state.enteredSteps),
             growthSteps: this.state.growthSteps + parseInt(this.state.enteredSteps),
-            enteredSteps: ''
         }, this.updateUserSteps)
+    }
+
+    updateHealthKitDailySteps() {
+        const PERMS = AppleHealthKit.Constants.Permissions;
+
+        const healthKitOptions = {
+            permissions: {
+                write: [
+                    PERMS.StepCount
+                ],
+            }
+        };
+
+        AppleHealthKit.initHealthKit(healthKitOptions, (err, results) => {
+            if (err) {
+                console.log("error initializing Healthkit: ", err);
+                return;
+            }
+
+        let options = {
+            value: this.state.enteredSteps,
+            startDate: new Date().toISOString(),
+            endDate: new Date().toISOString()
+          };
+
+        AppleHealthKit.saveSteps(options, (error, results) => {
+        if (error) {
+            return;
+        }
+         console.log("STEPSCUSSCUSFYFLSISUDB>>>>>", results)
+         console.log('ENTEREDSTEPSBEFORE >>>>>', this.state.enteredSteps);
+         
+
+        this.setState({
+            enteredSteps: ''
+        })
+
+        console.log('ENTEREDSTEPSAFTER >>>>>', this.state.enteredSteps);
+
+
+        });
+
+        
+          
+        })
     }
         
       render() { 
