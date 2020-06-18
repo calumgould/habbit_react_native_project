@@ -72,10 +72,6 @@ const options = {
     gestureEnabled: false
 }
 
-// const navigationOptions = {
-//     gesturesEnabled: false
-// }
-
 const habbitTheme = {
     dark: false,
     colors: {
