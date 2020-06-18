@@ -1,3 +1,5 @@
 rootProject.name = 'Habbit'
+include ':@ovalmoney_react-native-fitness'
+project(':@ovalmoney_react-native-fitness').projectDir = new File(rootProject.projectDir, '../node_modules/@ovalmoney/react-native-fitness/android')
 apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings)
 include ':app'

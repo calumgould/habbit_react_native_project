@@ -1,21 +1,18 @@
-import React from 'react'
-import { Text, StyleSheet } from 'react-native'
+import React, { useEffect, useState } from 'react';
 
 const PetNameComponent = (props) => {
+
+    const [name, setName] = useState('')
+
+    useEffect(() => {
+        setName(props.petName)
+    }, [props])
+
     return ( 
-        <Text style={styles.text}>{props.petName}</Text>
+        <Header marginBottom='10%'>
+            {name}
+        </Header>
      );
 }
-
-const styles = StyleSheet.create({
-    text: {
-        textAlign: 'center',
-        fontSize: 30,
-        color: 'ghostwhite',
-        fontFamily: 'PressStart2P-Regular',
-        marginBottom: 50,
-        width: 300,
-    }
-})
  
 export default PetNameComponent;

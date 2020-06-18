@@ -1,11 +1,12 @@
-import React, { Component } from 'react'
-import { View, Text, Keyboard } from 'react-native'
-import * as Progress from 'react-native-progress'
-import { TextInput, StyleSheet, TouchableOpacity } from 'react-native'
+import React, { Component } from 'react';
+import { Keyboard } from 'react-native';
+import * as Progress from 'react-native-progress';
+import AppleHealthKit from 'rn-apple-healthkit';
 
-import buttonStyles from '../styles/button'
-import BlinkingText from './BlinkingTextComponent'
+import BlinkingText from './BlinkingTextComponent';
+import Database from '../Database.js';
 
+const db = new Database();
 
 class StepsComponent extends Component {
     constructor(props) {
@@ -13,17 +14,38 @@ class StepsComponent extends Component {
         this.state = { 
             totalSteps: 0,
             dailySteps: 0,
-            stepGoal: 10000,
-            enteredSteps: '',
+            enteredSteps: 0,
             growthSteps: 0
          }
          this.calculateProgress = this.calculateProgress.bind(this)
          this.enterSteps = this.enterSteps.bind(this)
          this.updateSteps = this.updateSteps.bind(this)
+         this.updateUserSteps = this.updateUserSteps.bind(this)
+         this.updateUser = this.updateUser.bind(this)
+         this.updateHealthKitDailySteps = this.updateHealthKitDailySteps.bind(this)
+    }
+
+    updateUser(){
+
+        if(this.props.totalSteps !== null) {    
+            this.setState({
+                totalSteps: parseInt(this.props.user.totalSteps),
+                dailySteps: parseInt(this.props.user.dailySteps),
+                growthSteps: parseInt(this.props.user.totalSteps)
+            })
+        }
+    }
+
+    componentDidUpdate(prevProps){
+        if(Object.keys(this.props.user).length === 0) return;
+        if(this.props.user !== prevProps.user) {
+            this.updateUser();
+        }
     }
 
     calculateProgress(){
-        return this.state.dailySteps / this.state.stepGoal
+        if(!this.props.user.stepGoal) return;
+        return this.state.dailySteps / parseInt(this.props.user.stepGoal)
     }
 
     enterSteps(steps){
@@ -42,130 +64,121 @@ class StepsComponent extends Component {
     sendSteps(){
         this.props.getSteps(this.state.totalSteps, this.state.growthSteps)
     }
-    
+
+    updateUserSteps() {
+        const user = {
+            ...this.props.user,
+            dailySteps: this.state.dailySteps
+        }
+        db.updateUser(this.props.user.userId, user)
+        this.sendSteps()
+        this.updateHealthKitDailySteps()
+    }
+
     updateSteps() {
         this.setState({
             totalSteps: this.state.totalSteps + parseInt(this.state.enteredSteps),
             dailySteps: this.state.dailySteps + parseInt(this.state.enteredSteps),
             growthSteps: this.state.growthSteps + parseInt(this.state.enteredSteps),
-            enteredSteps: ''
-        }, this.sendSteps)
+        }, this.updateUserSteps)
+    }
+
+    updateHealthKitDailySteps() {
+        const PERMS = AppleHealthKit.Constants.Permissions;
+
+        const healthKitOptions = {
+            permissions: {
+                write: [
+                    PERMS.StepCount
+                ],
+            }
+        };
+
+        AppleHealthKit.initHealthKit(healthKitOptions, (err, results) => {
+            if (err) {
+                console.log("error initializing Healthkit: ", err);
+                return;
+            }
+
+        let options = {
+            value: this.state.enteredSteps,
+            startDate: new Date().toISOString(),
+            endDate: new Date().toISOString()
+          };
+
+        AppleHealthKit.saveSteps(options, (error, results) => {
+        if (error) {
+            return;
+        }
+         console.log("STEPSCUSSCUSFYFLSISUDB>>>>>", results)
+         console.log('ENTEREDSTEPSBEFORE >>>>>', this.state.enteredSteps);
+         
+
+        this.setState({
+            enteredSteps: 0
+        })
+
+        console.log('ENTEREDSTEPSAFTER >>>>>', this.state.enteredSteps);
+
+
+        });
+
+        
+          
+        })
     }
         
       render() { 
         return ( 
-            <View>
-                <Text 
-                    style={[styles.text, {marginBottom: 10}]}>
+            <>
+                <StyledText size='16px'>
                     Manual Step Input:
-                </Text>
+                </StyledText>
 
-                <View style={styles.body}>
-                    <View style={styles.inputField}>
-                        <TextInput 
-                            style={styles.textInput} 
-                            placeholder="Enter steps" 
-                            placeholderTextColor='grey'
-                            value={this.state.enteredSteps.toString()}
-                            keyboardType='numeric'
-                            onChangeText={value => this.enterSteps(value)}
-                            returnKeyLabel='Done'
-                            returnKeyType='done'
-                            onSubmitEditing={Keyboard.dismiss}
-                        />
-                        <Text style={styles.blinkingText}>
-                            <BlinkingText text="|" />
-                        </Text>
-                    </View>
-                </View>
+                <BlinkingWrapper
+                backgroundColor='darkslategrey'
+                border='2px solid black'>
+                    <StyledTextInput size='14px'
+                        placeholder="Enter steps" 
+                        placeholderTextColor='grey'
+                        value={this.state.enteredSteps}
+                        keyboardType='numeric'
+                        onChangeText={value => this.enterSteps(value)}
+                        returnKeyLabel='Done'
+                        returnKeyType='done'
+                        onSubmitEditing={Keyboard.dismiss}
+                    />
+                    <BlinkingText text="|" color='grey' size='18px' />
+                </BlinkingWrapper>
 
-                <TouchableOpacity 
-                    style={[styles.button, {marginBottom: 80}]}
-                    onPress={this.updateSteps}>
-                    <Text style={styles.buttonText}>
+                <ButtonContainer 
+                    onPress={this.updateSteps}
+                    marginTop='10px'
+                    marginBottom='25%'>
+                    <ButtonText>
                         Submit
-                    </Text>
-                </TouchableOpacity>
+                    </ButtonText>
+                </ButtonContainer>
 
-                <Text style={[styles.text, {fontSize: 16}]}>
+                <StyledText size='20px'>
                     Daily Steps
-                </Text>
-
-                <Text style={styles.stepCount}>
-                    {this.state.dailySteps} / {this.state.stepGoal}
-                </Text>
+                    {'\n'}
+                    {this.state.dailySteps} / {this.props.user.stepGoal}
+                </StyledText>
                 
                 <Progress.Bar 
                     progress={this.calculateProgress()} 
                     animated={true}
-                    width={null}
+                    width={320}
                     height={25}
                     color='darkslategrey'
                     borderWidth={4}
                     borderColor='black'
-                    style={styles.progressBar}
+                    style={{marginTop: 20}}
                 />
-
-            </View>
+            </>
          );
     }
 }
-
-const styles = StyleSheet.create({
-    body: {
-        backgroundColor: 'slategrey',
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    text: {
-        textAlign: 'center',
-        fontSize: 20,
-        color: 'ghostwhite',
-        fontFamily: 'PressStart2P-Regular',
-        height: 30,
-    },
-    infoText: {
-        textAlign: 'center',
-        fontSize: 15,
-        color: 'ghostwhite',
-        fontFamily: 'PressStart2P-Regular',
-        paddingVertical: 10,
-    },
-    textInput: {
-        textAlign: 'center',
-        fontSize: 14,
-        color: 'ghostwhite',
-        paddingVertical: 10,
-        fontFamily: 'PressStart2P-Regular',
-    },
-    blinkingText: {
-        textAlign: 'center',
-        fontSize: 14,
-        color: 'grey',
-        paddingVertical: 10,
-        fontFamily: 'PressStart2P-Regular',
-        marginTop: 2,
-    },
-    stepCount: {
-        textAlign: 'center',
-        fontSize: 20,
-        color: 'ghostwhite',
-        fontFamily: 'PressStart2P-Regular',
-    },
-    button: buttonStyles.button,
-    buttonText: buttonStyles.buttonText,
-    progressBar: {
-        marginTop: 20,
-    },
-    inputField: {
-        flexDirection: 'row',
-        borderWidth: 3,
-        borderColor: 'darkslategrey',
-        backgroundColor: 'darkslategrey',
-        width: 310,
-        justifyContent: 'center',
-        alignItems: 'center'
-    }
-})
  
 export default StepsComponent;

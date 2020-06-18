@@ -1,15 +1,15 @@
-import React from 'react'
-import { StatusBar, StyleSheet } from 'react-native'
-import { createStackNavigator } from '@react-navigation/stack'
-import { NavigationContainer } from '@react-navigation/native'
-import { createDrawerNavigator } from '@react-navigation/drawer'
-import { AppearanceProvider } from 'react-native-appearance'
+import React from 'react';
+import { StatusBar } from 'react-native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { AppearanceProvider } from 'react-native-appearance';
 
-import AboutContainer from '../containers/AboutContainer'
-import GameContainer from '../containers/GameContainer'
-import CreateContainer from '../containers/CreateContainer'
-import PetContainer from '../containers/PetContainer'
-import InfoContainer from '../containers/InfoContainer'
+import AboutScreen from './screens/AboutScreen';
+import GameScreen from './screens/GameScreen';
+import CreateScreen from './screens/CreateScreen';
+import PetScreen from './screens/PetScreen';
+import InfoScreen from './screens/InfoScreen';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -24,27 +24,28 @@ const AppNavigator = () => {
                 <Drawer.Navigator drawerStyle={{width: 200}}>
                     <Drawer.Screen name='Menu'>
                     {() => ( 
-                        <Stack.Navigator initialRouteName='Game' >
+                        <Stack.Navigator 
+                        initialRouteName='Game'>
                             <Stack.Screen 
                                 name='Game' 
-                                component={GameContainer} 
-                                options={headerStyles}
+                                component={GameScreen} 
+                                options={options}
                             />
                             <Stack.Screen 
                                 name='About' 
-                                component={AboutContainer} 
-                                options={headerStyles}
+                                component={AboutScreen} 
+                                options={options}
                             />
                             <Stack.Screen 
                                 name='Create' 
-                                component={CreateContainer} 
-                                options={headerStyles}
+                                component={CreateScreen} 
+                                options={options}
                                 initialParams={{setPetName}}
                             />
                             <Stack.Screen 
                                 name='Pet' 
-                                component={PetContainer} 
-                                options={headerStyles}
+                                component={PetScreen} 
+                                options={options}
                                 initialParams={{petName}}
                             />
                         </Stack.Navigator>
@@ -52,7 +53,7 @@ const AppNavigator = () => {
                     </Drawer.Screen>
                     <Drawer.Screen 
                         name='Information' 
-                        component={InfoContainer} 
+                        component={InfoScreen} 
                     />
                 </Drawer.Navigator>
             </NavigationContainer>
@@ -60,21 +61,15 @@ const AppNavigator = () => {
      );
 }
 
-
-const styles = StyleSheet.create({
-    nav: {
-        marginTop: 100,
-    }
-})
-
-const headerStyles = {
+const options = {
     headerStyle: {
         backgroundColor: 'darkslategrey',
         height: 0
     },
     headerTitleStyle: {
         color: 'ghostwhite',
-    }
+    },
+    gestureEnabled: false
 }
 
 const habbitTheme = {
