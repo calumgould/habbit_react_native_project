@@ -4,7 +4,6 @@ import StepsComponent from '../components/StepsComponent.js';
 import PetComponent from '../components/PetComponent';
 import PetNameComponent from '../components/PetNameComponent';
 import MenuComponent from '../components/MenuComponent';
-import User from '../components/UserComponent';
 import Database from '../Database.js';
 
 const db = new Database();
@@ -13,7 +12,6 @@ class PetScreen extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            petName: props.route.params.petName,
             totalSteps: 0,
             growthSteps: 0,
             user: {}
@@ -26,6 +24,7 @@ class PetScreen extends Component {
     getUser() {
         db.userById('1')
         .then((data) => {
+            console.log('USERUSER>>>>', data)
             this.setState({
                 user: data,
                 isLoading: false,
@@ -40,7 +39,6 @@ class PetScreen extends Component {
 
     updateUserInfo(){
         this.setState({
-            petName: this.state.user.petName,
             dailySteps: this.state.user.dailySteps,
             totalSteps: this.state.user.totalSteps,
             growthSteps: this.state.user.totalSteps
@@ -64,7 +62,7 @@ class PetScreen extends Component {
         return ( 
             <Container>
                 <MenuComponent navigation={this.props.navigation}/>
-                <PetNameComponent petName={this.state.petName} />
+                <PetNameComponent petName={this.state.user.petName} />
                 <PetComponent 
                 totalSteps={this.state.user.totalSteps} 
                 growthSteps={this.state.growthSteps}

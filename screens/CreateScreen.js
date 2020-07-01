@@ -1,63 +1,34 @@
 import React, {useState, useEffect} from 'react';
-import AppleHealthKit from 'rn-apple-healthkit';
 
 import RegisterPetComponent from '../components/RegisterPetComponent';
 import User from '../components/UserComponent';
 
+import { getInitialSteps } from '../helpers/AppleHealthKit';
+
+
 const CreateScreen = (props) => {
-    const {route} = props;
-    const {setPetName} = route.params;
     const [user, setUser] = useState({})
     const [userPetName, setUserPetName] = useState('')
-    const [initalSteps, setInitialSteps] = useState('')
+    const [initialSteps, setInitialSteps] = useState(0)
 
     const handleNewUser = () => {
+        console.log('INITIALSTEPS>>>>>>>>', initialSteps);
+        
         setUser({
                 userId: '1',
                 petName: userPetName,
                 petAge: '0',
                 dateCreated: new Date().toISOString(),
-                totalSteps: initalSteps,
-                dailySteps: initalSteps,
+                totalSteps: initialSteps,
+                dailySteps: initialSteps,
                 lastLogin: new Date().toISOString(),
                 stepGoal: '15000'
             })
         }
-        
-        useEffect(() => {
-            getInitialSteps()
-        }, [])
 
-        const getInitialSteps = () => {
-
-            const PERMS = AppleHealthKit.Constants.Permissions;
-    
-            const healthKitOptions = {
-                permissions: {
-                    read: [
-                        PERMS.StepCount,
-                        PERMS.Steps,
-                    ],
-                    write: [
-                        PERMS.StepCount
-                    ],
-                }
-            };
-    
-            AppleHealthKit.initHealthKit(healthKitOptions, (err, results) => {
-                if (err) {
-                    console.log("error initializing Healthkit: ", err);
-                    return;
-                }
-    
-                AppleHealthKit.getStepCount(null, (err, results) => {
-                    if (err) {
-                        return;
-                    }
-                    setInitialSteps(results.value)
-                });
-            });
-        }
+    useEffect(() => { 
+        getInitialSteps({setInitialSteps})
+    }, [])
 
     const handlePress = () => {
         props.navigation.navigate('Pet');
@@ -71,7 +42,7 @@ const CreateScreen = (props) => {
     return ( 
         <Container>
             <RegisterPetComponent 
-                setPetName={setPetName} 
+                // setPetName={setPetName} 
                 getPetName={(petName) => handlePetName(petName)}
             />
             <ButtonContainer 

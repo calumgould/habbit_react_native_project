@@ -15,7 +15,6 @@ const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
 const AppNavigator = () => {
-    const [petName, setPetName] = React.useState(undefined);
 
     return (
         <AppearanceProvider>
@@ -40,13 +39,11 @@ const AppNavigator = () => {
                                 name='Create' 
                                 component={CreateScreen} 
                                 options={options}
-                                initialParams={{setPetName}}
                             />
                             <Stack.Screen 
                                 name='Pet' 
                                 component={PetScreen} 
                                 options={options}
-                                initialParams={{petName}}
                             />
                         </Stack.Navigator>
                     )}

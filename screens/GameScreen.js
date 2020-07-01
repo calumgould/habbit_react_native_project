@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import AppleHealthKit from 'rn-apple-healthkit';
 
 import Database from '../Database.js';
+
+import {getHealthKitSteps} from '../helpers/AppleHealthKit';
 
 const db = new Database();
 
@@ -16,10 +17,8 @@ class GameScreen extends Component {
         }
         this.checkUserExists = this.checkUserExists.bind(this)
         this.ifHasPet = this.ifHasPet.bind(this)
-        this.getHealthKitSteps = this.getHealthKitSteps.bind(this)
         this.updatePetAge = this.updatePetAge.bind(this)
         this.initialSetup = this.initialSetup.bind(this)
-        this.getStepsSinceLastLogin = this.getStepsSinceLastLogin.bind(this)
     }
 
     componentDidMount() {
@@ -44,7 +43,7 @@ class GameScreen extends Component {
 
     initialSetup() {
         this.checkUserExists()
-        this.getHealthKitSteps()
+        getHealthKitSteps(this.state.user)
         this.updatePetAge()
     }
 
@@ -53,82 +52,7 @@ class GameScreen extends Component {
         this.setState({
             hasPet: true
         })
-    }
-
-    getHealthKitSteps() {
-
-        const PERMS = AppleHealthKit.Constants.Permissions;
-
-        const healthKitOptions = {
-            permissions: {
-                read: [
-                    PERMS.StepCount,
-                    PERMS.Steps,
-                ],
-                write: [
-                    PERMS.StepCount
-                ],
-            }
-        };
-
-        AppleHealthKit.initHealthKit(healthKitOptions, (err, results) => {
-            if (err) {
-                console.log("error initializing Healthkit: ", err);
-                return;
-            }
-
-            AppleHealthKit.getStepCount(null, (err, results) => {
-                if (err) {
-                    return;
-                }
-
-
-
-                let user = {
-                    ...this.state.user,
-                    dailySteps: results.value
-                }
-
-                db.updateUser(this.state.user.userId, user)
-
-                db.userById('1')
-                    .then((data) => {
-                        this.setState({
-                            user: data,
-                            isLoading: false,
-                        }, this.getStepsSinceLastLogin)
-                    })
-            });
-        });
-    }
-
-    getStepsSinceLastLogin() {
-
-        const lastLoginDate = new Date(this.state.user.lastLogin);
-        const lastLoginStartOfDay = new Date(lastLoginDate).toISOString();
-
-        const options = {
-            startDate: lastLoginStartOfDay,
-            endDate: new Date().toISOString(),
-            includeManuallyAdded: true,
-        };
-
-        AppleHealthKit.getDailyStepCountSamples(options, (err, results) => {
-            if (err) {
-                return;
-            }
-            const stepsSinceLastLogin = results.reduce((prev, cur) => {
-                return prev + cur.value;
-            }, 0);
-
-            let user = {
-                ...this.state.user,
-                totalSteps: (parseInt(this.state.user.totalSteps) + stepsSinceLastLogin).toString(),
-                lastLogin: options.endDate
-            }
-            db.updateUser(this.state.user.userId, user)
-            user = {}
-        });
+        console.log('USERUSER', this.state.user)
     }
 
     updatePetAge() {

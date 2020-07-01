@@ -45,7 +45,7 @@ class StepsComponent extends Component {
 
     calculateProgress() {
         if (!this.props.user.stepGoal) return;
-        return this.state.dailySteps / parseInt(this.props.user.stepGoal)
+        return this.props.user.dailySteps / parseInt(this.props.user.stepGoal)
     }
 
     enterSteps(steps) {

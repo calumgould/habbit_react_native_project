@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 
 import BlinkingText from './BlinkingTextComponent';
 
-const RegisterPetComponent = (props) => {
+const RegisterPetComponent = ({getPetName}) => {
 
-    const [text, setText] = useState('');
-    const {setPetName} = props;
+    // const [text, setText] = useState('');
+    // const {setPetName} = props;
 
     const setName = (value) => {
-        setText(value)
-        setPetName(value);
-        props.getPetName(value)
+        // setText(value)
+        // setPetName(value);
+        getPetName(value)
     }
 
         return ( 
@@ -20,7 +20,8 @@ const RegisterPetComponent = (props) => {
                     placeholder="Name me..." 
                     placeholderTextColor='ghostwhite' 
                     onChangeText={text => setName(text)} 
-                    defaultValue={text}>
+                    // defaultValue={text}
+                    >
                 </StyledTextInput>
                     <BlinkingText text="|" />
                 </BlinkingWrapper>
