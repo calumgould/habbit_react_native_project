@@ -4,7 +4,7 @@ export default BlinkingWrapper = styled.View`
     flex-direction: row;
     justify-content: center;
     text-align: center;
-    width: 320;
+    width: 320px;
     padding: 6px;
     margin: 10px 0;
     background-color: ${props => props.backgroundColor || 'transparent'};
