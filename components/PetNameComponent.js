@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 
-const PetNameComponent = (props) => {
+const PetNameComponent = ({petName}) => {
 
     const [name, setName] = useState('')
 
     useEffect(() => {
-        setName(props.petName)
-    }, [props])
+        setName(petName)
+    }, [petName])
 
     return ( 
         <Header marginBottom='10%'>
