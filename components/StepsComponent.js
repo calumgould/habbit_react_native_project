@@ -152,7 +152,7 @@ class StepsComponent extends Component {
                 <StyledText size='20px'>
                     Daily Steps
                     {'\n'}
-                    {this.state.dailySteps} / {this.props.user.stepGoal}
+                    {this.props.user.dailySteps} / {this.props.user.stepGoal}
                 </StyledText>
 
                 <Progress.Bar

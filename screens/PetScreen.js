@@ -66,7 +66,7 @@ class PetScreen extends Component {
                 <MenuComponent navigation={this.props.navigation}/>
                 <PetNameComponent petName={this.state.petName} />
                 <PetComponent 
-                totalSteps={this.state.totalSteps} 
+                totalSteps={this.state.user.totalSteps} 
                 growthSteps={this.state.growthSteps}
                 user={this.state.user}
                 />

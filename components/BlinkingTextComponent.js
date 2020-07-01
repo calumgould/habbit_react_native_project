@@ -1,26 +1,20 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
-class BlinkingText extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {showText: true};
- 
-    setInterval(() => {
-      this.setState(previousState => {
-        return { showText: !previousState.showText };
-      });
-    }, 
-    1000);
-  }
- 
-  render() {
-    let display = this.state.showText ? this.props.text : ' ';
+const BlinkingText = ({text, color, size}) => {
+
+  const [showText, setShowText] = useState(true)
+
+  setInterval(() => {
+    setShowText(!showText)
+  }, 1000);
+
+  let display = showText ? text : ' ';
+
     return (
-        <StyledText color={this.props.color} size={this.props.size}>
+        <StyledText color={color} size={size}>
           {display}
         </StyledText>
     );
-  }
 }
-
+ 
 export default BlinkingText;
