@@ -11,23 +11,23 @@ const db = new Database();
 class StepsComponent extends Component {
     constructor(props) {
         super(props);
-        this.state = { 
+        this.state = {
             totalSteps: 0,
             dailySteps: 0,
             enteredSteps: 0,
             growthSteps: 0
-         }
-         this.calculateProgress = this.calculateProgress.bind(this)
-         this.enterSteps = this.enterSteps.bind(this)
-         this.updateSteps = this.updateSteps.bind(this)
-         this.updateUserSteps = this.updateUserSteps.bind(this)
-         this.updateUser = this.updateUser.bind(this)
-         this.updateHealthKitDailySteps = this.updateHealthKitDailySteps.bind(this)
+        }
+        this.calculateProgress = this.calculateProgress.bind(this)
+        this.enterSteps = this.enterSteps.bind(this)
+        this.updateSteps = this.updateSteps.bind(this)
+        this.updateUserSteps = this.updateUserSteps.bind(this)
+        this.updateUser = this.updateUser.bind(this)
+        this.updateHealthKitDailySteps = this.updateHealthKitDailySteps.bind(this)
     }
 
-    updateUser(){
+    updateUser() {
 
-        if(this.props.totalSteps !== null) {    
+        if (this.props.totalSteps !== null) {
             this.setState({
                 totalSteps: parseInt(this.props.user.totalSteps),
                 dailySteps: parseInt(this.props.user.dailySteps),
@@ -36,32 +36,32 @@ class StepsComponent extends Component {
         }
     }
 
-    componentDidUpdate(prevProps){
-        if(Object.keys(this.props.user).length === 0) return;
-        if(this.props.user !== prevProps.user) {
+    componentDidUpdate(prevProps) {
+        if (Object.keys(this.props.user).length === 0) return;
+        if (this.props.user !== prevProps.user) {
             this.updateUser();
         }
     }
 
-    calculateProgress(){
-        if(!this.props.user.stepGoal) return;
+    calculateProgress() {
+        if (!this.props.user.stepGoal) return;
         return this.state.dailySteps / parseInt(this.props.user.stepGoal)
     }
 
-    enterSteps(steps){
+    enterSteps(steps) {
         this.setState({
             enteredSteps: steps
         })
-        
+
     }
 
-    resetGrowthSteps(){
+    resetGrowthSteps() {
         this.setState({
             growthSteps: 0
         })
     }
 
-    sendSteps(){
+    sendSteps() {
         this.props.getSteps(this.state.totalSteps, this.state.growthSteps)
     }
 
@@ -100,46 +100,35 @@ class StepsComponent extends Component {
                 return;
             }
 
-        let options = {
-            value: this.state.enteredSteps,
-            startDate: new Date().toISOString(),
-            endDate: new Date().toISOString()
-          };
+            let options = {
+                value: this.state.enteredSteps,
+                startDate: new Date().toISOString(),
+                endDate: new Date().toISOString()
+            };
 
-        AppleHealthKit.saveSteps(options, (error, results) => {
-        if (error) {
-            return;
-        }
-         console.log("STEPSCUSSCUSFYFLSISUDB>>>>>", results)
-         console.log('ENTEREDSTEPSBEFORE >>>>>', this.state.enteredSteps);
-         
-
-        this.setState({
-            enteredSteps: 0
-        })
-
-        console.log('ENTEREDSTEPSAFTER >>>>>', this.state.enteredSteps);
-
-
-        });
-
-        
-          
+            AppleHealthKit.saveSteps(options, (error, results) => {
+                if (error) {
+                    return;
+                }
+                this.setState({
+                    enteredSteps: 0
+                })
+            });
         })
     }
-        
-      render() { 
-        return ( 
+
+    render() {
+        return (
             <>
                 <StyledText size='16px'>
                     Manual Step Input:
                 </StyledText>
 
                 <BlinkingWrapper
-                backgroundColor='darkslategrey'
-                border='2px solid black'>
+                    backgroundColor='darkslategrey'
+                    border='2px solid black'>
                     <StyledTextInput size='14px'
-                        placeholder="Enter steps" 
+                        placeholder="Enter steps"
                         placeholderTextColor='grey'
                         value={this.state.enteredSteps}
                         keyboardType='numeric'
@@ -151,7 +140,7 @@ class StepsComponent extends Component {
                     <BlinkingText text="|" color='grey' size='18px' />
                 </BlinkingWrapper>
 
-                <ButtonContainer 
+                <ButtonContainer
                     onPress={this.updateSteps}
                     marginTop='10px'
                     marginBottom='25%'>
@@ -165,20 +154,20 @@ class StepsComponent extends Component {
                     {'\n'}
                     {this.state.dailySteps} / {this.props.user.stepGoal}
                 </StyledText>
-                
-                <Progress.Bar 
-                    progress={this.calculateProgress()} 
+
+                <Progress.Bar
+                    progress={this.calculateProgress()}
                     animated={true}
                     width={320}
                     height={25}
                     color='darkslategrey'
                     borderWidth={4}
                     borderColor='black'
-                    style={{marginTop: 20}}
+                    style={{ marginTop: 20 }}
                 />
             </>
-         );
+        );
     }
 }
- 
+
 export default StepsComponent;

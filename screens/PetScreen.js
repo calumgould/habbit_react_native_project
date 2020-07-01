@@ -26,7 +26,6 @@ class PetScreen extends Component {
     getUser() {
         db.userById('1')
         .then((data) => {
-            console.log('PETSCREENDATA', data)
             this.setState({
                 user: data,
                 isLoading: false,
@@ -37,12 +36,9 @@ class PetScreen extends Component {
                 isLoading: false
             }
         })
-        console.log('PETSCREENUSER:', this.state.user)
     }
 
     updateUserInfo(){
-        console.log('CURRENTUSER', this.state.user);
-        
         this.setState({
             petName: this.state.user.petName,
             dailySteps: this.state.user.dailySteps,

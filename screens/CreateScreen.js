@@ -7,9 +7,6 @@ import User from '../components/UserComponent';
 const CreateScreen = (props) => {
     const {route} = props;
     const {setPetName} = route.params;
-
-    // setPetName('Boi');
-
     const [user, setUser] = useState({})
     const [userPetName, setUserPetName] = useState('')
     const [initalSteps, setInitialSteps] = useState('')
@@ -26,8 +23,6 @@ const CreateScreen = (props) => {
                 stepGoal: '15000'
             })
         }
-
-        console.log('INITALSTEPS >>>>', initalSteps);
         
         useEffect(() => {
             getInitialSteps()
@@ -59,8 +54,6 @@ const CreateScreen = (props) => {
                     if (err) {
                         return;
                     }
-                    console.log(results.value);
-                    
                     setInitialSteps(results.value)
                 });
             });

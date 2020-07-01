@@ -53,7 +53,6 @@ class GameScreen extends Component {
         this.setState({
             hasPet: true
         })
-        console.log('USERUSER', this.state.user)
     }
 
     getHealthKitSteps() {
@@ -108,9 +107,6 @@ class GameScreen extends Component {
         const lastLoginDate = new Date(this.state.user.lastLogin);
         const lastLoginStartOfDay = new Date(lastLoginDate).toISOString();
 
-        console.log('LAST LOGIN START DATE >>>>>>', lastLoginStartOfDay);
-        
-
         const options = {
             startDate: lastLoginStartOfDay,
             endDate: new Date().toISOString(),
@@ -124,7 +120,6 @@ class GameScreen extends Component {
             const stepsSinceLastLogin = results.reduce((prev, cur) => {
                 return prev + cur.value;
             }, 0);
-            console.log('STEPSSINCELASTLOGINSTEPSSINCELASTLOGIN', stepsSinceLastLogin);
 
             let user = {
                 ...this.state.user,
@@ -133,7 +128,6 @@ class GameScreen extends Component {
             }
             db.updateUser(this.state.user.userId, user)
             user = {}
-            console.log('LASTLOGINLASTLOGINLASTLOGIN', this.state.user.lastLogin);
         });
     }
 
@@ -142,7 +136,6 @@ class GameScreen extends Component {
         const currentDate = new Date(new Date().toISOString());
         const diffTime = Math.abs(currentDate - dateCreated);
         const petAge = Math.ceil((diffTime / (1000 * 60 * 60 * 24)) + 1);
-        console.log('PETAGEPETAGE', petAge);
 
         const user = {
             ...this.state.user,
